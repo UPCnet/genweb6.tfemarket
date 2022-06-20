@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layers>
+  <layer
+      name="genweb6.tfemarket"
+      interface="genweb6.tfemarket.interfaces.IGenweb6TfemarketLayer"
+      />
+</layers>

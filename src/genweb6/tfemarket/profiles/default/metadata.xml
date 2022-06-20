@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <version>1000</version>
+  <dependencies>
+    <dependency>profile-plone.app.multilingual:default</dependency>
+    <dependency>profile-genweb6.core:default</dependency>
+    <dependency>profile-genweb6.theme:default</dependency>
+    <dependency>profile-genweb6.upc:default</dependency>
+  </dependencies>
+</metadata>
