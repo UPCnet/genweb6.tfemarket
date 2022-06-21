@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-05-09 10:0+0000\n"
+"PO-Revision-Date: 2022-05-09 10:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: ca\n"
+"Language-Name: Catalan\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: genweb6.tfemarket.workflow\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: ca\n"
+
+msgid "Assignada (intranet)"
+msgstr "Assignada (intranet)"
+
+msgid "Assignada"
+msgstr "Assignada"
+
+msgid "Caducada"
+msgstr "Caducada"
+
+msgid "Inscrita (intranet)"
+msgstr "Inscrita (intranet)"
+
+msgid "Inscrita"
+msgstr "Inscrita"
+
+msgid "Intranet"
+msgstr "Intranet"
+
+msgid "Proposta"
+msgstr "Proposta"
+
+msgid "Cancel·lada"
+msgstr "Cancel·lada"
+
+msgid "En revisió"
+msgstr "En revisió"
+
+msgid "Pública"
+msgstr "Pública"
+
+msgid "Assigna l'oferta"
+msgstr "Assigna l'oferta"
+
+msgid "Assigna l'oferta (intranet)"
+msgstr "Assigna l'oferta (intranet)"
+
+msgid "Caduca l'oferta"
+msgstr "Caduca l'oferta"
+
+msgid "Cancel·la l'oferta"
+msgstr "Cancel·la l'oferta"
+
+msgid "Publica a l'intranet"
+msgstr "Publica a l'intranet"
+
+msgid "Publica l'oferta"
+msgstr "Publica l'oferta"
+
+msgid "Registra l'oferta"
+msgstr "Registra l'oferta"
+
+msgid "Registra l'oferta (intranet)"
+msgstr "Registra l'oferta (intranet)"
+
+msgid "Retira a esborrany"
+msgstr "Retira a esborrany"
+
+msgid "Envia a revisió"
+msgstr "Envia a revisió"
+
+msgid "Acceptada"
+msgstr "Acceptada"
+
+msgid "Anul·lada"
+msgstr "Anul·lada"
+
+msgid "Confirmada"
+msgstr "Confirmada"
+
+msgid "Rebutjada"
+msgstr "Rebutjada"
+
+msgid "Renunciada"
+msgstr "Renunciada"
+
+msgid "Sol·licitada"
+msgstr "Sol·licitada"
+
+msgid "Accepta"
+msgstr "Accepta"
+
+msgid "Cancel·la"
+msgstr "Cancel·la"
+
+msgid "Confirma"
+msgstr "Confirma"
+
+msgid "Rebutja"
+msgstr "Rebutja"
+
+msgid "Renuncia"
+msgstr "Renuncia"
+
+msgid "Sol·licita"
+msgstr "Sol·licita"

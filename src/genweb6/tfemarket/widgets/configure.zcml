@@ -1,0 +1,95 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:z3c="http://namespaces.zope.org/z3c"
+  i18n_domain="plone">
+
+  <class class=".widget.FieldsetWidget">
+    <require
+      permission="zope.Public"
+      interface=".widget.IFieldsetWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.IFieldsetWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="fieldset.pt"
+    />
+
+
+  <class class=".widget.TeacherInputWidget">
+    <require
+      permission="zope.Public"
+      interface=".widget.ITeacherInputWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.ITeacherInputWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="text_input_teacher.pt"
+    />
+
+
+  <class class=".widget.CodirectorInputWidget">
+    <require
+      permission="zope.Public"
+      interface=".widget.ICodirectorInputWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.ICodirectorInputWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="text_input_codirector.pt"
+    />
+
+
+  <class class=".widget.ReadOnlyInputWidget">
+    <require
+      permission="zope.Public"
+      interface=".widget.IReadOnlyInputWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.IReadOnlyInputWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="text_input_read_only.pt"
+    />
+
+
+  <class class=".widget.StudentInputWidget">
+    <require
+      permission="zope.Public"
+      interface=".widget.IStudentInputWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.IStudentInputWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="text_input_student.pt"
+    />
+
+
+  <class class=".widget.SelectModalityInputWidget">
+    <require
+      permission="zope.Public"
+      interface=".widget.ISelectModalityInputWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.ISelectModalityInputWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="select_input_modality.pt"
+    />
+
+</configure>

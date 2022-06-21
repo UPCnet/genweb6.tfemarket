@@ -1,0 +1,186 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     tal:omit-tag=""
+     i18n:domain="genweb6.tfemarket">>
+
+  <input type="text" autocomplete="no" readonly
+         tal:attributes="id view/id;
+                         name view/name;
+                         class view/klass;
+                         style view/style;
+                         title view/title;
+                         lang view/lang;
+                         onclick view/onclick;
+                         ondblclick view/ondblclick;
+                         onmousedown view/onmousedown;
+                         onmouseup view/onmouseup;
+                         onmouseover view/onmouseover;
+                         onmousemove view/onmousemove;
+                         onmouseout view/onmouseout;
+                         onkeypress view/onkeypress;
+                         onkeydown view/onkeydown;
+                         onkeyup view/onkeyup;
+                         value view/value;
+                         disabled view/disabled;
+                         tabindex view/tabindex;
+                         onfocus view/onfocus;
+                         onblur view/onblur;
+                         onchange view/onchange;
+                         alt view/alt;
+                         accesskey view/accesskey;
+                         onselect view/onselect;
+                         size view/size;
+                         maxlength view/maxlength;
+                         placeholder view/placeholder;
+                         autocapitalize view/autocapitalize;" />
+
+  <input id="form-widgets-teacher_manager-btn-modal" type="button"
+         data-toggle="modal" data-target="#form-widgets-teacher_manager-modal"
+         i18n:attributes="value Search_teacher" />
+
+  <div id="form-widgets-teacher_manager-modal" class="modal fade" role="dialog"
+       tal:attributes="data-user view/getId">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" i18n:translate="">Search teacher</h4>
+        </div>
+        <div class="modal-body">
+
+          <tal:block tal:condition="view/hasPermissions">
+            <input id="form-widgets-teacher_manager-input" type="text" autocomplete="no"
+                   i18n:attributes="placeholder name.surname" />
+
+            <input id="form-widgets-teacher_manager-btn" type="button"
+                   i18n:attributes="value Search" />
+          </tal:block>
+
+          <p id="form-widgets-teacher_manager-error" i18n:translate="">
+            <b>Error:</b> The format is incorrect. <b>name.lastname</b>
+          </p>
+
+          <p id="form-widgets-teacher_manager-warn" i18n:translate="">
+            No results found.
+          </p>
+
+          <table id="form-widgets-teacher_manager-hint">
+            <thead>
+              <th i18n:translate="">User</th>
+              <th i18n:translate="">Fullname</th>
+              <th i18n:translate="">Email</th>
+              <th i18n:translate="">Departament</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr><td/><td/><td/><td/><td/></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var hideElementsTeacher = function(){
+      $("#form-widgets-teacher_manager-error").removeClass("viewError");
+      $("#form-widgets-teacher_manager-warn").removeClass("viewWarn");
+      $("#form-widgets-teacher_manager-hint > tbody").html("<tr><td/><td/><td/><td/><td/></tr>");
+    }
+
+    var addTeacher = function(teacher){
+      parent = $(teacher).parent().parent();
+      $("#form-widgets-teacher_manager").val($(parent).children('.teacher').html());
+      $("#form-widgets-teacher_fullname").val($(parent).children('.fullname').html());
+      $("#form-widgets-teacher_email").val($(parent).children('.email').html());
+      $("#form-widgets-dept").val($(parent).children('.dept').html());
+      $('#form-widgets-teacher_manager-modal').modal('toggle');
+    }
+
+    $("#form-widgets-teacher_manager-btn").on("click", function(){
+      hideElementsTeacher();
+      var regexTeacher = new RegExp('^[a-zA-ZñÑçÇ]{1,}\\.[a-zA-Z0-9-.ñÑçÇ]{1,}$');
+      var teacherUser = $("#form-widgets-teacher_manager-input").val();
+      if(regexTeacher.test(teacherUser)){
+        $.ajax({
+          type: 'POST',
+          data: { "teacher" : $("#form-widgets-teacher_manager-input").val() },
+          url: 'getTeacher',
+          success: function(data){
+            results = $.parseJSON(data);
+            if(results != null && results.length > 0){
+              $("#form-widgets-teacher_manager-hint > tbody").html("");
+              $.each( results, function( key, value ){
+                $("#form-widgets-teacher_manager-hint").show();
+                field = "<tr>";
+                field += "<td class='teacher'>" + value['user'] + "</td>";
+                field += "<td class='fullname'>" + value['fullname'] + "</td>";
+                field += "<td class='email'>" + value['email'] + "</td>";
+                field += "<td class='dept'>" + value['dept'] + "</td>";
+                field += "<td class='actions'>";
+                field += "<a class='label add' i18n:attributes='alt add' onclick='addTeacher(this)'>";
+                field += "<span class='fa fa-plus' aria-hidden='true'></span>";
+                field += "</a>";
+                field += "</td>";
+                field += "</tr>";
+                $("#form-widgets-teacher_manager-hint").append(field);
+              });
+            }else{
+              $("#form-widgets-teacher_manager-warn").addClass("viewWarn");
+            }
+          }
+        });
+      }else{
+        $("#form-widgets-teacher_manager-error").addClass("viewError");
+      }
+    });
+  </script>
+
+  <script type="text/javascript" tal:condition="view/ifTeacher">
+     if($("#form-widgets-teacher_manager").val() == ""){
+      $.ajax({
+        type: 'POST',
+        url: 'getExactTeacher',
+        success: function(data){
+          result = $.parseJSON(data);
+          if(result != null){
+            $("#form-widgets-teacher_manager").val(result['user']);
+            $("#form-widgets-teacher_fullname").val(result['fullname']);
+            $("#form-widgets-teacher_email").val(result['email']);
+            $("#form-widgets-dept").val(result['dept']);
+          }
+        }
+      });
+    }
+
+    $.ajax({
+      type: 'POST',
+      data: { "teacher" : $("#form-widgets-teacher_manager-modal").data("user") },
+      url: 'getTeacher',
+      success: function(data){
+        results = $.parseJSON(data);
+        if(results != null && results.length > 0){
+          $("#form-widgets-teacher_manager-hint > tbody").html("");
+          $.each( results, function( key, value ){
+            $("#form-widgets-teacher_manager-hint").show();
+            field = "<tr>";
+            field += "<td class='teacher'>" + value['user'] + "</td>";
+            field += "<td class='fullname'>" + value['fullname'] + "</td>";
+            field += "<td class='email'>" + value['email'] + "</td>";
+            field += "<td class='dept'>" + value['dept'] + "</td>";
+            field += "<td class='actions'>";
+            field += "<a class='label add' i18n:attributes='alt add' onclick='addTeacher(this)'>";
+            field += "<span class='fa fa-plus' aria-hidden='true'></span>";
+            field += "</a>";
+            field += "</td>";
+            field += "</tr>";
+            $("#form-widgets-teacher_manager-hint").append(field);
+          });
+        }else{
+          $("#form-widgets-teacher_manager-warn").addClass("viewWarn");
+        }
+      }
+    });
+  </script>
+
+</html>

@@ -1,55 +1,65 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
-    xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="genweb6.tfemarket">
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:plone="http://namespaces.plone.org/plone"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  i18n_domain="genweb6.tfemarket">
 
-    <i18n:registerTranslations directory="locales" />
+  <i18n:registerTranslations directory="locales" />
 
-    <include package=".browser" />
-    <include package=".content" />
-    <include package=".controlpanels" />
+  <include file="permissions.zcml" />
 
-    <include file="permissions.zcml" />
+  <include package=".behaviors" />
+  <include package=".browser" />
+  <include package=".content" />
+  <include package=".controlpanels" />
+  <include package=".widgets" />
 
-    <genericsetup:registerProfile
-        name="default"
-        title="genweb6.tfemarket"
-        directory="profiles/default"
-        description="Installs the genweb6.tfemarket add-on."
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        post_handler=".setuphandlers.post_install"
-        />
+  <include file="subscribers.zcml" />
 
-    <genericsetup:registerProfile
-        name="uninstall"
-        title="genweb6.tfemarket (uninstall)"
-        directory="profiles/uninstall"
-        description="Uninstalls the genweb6.tfemarket add-on."
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        post_handler=".setuphandlers.uninstall"
-        />
+  <genericsetup:registerProfile
+    name="default"
+    title="genweb6.tfemarket"
+    directory="profiles/default"
+    description="Installs the genweb6.tfemarket add-on."
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    post_handler=".setuphandlers.post_install"
+    />
 
-    <utility
-        factory=".setuphandlers.HiddenProfiles"
-        name="genweb6.tfemarket-hiddenprofiles"
-        />
+  <genericsetup:registerProfile
+    name="uninstall"
+    title="genweb6.tfemarket (uninstall)"
+    directory="profiles/uninstall"
+    description="Uninstalls the genweb6.tfemarket add-on."
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    post_handler=".setuphandlers.uninstall"
+    />
 
-    <genericsetup:importStep
-        name="genweb6.tfemarket.setupstep"
-        title="genweb6.tfemarket special import handlers"
-        description=""
-        handler="genweb6.tfemarket.setuphandlers.setupVarious"
-        />
+  <utility
+    factory=".setuphandlers.HiddenProfiles"
+    name="genweb6.tfemarket-hiddenprofiles"
+    />
 
-    <browser:page
-        name="genweb.tfemarket.utils"
-        for="*"
-        class=".utils.genwebTFEMarketUtils"
-        permission="zope2.Public"
-        allowed_interface=".interfaces.IGenweb6TfemarketLayer"
-        />
+  <genericsetup:importStep
+    name="genweb6.tfemarket.setupstep"
+    title="genweb6.tfemarket special import handlers"
+    description=""
+    handler="genweb6.tfemarket.setuphandlers.setupVarious"
+    />
+
+  <browser:page
+    name="genweb.tfemarket.utils"
+    for="*"
+    class=".utils.genwebTFEMarketUtils"
+    permission="zope2.Public"
+    allowed_interface=".interfaces.IGenweb6TfemarketLayer"
+    />
+
+  <plone:static
+    directory="theme"
+    type="theme"
+    name="genweb6.tfemarket"
+    />
 
 </configure>

@@ -1,8 +1,25 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
-    i18n_domain="genweb6.tfemarket">
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  i18n_domain="genweb6.tfemarket">
 
+  <browser:page
+    name="tfemarket-settings"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".tfemarket.TfemarketSettingsControlPanel"
+    permission="genweb.tfemarket.controlpanel"/>
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.Enrolls"
+    factory=".tfemarket.EnrollVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.AllLanguages"
+    factory=".tfemarket.AllLanguageVocabulary"
+    />
 
 </configure>

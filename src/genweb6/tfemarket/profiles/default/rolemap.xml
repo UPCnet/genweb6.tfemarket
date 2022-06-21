@@ -1,7 +1,42 @@
 <?xml version="1.0"?>
 <rolemap>
+
+<roles>
+    <role name="Anonymous"/>
+    <role name="Authenticated"/>
+    <role name="Contributor"/>
+    <role name="Editor"/>
+    <role name="Manager"/>
+    <role name="Member"/>
+    <role name="TFE Teacher"/>
+    <role name="TFE Student"/>
+    <role name="TFE Manager"/>
+    <role name="Owner"/>
+    <role name="Reader"/>
+    <role name="Reviewer"/>
+    <role name="Site Administrator"/>
+    <role name="WebMaster"/>
+  </roles>
+
   <permissions>
-  <!-- -*- extra stuff goes here -*- -->
+
+    <permission name="Genweb TFEMarket: Add Application" acquire="True">
+      <role name="Manager"/>
+      <role name="TFE Student"/>
+    </permission>
+
+    <permission name="Genweb TFEMarket: Add Market" acquire="True">
+      <role name="Manager"/>
+      <role name="TFE Manager"/>
+      <role name="WebMaster"/>
+    </permission>
+
+    <permission name="Genweb TFEMarket: Add Offer" acquire="True">
+      <role name="Manager"/>
+      <role name="TFE Manager"/>
+      <role name="TFE Teacher"/>
+    </permission>
 
   </permissions>
+
 </rolemap>

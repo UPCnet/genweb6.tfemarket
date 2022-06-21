@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="ca"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb6.tfemarket">
+
+  <body>
+    <metal:override fill-slot="top_slot"
+                    tal:define="disable_column_one python:request.set('disable_plone.leftcolumn',1);"/>
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
+        <div metal:use-macro="context/batch_macros/macros/navigation" />
+        <tal:block tal:content="view/redirectToMarket"></tal:block>
+      </metal:block>
+    </metal:content-core>
+  </body>
+</html>

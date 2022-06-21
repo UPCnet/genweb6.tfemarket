@@ -1,8 +1,198 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="genweb6.tfemarket">
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  i18n_domain="genweb6.tfemarket">
 
-    <include package="plone.app.contentmenu" />
+  <include package="plone.app.contentmenu" />
+
+  <browser:page
+    name="view"
+    for="genweb6.tfemarket.content.application.application.IApplication"
+    class=".application.application.View"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    template="application/application.pt"
+    />
+
+  <browser:page
+    name="view"
+    for="genweb6.tfemarket.content.market.market.IMarket"
+    class=".market.market.View"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    template="market/market.pt"
+    />
+
+  <browser:page
+    name="view"
+    for="genweb6.tfemarket.content.offer.offer.IOffer"
+    class=".offer.offer.View"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    template="offer/offer.pt"
+    />
+
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".offer.offer.AddView"
+    name="genweb.tfemarket.offer"
+    />
+
+  <class class=".offer.offer.AddView">
+    <require
+      permission="cmf.AddPortalContent"
+      interface="zope.publisher.interfaces.browser.IBrowserPage"
+      />
+  </class>
+
+  <browser:page
+    name="edit"
+    for=".offer.offer.IOffer"
+    class=".offer.offer.EditForm"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".application.application.AddView"
+    name="genweb.tfemarket.application"
+    />
+
+  <class class=".application.application.AddView">
+    <require
+      permission="cmf.AddPortalContent"
+      interface="zope.publisher.interfaces.browser.IBrowserPage"
+      />
+  </class>
+
+  <browser:page
+    name="edit"
+    for=".application.application.IApplication"
+    class=".application.application.EditForm"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <subscriber
+    for=".application.application.IApplication
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".application.application.defineDregreecode"
+    />
+
+  <subscriber
+    for=".application.application.IApplication
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".application.application.defineDregreecode"
+    />
+
+  <subscriber
+    for=".application.application.IApplication
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".application.application.getCodiExpedient"
+    />
+
+  <subscriber
+    for=".market.market.IMarket
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".market.market.disablePortlets"
+    />
+
+  <subscriber
+    for=".offer.offer.IOffer
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".offer.offer.defineTeacherAsEditor"
+    />
+
+  <subscriber
+    for=".offer.offer.IOffer
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".offer.offer.defineTeacherAsEditor"
+    />
+
+  <subscriber
+    for=".offer.offer.IOffer
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".offer.offer.numOfferDefaultValue"
+    />
+
+  <adapter factory=".offer.offer.offer_id" name="TFEoffer_id" />
+
+  <adapter factory=".offer.offer.offer_type" name="TFEoffer_type" />
+
+  <adapter factory=".offer.offer.tfgm" name="TFEtfgm" />
+
+  <adapter factory=".offer.offer.degree" name="TFEdegree" />
+
+  <adapter factory=".offer.offer.teacher_manager" name="TFEteacher_manager" />
+
+  <adapter factory=".offer.offer.dept" name="TFEdept" />
+
+  <adapter factory=".offer.offer.company" name="TFEcompany" />
+
+  <adapter factory=".offer.offer.grant" name="TFEgrant" />
+
+  <adapter factory=".offer.offer.modality" name="TFEmodality" />
+
+  <adapter factory=".offer.offer.keys" name="TFEkeys" />
+
+  <adapter factory=".offer.offer.lang" name="TFElang" />
+
+  <adapter factory=".offer.offer.topic" name="TFEtopic" />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.Langs"
+    factory=".offer.offer.LangsVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.Keys"
+    factory=".offer.offer.KeysVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.Topics"
+    factory=".offer.offer.TopicsVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.OfferTypes"
+    factory=".offer.offer.OfferTypesVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.TFGM"
+    factory=".offer.offer.TFGMVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.Modality"
+    factory=".offer.offer.ModalityVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.Titulacions"
+    factory=".offer.offer.DegreesVocabulary"
+    />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="genweb.tfemarket.TypeCodirector"
+    factory=".offer.offer.TypeCodirectorVocabulary"
+    />
 
 </configure>

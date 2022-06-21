@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <registry
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="genweb6.tfemarket">
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="genweb6.tfemarket">
+
+  <records
+    interface="genweb6.tfemarket.controlpanels.tfemarket.ITfemarketSettings"
+    purge="False"/>
 
 </registry>

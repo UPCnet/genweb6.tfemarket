@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dc-workflow workflow_id="tfemarket_offer_workflow" title="TFE Offer Workflow" description=""
+             state_variable="review_state" initial_state="offered" manager_bypass="True">
+
+  <permission>Access contents information</permission>
+  <permission>Add portal content</permission>
+  <permission>Change portal events</permission>
+  <permission>Modify portal content</permission>
+  <permission>View</permission>
+
+  <state state_id="assignadaintranet" title="Assignada (intranet)">
+    <exit-transition transition_id="registralofertaintranet" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="assigned" title="Assignada">
+    <exit-transition transition_id="register" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Anonymous</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Anonymous</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="canceled" title="Cancel·lada">
+    <exit-transition transition_id="retiraaesborrany" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="expired" title="Caducada">
+    <exit-transition transition_id="retiraaesborrany" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="inscritaintranet" title="Inscrita (intranet)">
+    <exit-transition transition_id="retiraaesborranymanager" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="intranet" title="Intranet">
+    <exit-transition transition_id="assignalofertaintranet" />
+    <exit-transition transition_id="caducaloferta" />
+    <exit-transition transition_id="retiraaesborrany" />
+    <exit-transition transition_id="cancellaloferta" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="offered" title="Proposta">
+    <exit-transition transition_id="publicaalintranet" />
+    <exit-transition transition_id="publicaloferta" />
+    <exit-transition transition_id="sendtoreview" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="pending" title="En revisió">
+    <exit-transition transition_id="publicaalintranet" />
+    <exit-transition transition_id="publicaloferta" />
+    <exit-transition transition_id="retiraaesborrany" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="public" title="Pública">
+    <exit-transition transition_id="caducaloferta" />
+    <exit-transition transition_id="retiraaesborrany" />
+    <exit-transition transition_id="cancellaloferta" />
+    <exit-transition transition_id="assign" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Anonymous</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Anonymous</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <state state_id="registered" title="Inscrita">
+    <exit-transition transition_id="retiraaesborranymanager" />
+
+    <permission-map name="Access contents information" acquired="False">
+      <permission-role>Anonymous</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Add portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Change portal events" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="Modify portal content" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+
+    <permission-map name="View" acquired="False">
+      <permission-role>Anonymous</permission-role>
+      <permission-role>Manager</permission-role>
+      <permission-role>TFE Manager</permission-role>
+      <permission-role>Owner</permission-role>
+      <permission-role>Site Administrator</permission-role>
+      <permission-role>TFE Student</permission-role>
+      <permission-role>TFE Teacher</permission-role>
+      <permission-role>WebMaster</permission-role>
+    </permission-map>
+  </state>
+
+  <transition transition_id="assign" title="Assigna l'oferta" new_state="assigned" trigger="USER" before_script="" after_script="">
+    <description>El professor assigna una sol·licitud  a l'oferta.</description>
+    <action url="%(content_url)s/content_status_modify?workflow_action=assign" category="workflow" icon="">Assigna</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="assignalofertaintranet" title="Assigna l'oferta (intranet)" new_state="assignadaintranet" trigger="USER"
+              before_script="" after_script="">
+    <description>El professor assigna una sol·licitud  a l'oferta.</description>
+    <action url="%(content_url)s/content_status_modify?workflow_action=assignalofertaintranet" category="workflow"
+            icon="">Assigna l'oferta (intranet)</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="USER" before_script="" after_script="">
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="cancellaloferta" title="Cancel·la l'oferta" new_state="canceled" trigger="USER"
+              before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=cancellaloferta" category="workflow"
+            icon="">Cancel·la l'oferta</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="publicaalintranet" title="Publica a l'intranet" new_state="intranet" trigger="USER"
+              before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=publicaalintranet" category="workflow"
+            icon="">Publica a l'intranet</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="publicaloferta" title="Publica l'oferta" new_state="public" trigger="USER"
+              before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=publicaloferta" category="workflow"
+            icon="">Publica l'oferta</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="register" title="Registra l'oferta" new_state="registered" trigger="USER"
+              before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=register" category="workflow"
+            icon="">Registra l'oferta</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="registralofertaintranet" title="Registra l'oferta (intranet)" new_state="inscritaintranet"
+              trigger="USER" before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=registralofertaintranet" category="workflow"
+            icon="">Registra l'oferta (intranet)</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+  <transition transition_id="retiraaesborrany" title="Retira a esborrany" new_state="offered" trigger="USER" before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=retiraaesborrany" category="workflow" icon="">Retira a esborrany</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="retiraaesborranymanager" title="Retira a esborrany" new_state="offered" trigger="USER"
+              before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=retiraaesborrany" category="workflow"
+            icon="">Retira a esborrany</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>Market Manager</guard-role>
+    </guard>
+  </transition>
+
+  <transition transition_id="sendtoreview" title="Envia a revisió" new_state="pending" trigger="USER"
+              before_script="" after_script="">
+    <action url="%(content_url)s/content_status_modify?workflow_action=sendtoreview" category="workflow"
+            icon="">Envia a revisió</action>
+    <guard>
+      <guard-permission>Modify portal content</guard-permission>
+      <guard-permission>Access contents information</guard-permission>
+      <guard-permission>View</guard-permission>
+      <guard-role>Site Administrator</guard-role>
+      <guard-role>Manager</guard-role>
+      <guard-role>TFE Manager</guard-role>
+      <guard-role>Owner</guard-role>
+    </guard>
+  </transition>
+
+  <worklist worklist_id="reviewer_queue" title="">
+    <description>Reviewer tasks</description>
+    <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+    <guard>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+    <match name="review_state" values="pending" />
+  </worklist>
+
+  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+    <description>Previous transition</description>
+    <default>
+      <expression>transition/getId|nothing</expression>
+    </default>
+    <guard />
+  </variable>
+
+  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+    <description>The ID of the user who performed the previous transition</description>
+    <default>
+      <expression>user/getId</expression>
+    </default>
+    <guard />
+  </variable>
+
+  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+    <description>Comment about the last transition</description>
+    <default>
+      <expression>python:state_change.kwargs.get('comment', '')</expression>
+    </default>
+    <guard />
+  </variable>
+
+  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+    <description>Provides access to workflow history</description>
+    <default>
+      <expression>state_change/getHistory</expression>
+    </default>
+    <guard>
+      <guard-permission>Request review</guard-permission>
+      <guard-permission>Review portal content</guard-permission>
+    </guard>
+  </variable>
+
+  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+    <description>When the previous transition was performed</description>
+    <default>
+      <expression>state_change/getDateTime</expression>
+    </default>
+    <guard />
+  </variable>
+
+</dc-workflow>

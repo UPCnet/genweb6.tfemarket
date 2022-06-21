@@ -1,9 +1,158 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="genweb6.tfemarket">
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:plone="http://namespaces.plone.org/plone"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  i18n_domain="genweb6.tfemarket">
 
-    <include package="z3c.jbot" file="meta.zcml" />
+  <include package="z3c.jbot" file="meta.zcml" />
+
+  <browser:page
+    name="getInfoCreateApplication"
+    for="genweb6.tfemarket.content.offer.offer.IOffer"
+    class=".views.getInfoCreateApplication"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.AddPortalContent"
+    />
+
+  <browser:page
+    name="changeActualState"
+    for="zope.interface.Interface"
+    class=".views.changeActualState"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="getTeacher"
+    for="zope.interface.Interface"
+    class=".views.getTeacher"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="requestOffer"
+    for="zope.interface.Interface"
+    class=".views.requestOffer"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.authenticated"
+    />
+
+  <browser:page
+    name="getInfoRenameOffer"
+    for="zope.interface.Interface"
+    class=".views.getInfoRenameOffer"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="reset_offers_counter"
+    for="zope.interface.Interface"
+    class=".views.resetCountOffers"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
+  <!-- Utils TFEMarket -->
+
+  <browser:page
+    name="tfemarket-utils"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtils"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    template="views_templates/tfemarket_utils.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-copy-offer"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsCopyOffer"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    template="views_templates/tfemarket_utils_copy_offer.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-rename-offer"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsRenameOffer"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    template="views_templates/tfemarket_utils_rename_offer.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-delete-offer"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsDeleteOffer"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    template="views_templates/tfemarket_utils_delete_offer.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-stats"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsStats"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    template="views_templates/tfemarket_utils_stats.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-download-csv"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsDownloadCSV"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    template="views_templates/tfemarket_utils_download_csv.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-export-csv"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsExportCSV"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    />
+
+  <browser:page
+    name="fillEmptyTFGMOffers"
+    for="zope.interface.Interface"
+    class=".views.fillEmptyTFGMOffers"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    />
+
+  <browser:page
+    name="changeUPCCodirectorValues"
+    for="zope.interface.Interface"
+    class=".views.changeUPCCodirectorValues"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="genweb.tfemarket.utils"
+    />
+
+  <!-- helpers.py -->
+
+  <browser:page
+    name="import_titulacions"
+    for="zope.interface.Interface"
+    class=".helpers.importTitulacions"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    template="helpers_templates/import_titulacions.pt"
+    />
+
+  <browser:page
+    name="import_ofertes"
+    for="zope.interface.Interface"
+    class=".helpers.importOfertes"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    template="helpers_templates/import_ofertes.pt"
+    />
 
 </configure>

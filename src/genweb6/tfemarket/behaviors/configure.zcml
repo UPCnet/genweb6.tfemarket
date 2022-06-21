@@ -1,0 +1,16 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:plone="http://namespaces.plone.org/plone"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  i18n_domain="genweb6.tfemarket">
+
+  <plone:behavior
+    name="genweb.tfemarket.publicationoffer"
+    title="Date range for offer"
+    description="Adds effective date and expiration date fields required."
+    provides=".publication_offer.IPublicationOffer"
+    factory=".publication_offer.PublicationOffer"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    />
+
+</configure>

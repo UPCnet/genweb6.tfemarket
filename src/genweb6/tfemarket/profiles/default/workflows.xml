@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<object meta_type="Plone Workflow Tool" name="portal_workflow">
+
+  <object meta_type="Workflow" name="tfemarket_market_workflow"/>
+  <object meta_type="Workflow" name="tfemarket_offer_workflow"/>
+  <object meta_type="Workflow" name="tfemarket_application_workflow"/>
+
+  <bindings>
+
+    <type type_id="genweb.tfemarket.market">
+      <bound-workflow workflow_id="tfemarket_market_workflow"/>
+    </type>
+
+    <type type_id="genweb.tfemarket.application">
+      <bound-workflow workflow_id="tfemarket_application_workflow"/>
+    </type>
+
+    <type type_id="genweb.tfemarket.offer">
+      <bound-workflow workflow_id="tfemarket_offer_workflow"/>
+    </type>
+
+  </bindings>
+
+</object>
