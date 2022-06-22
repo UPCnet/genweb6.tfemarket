@@ -7,8 +7,8 @@
     appId="genweb.tfemarket"
     category="genweb-advanced"
     condition_expr=""
-    url_expr="string:${portal_url}/tfemarket-settings"
-    icon_expr="string:${portal_url}/++resource++cpgenweb.png"
+    url_expr="string:${portal_url}/@@tfemarket-settings"
+    icon_expr="string:gear"
     visible="True">
 
     <permission>Manage Portal</permission>
