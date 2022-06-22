@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
-# from collective.z3cform.datagridfield.datagridfield.registry import DictRow
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.registry import DictRow
 from plone.app.registry.browser import controlpanel
 from plone.autoform import directives
 from plone.supermodel import model
@@ -89,11 +89,11 @@ class ITfemarketSettings(model.Schema):
         fields=['center_code', 'center_name', 'review_state', 'enroll_type', 'alternative_email', 'alternative_email_name'],
     )
 
-    # model.fieldset(
-    #     'Titulacions',
-    #     _(u'Titulacions'),
-    #     fields=['titulacions_table'],
-    # )
+    model.fieldset(
+        'Titulacions',
+        _(u'Titulacions'),
+        fields=['titulacions_table'],
+    )
 
     model.fieldset(
         'Ofertes',
@@ -170,14 +170,13 @@ class ITfemarketSettings(model.Schema):
 
     # TITULACIONS
 
-    # directives.widget(titulacions_table=DataGridFieldFactory)
-    # titulacions_table = schema.List(title=_(u'Titulacions'),
-    #                                 description=_(u'help_titulacions_table',
-    #                                 default=u'Imported dades from csv'),
-    #                                 value_type=DictRow(title=_(u'titulacionstable'),
-    #                                                    schema=ITableTitulacions),
-    #                                 required=False
-    #                                 )
+    directives.widget(titulacions_table=DataGridFieldFactory)
+    titulacions_table = schema.List(
+        title=_(u'Titulacions'),
+        description=_(u'help_titulacions_table', default=u'Imported dades from csv'),
+        value_type=DictRow(schema=ITableTitulacions),
+        required=False
+    )
 
     # OFERTES
 
