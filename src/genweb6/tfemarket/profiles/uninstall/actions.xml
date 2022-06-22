@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n" name="portal_actions" meta_type="Plone Actions Tool">
+
+    <object name="user" meta_type="CMF Action Category">
+        <object name="genweb-tfemarket-settings" remove="True" />
+        <object name="genweb-tfemarket-utils" remove="True" />
+    </object>
+</object>
