@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 
 from plone import api
@@ -20,6 +21,8 @@ import transaction
 
 class importTitulacions(BrowserView):
     """ Import Titulacions from csv file """
+
+    render = ViewPageTemplateFile("helpers_templates/import_titulacions.pt")
 
     def __call__(self):
         if self.request.environ['REQUEST_METHOD'] == 'POST':
@@ -54,13 +57,18 @@ class importTitulacions(BrowserView):
 
                 transaction.commit()
                 self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-1")
+                return
             else:
                 message = (u"Falta afegir el fitxer csv.")
                 IStatusMessage(self.request).addStatusMessage(message, type='error')
 
+        return self.render()
+
 
 class importOfertes(BrowserView):
     """ Import Titulacions from csv file """
+
+    render = ViewPageTemplateFile("helpers_templates/import_ofertes.pt")
 
     def __call__(self):
         if self.request.environ['REQUEST_METHOD'] == 'POST':
@@ -75,9 +83,12 @@ class importOfertes(BrowserView):
                     IStatusMessage(self.request).addStatusMessage('\n'.join(msgError), type='error')
                 else:
                     self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
+                    return
             else:
                 message = (u"Falta afegir el fitxer csv.")
                 IStatusMessage(self.request).addStatusMessage(message, type='alert')
+
+        return self.render()
 
     def createOffers(self, hasHeaders, fitxer, marketUID):
         registry = queryUtility(IRegistry)
