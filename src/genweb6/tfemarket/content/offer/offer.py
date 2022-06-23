@@ -44,12 +44,7 @@ class LangsVocabulary(object):
 
         languages = []
         for item in results:
-            if isinstance(item, str):
-                flattened = unicodedata.normalize('NFKD', item.decode(
-                    'utf-8')).encode('ascii', errors='ignore')
-            else:
-                flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
-
+            flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
             itemTranslate = translate(msgid=item, domain='genweb.tfemarket', target_language=lang)
             languages.append(SimpleVocabulary.createTerm(item, flattened, itemTranslate))
 
@@ -70,11 +65,7 @@ class KeysVocabulary(object):
             results = keys.split("\r\n")
 
         for item in results:
-            if isinstance(item, str):
-                flattened = unicodedata.normalize('NFKD', item.decode(
-                    'utf-8')).encode('ascii', errors='ignore')
-            else:
-                flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
+            flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
             tags.append(SimpleVocabulary.createTerm(item, flattened, item))
 
         return SimpleVocabulary(tags)
@@ -94,11 +85,7 @@ class TopicsVocabulary(object):
             results = topics.split("\r\n")
 
         for item in results:
-            if isinstance(item, str):
-                flattened = unicodedata.normalize('NFKD', item.decode(
-                    'utf-8')).encode('ascii', errors='ignore')
-            else:
-                flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
+            flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
             topic.append(SimpleVocabulary.createTerm(item, flattened, item))
 
         return SimpleVocabulary(topic)
