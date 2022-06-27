@@ -1,5 +1,5 @@
 {
-  "name": "genweb6.theme",
+  "name": "genweb6.tfemarket",
   "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
@@ -20,8 +20,5 @@
     "postcss-cli": "^9.0.1",
     "sass": "^1.43.3",
     "stylelint-config-twbs-bootstrap": "^2.2.4"
-  },
-  "dependencies": {
-    "@plone/plonetheme-barceloneta-base": "^3.0.0-alpha11"
   }
 }
