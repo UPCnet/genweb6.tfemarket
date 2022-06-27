@@ -4,7 +4,7 @@ from Products.CMFPlone import PloneMessageFactory as _PMF
 from plone.app.dexterity.behaviors.metadata import DCFieldProperty
 from plone.app.dexterity.behaviors.metadata import MetadataBase
 from plone.app.event.base import dt_end_of_day
-from plone.autoform import directives as form
+from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from z3c.form.interfaces import IAddForm
@@ -12,8 +12,8 @@ from z3c.form.interfaces import IEditForm
 from zope import schema
 from zope.interface import alsoProvides
 
+from genweb6.core.widgets import FieldsetFieldWidget
 from genweb6.tfemarket import _
-from genweb6.tfemarket.widgets import FieldsetFieldWidget
 
 import datetime
 
@@ -24,7 +24,7 @@ def expiresDefaultValue():
 
 class IPublicationOffer(model.Schema):
 
-    form.widget('fieldset_opt', FieldsetFieldWidget)
+    directives.widget('fieldset_opt', FieldsetFieldWidget)
     fieldset_opt = schema.Text(
         default=_(u'Dates'),
         required=False,
@@ -47,9 +47,9 @@ class IPublicationOffer(model.Schema):
         defaultFactory=expiresDefaultValue,
     )
 
-    form.omitted('effective')
-    form.no_omit(IEditForm, 'expired')
-    form.no_omit(IAddForm, 'expired')
+    directives.omitted('effective')
+    directives.no_omit(IEditForm, 'expired')
+    directives.no_omit(IAddForm, 'expired')
 
 
 alsoProvides(IPublicationOffer, IFormFieldProvider)

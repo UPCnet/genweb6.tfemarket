@@ -175,7 +175,7 @@ class ITfemarketSettings(model.Schema):
         title=_(u'Titulacions'),
         description=_(u'help_titulacions_table', default=u'Imported dades from csv'),
         value_type=DictRow(schema=ITableTitulacions),
-        required=False
+        required=False,
     )
 
     # OFERTES

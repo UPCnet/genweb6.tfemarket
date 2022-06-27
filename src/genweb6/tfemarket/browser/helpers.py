@@ -34,8 +34,9 @@ class importTitulacions(BrowserView):
                 tfe_tool = registry.forInterface(ITfemarketSettings)
                 tfe_tool.titulacions_table = []
 
-                csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
-                csv_file.next()  # Ignore header for csv
+                ifile = open(fitxer, "rb")
+                csv_file = csv.reader(ifile, delimiter=',', quotechar='"')
+                next(csv_file)  # Ignore header for csv
 
                 for row in csv_file:
 
@@ -98,10 +99,11 @@ class importOfertes(BrowserView):
         market = catalog(UID=marketUID)[0].getObject()
 
         msgError = []
-        csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
+        ifile = open(fitxer, "rb")
+        csv_file = csv.reader(ifile, delimiter=',', quotechar='"')
 
         if hasHeaders:
-            csv_file.next()  # Ignore header for csv
+            next(csv_file)  # Ignore header for csv
 
         for count, row in enumerate(csv_file):
             # Importa ofertas

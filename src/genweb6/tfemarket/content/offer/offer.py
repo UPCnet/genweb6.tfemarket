@@ -20,11 +20,11 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+from genweb6.core.widgets import FieldsetFieldWidget
+from genweb6.core.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket import _
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.tfemarket.widgets import CodirectorInputFieldWidget
-from genweb6.tfemarket.widgets import FieldsetFieldWidget
-from genweb6.tfemarket.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket.widgets import SelectModalityInputFieldWidget
 from genweb6.tfemarket.widgets import TeacherInputFieldWidget
 

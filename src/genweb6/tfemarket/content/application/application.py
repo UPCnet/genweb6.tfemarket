@@ -14,10 +14,10 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+from genweb6.core.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket import _
 from genweb6.tfemarket.utils import checkPermissionCreateApplications
 from genweb6.tfemarket.utils import getDegreeLiteralFromId
-from genweb6.tfemarket.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket.widgets import StudentInputFieldWidget
 
 import ast
