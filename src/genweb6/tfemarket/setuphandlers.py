@@ -3,6 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import INonInstallable
 from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
 
+from zope.component.hooks import getSite
 from zope.interface import implementer
 
 import logging
@@ -45,39 +46,37 @@ def post_install(context):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
-    # if context.readDataFile('genweb6.tfemarket_various.txt') is None:
-    #     return
+    portal = getSite()
 
-    # portal = context.getSite()
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['sn1'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['sn1'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['sn2'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['sn2'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['givenName'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['givenName'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['unit'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['unit'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['unitCode'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['unitCode'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['segmentation'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['segmentation'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['typology'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['typology'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['DNIpassport'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['DNIpassport'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['idorigen'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['idorigen'], REQUEST=None)
 
-    # LDAPUserFolder.manage_deleteLDAPSchemaItems(
-    #     portal.acl_users.ldapUPC.acl_users, ldap_names=['mail'], REQUEST=None)
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        portal.acl_users.ldapUPC.acl_users, ldap_names=['mail'], REQUEST=None)
 
 
 def add_catalog_indexes(context, logger=None):
