@@ -18,17 +18,10 @@ from genweb6.tfemarket import _
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.upc.controlpanels.bus_soa import IBusSOASettings
 from genweb6.upc.controlpanels.identitat_digital import IIdentitatDigitalSettings
+from genweb6.upc.utils import getTokenIdentitatDigital
 
 import json
 import requests
-
-
-def getTokenIdentitatDigital():
-    registry = queryUtility(IRegistry)
-    identitat_digital_tool = registry.forInterface(IIdentitatDigitalSettings)
-    urlGetToken = identitat_digital_tool.identitat_url + '/gcontrol/rest/acls/processos?idProces='
-    idProces = identitat_digital_tool.identitat_apikey
-    return requests.post(urlGetToken + idProces)
 
 
 def getDadesEst(self, cn, token):

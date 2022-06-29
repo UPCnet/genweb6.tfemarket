@@ -25,10 +25,10 @@ from genweb6.tfemarket.utils import checkPermissionCreateApplications as CPCreat
 from genweb6.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb6.tfemarket.utils import getDegreeLiteralFromId
 from genweb6.tfemarket.utils import getDegrees
-from genweb6.tfemarket.utils import getTokenIdentitatDigital
 from genweb6.tfemarket.utils import isManager
 from genweb6.tfemarket.utils import isTeachersOffer
 from genweb6.upc.controlpanels.bus_soa import IBusSOASettings
+from genweb6.upc.utils import getTokenIdentitatDigital
 
 import ast
 import unicodedata
