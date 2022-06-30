@@ -13,7 +13,7 @@
   <z3c:widgetTemplate
     mode="input"
     widget=".teacher.teacher.ITeacherInputWidget"
-    layer="z3c.form.interfaces.IFormLayer"
+    layer="plone.app.z3cform.interfaces.IPloneFormLayer"
     template="teacher/text_input_teacher.pt"
     />
 
@@ -28,7 +28,7 @@
   <z3c:widgetTemplate
     mode="input"
     widget=".codirector.codirector.ICodirectorInputWidget"
-    layer="z3c.form.interfaces.IFormLayer"
+    layer="plone.app.z3cform.interfaces.IPloneFormLayer"
     template="codirector/text_input_codirector.pt"
     />
 
@@ -43,7 +43,7 @@
   <z3c:widgetTemplate
     mode="input"
     widget=".student.student.IStudentInputWidget"
-    layer="z3c.form.interfaces.IFormLayer"
+    layer="plone.app.z3cform.interfaces.IPloneFormLayer"
     template="student/text_input_student.pt"
     />
 
@@ -58,7 +58,7 @@
   <z3c:widgetTemplate
     mode="input"
     widget=".modality.modality.ISelectModalityInputWidget"
-    layer="z3c.form.interfaces.IFormLayer"
+    layer="plone.app.z3cform.interfaces.IPloneFormLayer"
     template="modality/select_input_modality.pt"
     />
 
