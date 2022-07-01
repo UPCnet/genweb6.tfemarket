@@ -6,7 +6,7 @@
   <input type="text" autocomplete="no" readonly
          tal:attributes="id view/id;
                          name view/name;
-                         class view/klass;
+                         class string:form-control ${view/klass};
                          style view/style;
                          title view/title;
                          lang view/lang;
@@ -34,16 +34,19 @@
                          placeholder view/placeholder;
                          autocapitalize view/autocapitalize;" />
 
-  <input id="form-widgets-codirector-btn-modal" type="button"
-         data-toggle="modal" data-target="#form-widgets-codirector-modal"
+  <input id="form-widgets-codirector-btn-modal" type="button" class="btn btn-secondary mt-2"
+         data-bs-toggle="modal" data-bs-target="#form-widgets-codirector-modal"
          i18n:attributes="value Search_codirector"/>
 
-  <div id="form-widgets-codirector-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+
+  <div id="form-widgets-codirector-modal" class="modal fade" data-bs-backdrop="static"
+       data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" i18n:translate="">Search codirector</h4>
+          <h2 class="modal-title" i18n:translate="">Search codirector</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <input id="form-widgets-codirector-input" type="text" autocomplete="no"
@@ -60,13 +63,13 @@
             No results found.
           </p>
 
-          <table id="form-widgets-codirector-hint">
+          <table id="form-widgets-codirector-hint" class="table">
             <thead>
-              <th i18n:translate="">User</th>
-              <th i18n:translate="">Fullname</th>
-              <th i18n:translate="">Email</th>
-              <th i18n:translate="">Codirector University department</th>
-              <th></th>
+              <th scope="col" i18n:translate="">User</th>
+              <th scope="col" i18n:translate="">Fullname</th>
+              <th scope="col" i18n:translate="">Email</th>
+              <th scope="col" i18n:translate="">Codirector University department</th>
+              <th scope="col"></th>
             </thead>
             <tbody>
               <tr><td/><td/><td/><td/><td/></tr>
@@ -77,99 +80,5 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    var hideElementsCodirector = function(){
-      $("#form-widgets-codirector-error").removeClass("viewError");
-      $("#form-widgets-codirector-warn").removeClass("viewWarn");
-      $("#form-widgets-codirector-hint > tbody").html("<tr><td/><td/><td/><td/><td/></tr>");
-    }
-
-    var addCodirector = function(codirector){
-      parent = $(codirector).parent().parent();
-      $("#form-widgets-codirector").val($(parent).children('.fullname').html());
-      $("#form-widgets-codirector_id").val($(parent).children('.codirector').html());
-      $("#form-widgets-codirector_email").val($(parent).children('.email').html());
-      $("#form-widgets-codirector_dept").val($(parent).children('.dept').html());
-      $('#form-widgets-codirector-modal').modal('toggle');
-    }
-
-    var changeDisplaysCodirector = function(value){
-      switch(value){
-        case 'UPC':
-          $("#form-widgets-codirector").attr('readonly', 'readonly');
-          $("#formfield-form-widgets-codirector").css('display', 'block');
-          $("#formfield-form-widgets-codirector_id").css('display', 'block');
-          $("#formfield-form-widgets-codirector_email").css('display', 'block');
-          $("#formfield-form-widgets-codirector_dept").css('display', 'block');
-          $("#form-widgets-codirector-btn-modal").css('display', 'inline-block');
-          break;
-        case 'External':
-          $("#form-widgets-codirector").removeAttr('readonly');
-          $("#formfield-form-widgets-codirector").css('display', 'block');
-          $("#formfield-form-widgets-codirector_id").css('display', 'none');
-          $("#formfield-form-widgets-codirector_email").css('display', 'none');
-          $("#formfield-form-widgets-codirector_dept").css('display', 'none');
-          $("#form-widgets-codirector-btn-modal").css('display', 'none');
-          break;
-        default:
-          $("#formfield-form-widgets-codirector").css('display', 'none');
-          $("#formfield-form-widgets-codirector_id").css('display', 'none');
-          $("#formfield-form-widgets-codirector_email").css('display', 'none');
-          $("#formfield-form-widgets-codirector_dept").css('display', 'none');
-          $("#form-widgets-codirector-btn-modal").css('display', 'none');
-          break;
-      }
-    }
-
-    $("#form-widgets-type_codirector").on("change", function(){
-      changeDisplaysCodirector(this.value);
-      $("#form-widgets-codirector").val('');
-      $("#form-widgets-codirector_id").val('');
-      $("#form-widgets-codirector_email").val('');
-      $("#form-widgets-codirector_dept").val('');
-    });
-
-    $("#form-widgets-codirector-btn").on("click", function(){
-      hideElementsCodirector();
-      var regexCodirector = new RegExp('^[a-zA-ZñÑçÇ]{1,}\\.[a-zA-Z0-9-.ñÑçÇ]{1,}$');
-      var codirectorUser = $("#form-widgets-codirector-input").val();
-      if(regexCodirector.test(codirectorUser)){
-        $.ajax({
-          type: 'POST',
-          data: { "teacher" : $("#form-widgets-codirector-input").val() },
-          url: 'getTeacher',
-          success: function(data){
-            results = $.parseJSON(data);
-            if(results != null && results.length > 0){
-              $("#form-widgets-codirector-hint > tbody").html("");
-              $.each( results, function( key, value ){
-                $("#form-widgets-codirector-hint").show();
-                field = "<tr>";
-                field += "<td class='codirector'>" + value['user'] + "</td>";
-                field += "<td class='fullname'>" + value['fullname'] + "</td>";
-                field += "<td class='email'>" + value['email'] + "</td>";
-                field += "<td class='dept'>" + value['dept'] + "</td>";
-                field += "<td class='actions'>";
-                field += "<a class='label add' i18n:attributes='alt add' onclick='addCodirector(this)'>";
-                field += "<span class='fa fa-plus' aria-hidden='true'></span>";
-                field += "</a>";
-                field += "</td>";
-                field += "</tr>";
-                $("#form-widgets-codirector-hint").append(field);
-              });
-            }else{
-              $("#form-widgets-codirector-warn").addClass("viewWarn");
-            }
-          }
-        });
-      }else{
-        $("#form-widgets-codirector-error").addClass("viewError");
-      }
-    });
-
-    $(document).ready(function(){
-      changeDisplaysCodirector($("#form-widgets-type_codirector").val());
-    });
-  </script>
-
+  <script type="text/javascript" src="++theme++genweb6.tfemarket/js/widget-codirector.min.js"></script>
 </html>

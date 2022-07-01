@@ -864,13 +864,6 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 }
 
 /* line 752, ../scss/_market.scss */
-#form-widgets-teacher_manager-modal,
-#form-widgets-codirector-modal {
-  width: 70% !important;
-  left: 37% !important;
-}
-
-/* line 758, ../scss/_market.scss */
 #form-widgets-teacher_manager-btn-modal,
 #form-widgets-teacher_manager-btn,
 #form-widgets-codirector-btn-modal,
@@ -878,14 +871,14 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   margin-bottom: 9px;
 }
 
-/* line 765, ../scss/_market.scss */
+/* line 759, ../scss/_market.scss */
 #form-widgets-teacher_manager-error,
 #form-widgets-codirector-error {
   color: #FF0000;
   display: none;
 }
 
-/* line 771, ../scss/_market.scss */
+/* line 765, ../scss/_market.scss */
 #form-widgets-teacher_manager-error.viewError,
 #form-widgets-teacher_manager-warn.viewWarn,
 #form-widgets-codirector-error.viewError,
@@ -893,13 +886,13 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   display: block;
 }
 
-/* line 778, ../scss/_market.scss */
+/* line 772, ../scss/_market.scss */
 #form-widgets-teacher_manager-warn,
 #form-widgets-codirector-warn {
   display: none;
 }
 
-/* line 783, ../scss/_market.scss */
+/* line 777, ../scss/_market.scss */
 #formSearchOffers button,
 .informacioTFE .buttonsOffer button,
 .btnTFE {
@@ -922,17 +915,17 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   font-weight: 600;
 }
 
-/* line 805, ../scss/_market.scss */
+/* line 799, ../scss/_market.scss */
 .btnTFE.secundaryBtnTFE {
   opacity: 0.6;
 }
 
-/* line 809, ../scss/_market.scss */
+/* line 803, ../scss/_market.scss */
 .btnTFE {
   height: 20px;
 }
 
-/* line 813, ../scss/_market.scss */
+/* line 807, ../scss/_market.scss */
 .informacioTFE .buttonsOffer button:hover,
 .buttonsLang button.link:hover,
 .buttonsRight a button.link:hover,
@@ -946,28 +939,28 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   border-bottom-color: #595959;
 }
 
-/* line 826, ../scss/_market.scss */
+/* line 820, ../scss/_market.scss */
 .informacioTFE .col-md-6 {
   margin-bottom: 0px;
 }
 
-/* line 830, ../scss/_market.scss */
+/* line 824, ../scss/_market.scss */
 .informacioTFE .applications {
   padding-top: 20px;
 }
 
-/* line 834, ../scss/_market.scss */
+/* line 828, ../scss/_market.scss */
 .offerData .offerInfo .btn-success {
   margin-left: 10px;
   vertical-align: baseline;
 }
 
-/* line 839, ../scss/_market.scss */
+/* line 833, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market .row .col-md-12 {
   margin-top: 10px;
 }
 
-/* line 843, ../scss/_market.scss */
+/* line 837, ../scss/_market.scss */
 #listing-table a.contenttype-genweb-tfemarket-application:before,
 #listing-table a.contenttype-document:before,
 #listing-table span.contenttype-genweb-tfemarket-application:before,
@@ -990,7 +983,7 @@ span.icon-genweb-tfemarket-application {
   height: 14px;
 }
 
-/* line 865, ../scss/_market.scss */
+/* line 859, ../scss/_market.scss */
 #listing-table a.contenttype-genweb-tfemarket-offer:before,
 #listing-table a.contenttype-document:before,
 #listing-table span.contenttype-genweb-tfemarket-offer:before,
@@ -1013,7 +1006,7 @@ span.icon-genweb-tfemarket-offer {
   height: 14px;
 }
 
-/* line 887, ../scss/_market.scss */
+/* line 881, ../scss/_market.scss */
 #listing-table a.contenttype-genweb-tfemarket-market:before,
 #listing-table a.contenttype-document:before,
 #listing-table span.contenttype-genweb-tfemarket-market:before,
@@ -1037,7 +1030,7 @@ span.icon-genweb-tfemarket-market {
 }
 
 /* Contenido de plone > Display = None */
-/* line 911, ../scss/_market.scss */
+/* line 906, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #viewlet-above-content,
 .portaltype-genweb-tfemarket-market #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-market #viewlet-below-content,
@@ -1060,7 +1053,7 @@ span.icon-genweb-tfemarket-market {
 }
 
 /* Campo título ampliar */
-/* line 935, ../scss/_market.scss */
+/* line 930, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-offer #form-widgets-title,
 .portaltype-genweb-tfemarket-market #form-widgets-title,
 .portaltype-genweb-tfemarket-application #form-widgets-title {
@@ -1069,19 +1062,19 @@ span.icon-genweb-tfemarket-market {
 }
 
 /* Cabecera Mercado */
-/* line 944, ../scss/_market.scss */
+/* line 939, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #market {
   margin-top: 20px;
 }
 
-/* line 948, ../scss/_market.scss */
+/* line 943, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #portal-header,
 .portaltype-genweb-tfemarket-offer #portal-header,
 .portaltype-genweb-tfemarket-application #portal-header {
   height: 222px;
 }
 
-/* line 954, ../scss/_market.scss */
+/* line 949, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image,
 .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image,
 .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image {
@@ -1094,7 +1087,7 @@ span.icon-genweb-tfemarket-market {
   text-align: right;
 }
 
-/* line 966, ../scss/_market.scss */
+/* line 961, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
 .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
 .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
@@ -1106,28 +1099,28 @@ span.icon-genweb-tfemarket-market {
   font-weight: 600;
 }
 
-/* line 977, ../scss/_market.scss */
+/* line 972, ../scss/_market.scss */
 html[lang='ca'] .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
 html[lang='ca'] .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
 html[lang='ca'] .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
   content: "Ofertes de treballs de final d'estudis";
 }
 
-/* line 983, ../scss/_market.scss */
+/* line 978, ../scss/_market.scss */
 html[lang='es'] .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
 html[lang='es'] .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
 html[lang='es'] .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
   content: "Ofertas de trabajos de final de estudios";
 }
 
-/* line 989, ../scss/_market.scss */
+/* line 984, ../scss/_market.scss */
 html[lang='en'] .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
 html[lang='en'] .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
 html[lang='en'] .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
   content: "Final Thesis proposals";
 }
 
-/* line 995, ../scss/_market.scss */
+/* line 990, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #portal-header .logoPropi,
 .portaltype-genweb-tfemarket-offer #portal-header .logoPropi,
 .portaltype-genweb-tfemarket-application #portal-header .logoPropi {
@@ -1135,40 +1128,40 @@ html[lang='en'] .portaltype-genweb-tfemarket-application #portal-header .header-
 }
 
 /* Tfemarket utils */
-/* line 1003, ../scss/_market.scss */
+/* line 998, ../scss/_market.scss */
 body.template-tfemarket-utils #utils {
   display: grid;
 }
 
-/* line 1007, ../scss/_market.scss */
+/* line 1002, ../scss/_market.scss */
 body.template-tfemarket-utils #utils .configlets .fa {
   float: right;
 }
 
-/* line 1011, ../scss/_market.scss */
+/* line 1006, ../scss/_market.scss */
 body[class^="template-tfemarket-utils"] .documentDescription {
   font-weight: normal;
 }
 
-/* line 1015, ../scss/_market.scss */
+/* line 1010, ../scss/_market.scss */
 body[class^="template-tfemarket-utils"] #s2id_offer {
   width: 100%;
   margin-bottom: 20px;
 }
 
-/* line 1020, ../scss/_market.scss */
+/* line 1015, ../scss/_market.scss */
 body[class^="template-tfemarket-utils"] .select2-disabled > div {
   cursor: not-allowed;
 }
 
-/* line 1024, ../scss/_market.scss */
+/* line 1019, ../scss/_market.scss */
 body[class^="template-tfemarket-utils"] label,
 body[class^="template-tfemarket-utils"] input[type="text"] {
   display: block;
   width: 99%;
 }
 
-/* line 1030, ../scss/_market.scss */
+/* line 1025, ../scss/_market.scss */
 body.template-tfemarket-utils-stats table.dataTable thead th,
 body.template-tfemarket-utils-stats table.dataTable tfoot th,
 body.template-tfemarket-utils-stats table.dataTable tbody td {
@@ -1176,21 +1169,21 @@ body.template-tfemarket-utils-stats table.dataTable tbody td {
   border-bottom: 0px;
 }
 
-/* line 1037, ../scss/_market.scss */
+/* line 1032, ../scss/_market.scss */
 body.template-tfemarket-utils-stats table.dataTable thead th:not(:first-child),
 body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child),
 body.template-tfemarket-utils-stats table.dataTable tbody td:not(:first-child) {
   text-align: center;
 }
 
-/* line 1043, ../scss/_market.scss */
+/* line 1038, ../scss/_market.scss */
 body.template-tfemarket-utils-stats .returnTFE,
 body.template-tfemarket-utils-stats table.dataTable tbody td:not(:first-child),
 body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child) {
   cursor: pointer;
 }
 
-/* line 1049, ../scss/_market.scss */
+/* line 1044, ../scss/_market.scss */
 body.template-tfemarket-utils-stats .returnTFE:hover,
 body.template-tfemarket-utils-stats table.dataTable tbody td:not(:first-child):hover,
 body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child):hover {
@@ -1198,92 +1191,92 @@ body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child):h
   color: #000;
 }
 
-/* line 1056, ../scss/_market.scss */
+/* line 1051, ../scss/_market.scss */
 body.template-tfemarket-utils-stats table.dataTable tbody td.dataTables_empty {
   text-align: left;
 }
 
-/* line 1060, ../scss/_market.scss */
+/* line 1055, ../scss/_market.scss */
 body.template-tfemarket-utils-stats #dialogTFE {
   display: none;
   min-height: initial !important;
 }
 
-/* line 1065, ../scss/_market.scss */
+/* line 1060, ../scss/_market.scss */
 body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
   content: "x";
   display: block;
   margin-top: -2px;
 }
 
-/* line 1071, ../scss/_market.scss */
+/* line 1066, ../scss/_market.scss */
 .offer > .puntTitle > .fletxa {
   width: 2.52147%;
 }
 
-/* line 1075, ../scss/_market.scss */
+/* line 1070, ../scss/_market.scss */
 .offer > .puntTitle > .title {
   width: 45.8773%;
   margin-left: 0.06748%;
 }
 
-/* line 1080, ../scss/_market.scss */
+/* line 1075, ../scss/_market.scss */
 .offer > .puntTitle > .type {
   width: 2.52147%;
 }
 
-/* line 1084, ../scss/_market.scss */
+/* line 1079, ../scss/_market.scss */
 .offer > .puntTitle > .type .field {
   margin-bottom: 0px;
 }
 
-/* line 1088, ../scss/_market.scss */
+/* line 1083, ../scss/_market.scss */
 .offer > .puntTitle > .top {
   width: 27.69939%;
   margin-left: 1.06748%;
 }
 
 @media only screen and (max-width: 850px) {
-  /* line 1095, ../scss/_market.scss */
+  /* line 1090, ../scss/_market.scss */
   .offer > .puntTitle > .fletxa {
     width: 4.52147%;
   }
 
-  /* line 1099, ../scss/_market.scss */
+  /* line 1094, ../scss/_market.scss */
   .offer > .puntTitle > .title {
     width: 41.8773%;
     margin-left: 0.06748%;
   }
 
-  /* line 1104, ../scss/_market.scss */
+  /* line 1099, ../scss/_market.scss */
   .offer > .puntTitle > .type {
     width: 4.52147%;
   }
 
-  /* line 1108, ../scss/_market.scss */
+  /* line 1103, ../scss/_market.scss */
   .offer > .puntTitle > .top {
     width: 22.69939%;
     margin-left: 1.06748%;
   }
 
-  /* line 1113, ../scss/_market.scss */
+  /* line 1108, ../scss/_market.scss */
   .offer > .puntTitle > .actions {
     width: 17.11043%;
   }
 }
 @media only screen and (max-width: 640px) {
-  /* line 1119, ../scss/_market.scss */
+  /* line 1114, ../scss/_market.scss */
   #offersList .puntTitle,
   #offerData .puntTitle {
     display: inline;
   }
 
-  /* line 1124, ../scss/_market.scss */
+  /* line 1119, ../scss/_market.scss */
   .offer > .puntTitle > .fletxa {
     width: 7.52147% !important;
   }
 
-  /* line 1128, ../scss/_market.scss */
+  /* line 1123, ../scss/_market.scss */
   .offer > .puntTitle > .title {
     width: 79.8773% !important;
     margin-left: 0px;
@@ -1291,37 +1284,37 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
     min-height: 28px !important;
   }
 
-  /* line 1135, ../scss/_market.scss */
+  /* line 1130, ../scss/_market.scss */
   .offer > .puntTitle > .title h3 {
     margin-top: 0px !important;
   }
 
-  /* line 1139, ../scss/_market.scss */
+  /* line 1134, ../scss/_market.scss */
   .offer > .puntTitle > .type {
     width: 7.52147%;
     margin-left: 2%;
     float: right;
   }
 
-  /* line 1145, ../scss/_market.scss */
+  /* line 1140, ../scss/_market.scss */
   .offer > .puntTitle > .actions,
   .offer > .puntTitle > .top {
     width: 44% !important;
   }
 
-  /* line 1150, ../scss/_market.scss */
+  /* line 1145, ../scss/_market.scss */
   .offer > .puntTitle > .top {
     float: left !important;
     margin-left: 36px;
   }
 
-  /* line 1155, ../scss/_market.scss */
+  /* line 1150, ../scss/_market.scss */
   .puntTitle > .actions {
     float: right !important;
   }
 }
 /* Formulario solicitud */
-/* line 1163, ../scss/_market.scss */
+/* line 1158, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni,
@@ -1331,21 +1324,21 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
   display: inline-block;
 }
 
-/* line 1172, ../scss/_market.scss */
+/* line 1167, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-phone {
   width: 30%;
 }
 
-/* line 1178, ../scss/_market.scss */
+/* line 1173, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title,
 .portaltype-genweb-tfemarket-offer:not(.template-edit) #formfield-form-widgets-title,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-email {
   width: 69%;
 }
 
-/* line 1184, ../scss/_market.scss */
+/* line 1179, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title input,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-degree_title input,
 .portaltype-genweb-tfemarket-offer:not(.template-edit) #formfield-form-widgets-title input,
@@ -1354,7 +1347,7 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
 }
 
 @media only screen and (max-width: 850px) {
-  /* line 1192, ../scss/_market.scss */
+  /* line 1187, ../scss/_market.scss */
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni,
@@ -1365,7 +1358,7 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
     width: 100%;
   }
 
-  /* line 1202, ../scss/_market.scss */
+  /* line 1197, ../scss/_market.scss */
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id input,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title input,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-degree_title input,
@@ -1376,7 +1369,7 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
     width: 98%;
   }
 }
-/* line 1213, ../scss/_market.scss */
+/* line 1208, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_id,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-dni,
@@ -1386,21 +1379,21 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
   display: inline-block;
 }
 
-/* line 1222, ../scss/_market.scss */
+/* line 1217, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_id,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-dni,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-phone {
   width: 30%;
 }
 
-/* line 1228, ../scss/_market.scss */
+/* line 1223, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-title,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-email {
   width: 69%;
 }
 
-/* line 1234, ../scss/_market.scss */
+/* line 1229, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title input,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-degree_title input,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-title input,
@@ -1409,7 +1402,7 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
 }
 
 @media only screen and (max-width: 850px) {
-  /* line 1242, ../scss/_market.scss */
+  /* line 1237, ../scss/_market.scss */
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_id,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-dni,
@@ -1420,7 +1413,7 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
     width: 100%;
   }
 
-  /* line 1252, ../scss/_market.scss */
+  /* line 1247, ../scss/_market.scss */
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_id input,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title input,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-degree_title input,
@@ -1431,22 +1424,22 @@ body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
     width: 98%;
   }
 }
-/* line 1263, ../scss/_market.scss */
+/* line 1258, ../scss/_market.scss */
 td.actions {
   width: 165px;
 }
 
-/* line 1267, ../scss/_market.scss */
+/* line 1262, ../scss/_market.scss */
 input[type="radio"], input[type="checkbox"] {
   margin: 0 0 0 !important;
 }
 
-/* line 1271, ../scss/_market.scss */
+/* line 1266, ../scss/_market.scss */
 #market #formSearchOffers {
   position: relative;
 }
 
-/* line 1275, ../scss/_market.scss */
+/* line 1270, ../scss/_market.scss */
 #market .loaderContainer {
   position: fixed;
   top: 50%;
@@ -1457,7 +1450,7 @@ input[type="radio"], input[type="checkbox"] {
   display: none;
 }
 
-/* line 1285, ../scss/_market.scss */
+/* line 1280, ../scss/_market.scss */
 #market .loader {
   border: 8px solid #dbdbdb;
   border-top: 8px solid #3498db;
@@ -1483,19 +1476,19 @@ input[type="radio"], input[type="checkbox"] {
     transform: rotate(360deg);
   }
 }
-/* line 1304, ../scss/_market.scss */
+/* line 1299, ../scss/_market.scss */
 #form-widgets-workload {
   width: 100%;
 }
 
-/* line 1308, ../scss/_market.scss */
+/* line 1303, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market,
 .portaltype-genweb-tfemarket-offer,
 .portaltype-genweb-tfemarket-application {
   font-family: "Open Sans", sans-serif;
 }
 
-/* line 1314, ../scss/_market.scss */
+/* line 1309, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market label,
 .portaltype-genweb-tfemarket-offer label,
 .portaltype-genweb-tfemarket-application label {
@@ -1504,7 +1497,7 @@ input[type="radio"], input[type="checkbox"] {
   display: inline-block;
 }
 
-/* line 1322, ../scss/_market.scss */
+/* line 1317, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market label *.label,
 .portaltype-genweb-tfemarket-offer label *.label,
 .portaltype-genweb-tfemarket-application label *.label {
@@ -1514,7 +1507,7 @@ input[type="radio"], input[type="checkbox"] {
   color: #555;
 }
 
-/* line 1331, ../scss/_market.scss */
+/* line 1326, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market h2.formFieldset,
 .portaltype-genweb-tfemarket-offer h2.formFieldset,
 .portaltype-genweb-tfemarket-application h2.formFieldset {
@@ -1522,24 +1515,24 @@ input[type="radio"], input[type="checkbox"] {
   margin-top: 0px;
 }
 
-/* line 1338, ../scss/_market.scss */
+/* line 1333, ../scss/_market.scss */
 #formfield-form-widgets-grant,
 #formfield-form-widgets-confidential,
 #formfield-form-widgets-environmental_theme {
   margin-bottom: 0px;
 }
 
-/* line 1344, ../scss/_market.scss */
+/* line 1339, ../scss/_market.scss */
 #form-widgets-degree .option {
   margin-bottom: 3px;
 }
 
-/* line 1348, ../scss/_market.scss */
+/* line 1343, ../scss/_market.scss */
 #form-widgets-degree label {
   display: initial;
 }
 
-/* line 1352, ../scss/_market.scss */
+/* line 1347, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market nav#portal-globalnav,
 .portaltype-genweb-tfemarket-market nav#portal-breadcrumbs,
 .portaltype-genweb-tfemarket-market #portal-breadcrumbs,
@@ -1555,81 +1548,81 @@ input[type="radio"], input[type="checkbox"] {
   display: none;
 }
 
-/* line 1367, ../scss/_market.scss */
+/* line 1362, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #content-area {
   margin-top: 0px;
 }
 
-/* line 1371, ../scss/_market.scss */
+/* line 1366, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #searchOffers {
   background-image: url(++resource++genweb.tfemarket.assets/images/pattern-tfe.png);
   display: flex;
 }
 
-/* line 1376, ../scss/_market.scss */
+/* line 1371, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #formSearchOffers h2 {
   margin-top: 20px;
 }
 
-/* line 1380, ../scss/_market.scss */
+/* line 1375, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market #searchOffers h2 {
   margin-top: 20px !important;
 }
 
-/* line 1384, ../scss/_market.scss */
+/* line 1379, ../scss/_market.scss */
 #formSearchOffers div#searchGrants,
 #formSearchOffers .multicheck {
   margin-bottom: 18px;
 }
 
-/* line 1389, ../scss/_market.scss */
+/* line 1384, ../scss/_market.scss */
 #formSearchOffers .multicheckOptionsKeys .keyword span {
   font-size: 13px;
   font-weight: 600;
 }
 
-/* line 1394, ../scss/_market.scss */
+/* line 1389, ../scss/_market.scss */
 #offersList #notResults {
   margin-top: 20px;
 }
 
-/* line 1398, ../scss/_market.scss */
+/* line 1393, ../scss/_market.scss */
 .puntTitle .actions.col-md-2 {
   text-align: right;
   min-height: 0px;
 }
 
-/* line 1403, ../scss/_market.scss */
+/* line 1398, ../scss/_market.scss */
 .nav-tabs > li,
 .contentViews > li,
 .configlets > li {
   margin-bottom: -2px;
 }
 
-/* line 1409, ../scss/_market.scss */
+/* line 1404, ../scss/_market.scss */
 body.template-import_ofertes .alert-error {
   white-space: pre-line;
   display: table;
   width: 100%;
 }
 
-/* line 1415, ../scss/_market.scss */
+/* line 1410, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market [class^="span"] {
   margin: 3px 0px;
 }
 
-/* line 1419, ../scss/_market.scss */
+/* line 1414, ../scss/_market.scss */
 .portaltype-genweb-tfemarket-market .row [class*="span"] {
   min-height: auto;
 }
 
-/* line 1423, ../scss/_market.scss */
+/* line 1418, ../scss/_market.scss */
 #offersList .fletxa .notexpand,
 #offersList .fletxa .expand {
   color: #FF784D !important;
 }
 
-/* line 1428, ../scss/_market.scss */
+/* line 1423, ../scss/_market.scss */
 .btnTFE,
 .buttonsLang button.link,
 .buttonsRight button.link,
@@ -1637,18 +1630,18 @@ body.template-import_ofertes .alert-error {
   background: #FF784D !important;
 }
 
-/* line 1435, ../scss/_market.scss */
+/* line 1430, ../scss/_market.scss */
 .informacioTFE .buttonsOfferInfo .litMoreInfo {
   color: #FF784D !important;
 }
 
-/* line 1439, ../scss/_market.scss */
+/* line 1434, ../scss/_market.scss */
 table.tableApplications,
 table#form-widgets-teacher_manager-hint {
   border-top: 5px solid #FF784D !important;
 }
 
-/* line 1444, ../scss/_market.scss */
+/* line 1439, ../scss/_market.scss */
 #market .rightInfoOffer.actions button,
 #market .rightInfoOffer.actions > a,
 table.tableApplications tbody .actions button,
@@ -1657,26 +1650,26 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
   color: #FF784D !important;
 }
 
-/* line 1452, ../scss/_market.scss */
+/* line 1447, ../scss/_market.scss */
 #market .rightInfoOffer.actions .workflowsAction .workflow.notclick,
 table.tableApplications tbody .actions .workflowsAction .workflow.notclick {
   color: #FF784D !important;
 }
 
-/* line 1457, ../scss/_market.scss */
+/* line 1452, ../scss/_market.scss */
 #market .rightInfoOffer.actions .caret,
 table.tableApplications tbody .actions .caret,
 table#form-widgets-teacher_manager-hint tbody .actions .caret {
   border-top: 4px solid #FF784D !important;
 }
 
-/* line 1463, ../scss/_market.scss */
+/* line 1458, ../scss/_market.scss */
 #market .rightInfoOffer.actions button:hover,
 table.tableApplications tbody .actions button:hover {
   border: 1px solid #FF784D !important;
 }
 
-/* line 1468, ../scss/_market.scss */
+/* line 1463, ../scss/_market.scss */
 #market .rightInfoOffer.actions > a:hover,
 table.tableApplications tbody .actions > a:hover,
 table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
@@ -1684,7 +1677,7 @@ table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
   border: 1px solid #FF784D !important;
 }
 
-/* line 1475, ../scss/_market.scss */
+/* line 1470, ../scss/_market.scss */
 #market .rightInfoOffer.actions .estatsToggle li a:active,
 table.tableApplications tbody .actions .estatsToggle li a:active,
 #market .rightInfoOffer.actions .estatsToggle li a:hover,
@@ -1694,22 +1687,22 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   background-color: #FF784D !important;
 }
 
-/* line 1484, ../scss/_market.scss */
+/* line 1479, ../scss/_market.scss */
 #formSearchOffers label.switch input:checked + .slider {
   background-color: #FF784D !important;
 }
 
-/* line 1488, ../scss/_market.scss */
+/* line 1483, ../scss/_market.scss */
 #formSearchOffers label.switch input:focus + .slider {
   box-shadow: 0 0 1px #FF784D !important;
 }
 
-/* line 1492, ../scss/_market.scss */
+/* line 1487, ../scss/_market.scss */
 #formSearchOffers span.keyword.checked {
   background-color: #FF784D !important;
 }
 
-/* line 1496, ../scss/_market.scss */
+/* line 1491, ../scss/_market.scss */
 #formSearchOffers button,
 .informacioTFE .buttonsOffer button,
 .btnTFE {
@@ -1717,7 +1710,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   border-color: #ff511a !important;
 }
 
-/* line 1504, ../scss/_market.scss */
+/* line 1499, ../scss/_market.scss */
 #market .loader {
   border-top: 8px solid #FF784D !important;
 }

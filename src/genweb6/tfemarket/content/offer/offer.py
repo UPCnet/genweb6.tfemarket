@@ -279,6 +279,7 @@ class IOffer(model.Schema):
         required=False,
     )
 
+    directives.widget('codirector', ReadOnlyInputFieldWidget)
     codirector = schema.TextLine(
         title=_(u'Codirector Fullname'),
         required=False,

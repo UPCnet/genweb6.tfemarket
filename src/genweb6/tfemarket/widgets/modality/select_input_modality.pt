@@ -6,7 +6,7 @@
     <select id="" name="" class="" tabindex="" disabled="" multiple="" size=""
             tal:attributes="id view/id;
                             name string:${view/name}:list;
-                            class view/klass;
+                            class string:form-control ${view/klass};
                             style view/style;
                             title view/title;
                             lang view/lang;
@@ -49,32 +49,5 @@
            tal:attributes="name string:${view/name}-empty-marker" />
 
 
-    <script type="text/javascript">
-        function show_fields_modality_offer(){
-            $("#formfield-form-widgets-company").show();
-        }
-
-        function hide_fields_modality_offer(){
-            $("#formfield-form-widgets-company").hide();
-        }
-
-        function update_modality_offer(selected_option) {
-            switch(selected_option) {
-                case 'Empresa':
-                    show_fields_modality_offer();
-                    break;
-                case 'Universitat':
-                default:
-                    hide_fields_modality_offer();
-            }
-        }
-
-        $(document).ready(function(){
-            $("#form-widgets-modality").change(function(){
-                update_modality_offer($(this).val());
-            });
-
-            update_modality_offer($("#form-widgets-modality").val());
-        });
-    </script>
+    <script type="text/javascript" src="++theme++genweb6.tfemarket/js/widget-modality.min.js"></script>
 </html>

@@ -37,7 +37,12 @@ module.exports = function (grunt) {
         uglify: {
             js: {
                 files: {
-                    'js/market.min.js': '../content/market/market.js'
+                    'js/market.min.js': '../content/market/market.js',
+                    'js/widget-codirector.min.js': '../widgets/codirector/codirector.js',
+                    'js/widget-modality.min.js': '../widgets/modality/modality.js',
+                    'js/widget-student.min.js': '../widgets/student/student.js',
+                    'js/widget-teacher.min.js': '../widgets/teacher/teacher.js',
+                    'js/widget-teacher-if-teacher.min.js': '../widgets/teacher/teacher-if-teacher.js'
                 }
             }
         },
