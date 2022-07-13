@@ -2,16 +2,10 @@
 <object name="portal_controlpanel" meta_type="Plone Control Panel Tool">
 
   <configlet
-    title="TFE Mercat"
     action_id="genweb.tfemarket"
     appId="genweb.tfemarket"
-    category="genweb-advanced"
-    condition_expr=""
-    url_expr="string:${portal_url}/@@tfemarket-settings"
-    icon_expr="string:gear"
     remove="True">
 
-    <permission>Manage Portal</permission>
   </configlet>
 
 </object>
