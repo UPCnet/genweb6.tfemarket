@@ -1,1026 +1,1029 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2022-05-09 10:00+0100\n"
-"Last-Translator: \n"
-"Language-Team: Plone Team@UPCnet <plone.team@upcnet.es>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-07-15 11:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Language-Code: es\n"
-"Language-Name: Español\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb6.tfemarket\n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: es\n"
+
+#: ../controlpanels/tfemarket.py:42
+msgid ""
+msgstr ""
 
 #: ../widgets/codirector/text_input_codirector.pt:58
 #: ../widgets/teacher/text_input_teacher.pt:61
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
-msgstr "<b>Error:</b> El formato es incorrecto: <b>nombre.apellido</b>"
+msgstr ""
 
 #: ../browser/events/change.py:263
 msgid "A3"
-msgstr "Has confirmado la asignación de esta oferta. Tus datos y los de la oferta se traspasarán a PRISMA para formalizar la matrícula. Si tienes cualquier duda puedes dirigirte a tu secretaría"
+msgstr ""
 
 #: ../browser/events/change.py:115
 msgid "A4"
-msgstr "Has renunciado a la oferta y se ha comunicado al profesor/a. Si quieres volver a solicitarla debes rellenar una nueva solicitud"
+msgstr ""
 
 #: ../browser/events/change.py:86
 msgid "A5"
-msgstr "Solicitud presentada. Recibirás un mensaje de correo con los datos de tu solicitud y un enlace a la misma, a través del cual podrás consultar su estado. Los cambios de estado de tu solicitud se comunican también mediante el correo electrónico"
+msgstr ""
 
 #: ../browser/events/change.py:104
 msgid "A6"
-msgstr "Actualmente hay otras solicitudes pendientes, se recomienda rechazarlas por no tener al resto de estudiantes a la espera"
+msgstr ""
 
 #: ../browser/events/change.py:120
 msgid "A7"
-msgstr "La solicitud ha sido cancelada"
+msgstr ""
 
 #: ../browser/events/change.py:101
 msgid "Aceptada"
-msgstr "Accepted"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:166
 msgid "Add languages one per line"
-msgstr "Añade un idioma por línea"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:159
 msgid "Add tags one per line"
-msgstr "Añade una etiqueta por línea"
+msgstr ""
 
 #: ../browser/helpers_templates/import_titulacions.pt:23
 msgid "Add the .csv file separated by , with the degrees by school:"
-msgstr "Añade el archivo csv, con las titulaciones por escuela:"
+msgstr ""
 
 #: ../browser/helpers_templates/import_ofertes.pt:35
 msgid "Add the .csv file separated by , with the offers:"
-msgstr "Agregue el archivo csv con las ofertas:"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:153
 msgid "Add topics one per line"
-msgstr "Añade un tema por línea"
+msgstr ""
 
 #: ../behaviors/configure.zcml:14
 msgid "Adds effective date and expiration date fields required."
-msgstr "Agrega los campos de fecha de vigencia y fecha de vencimiento requeridos."
+msgstr ""
 
 #: ../content/market/market.pt:429
 msgid "Alert"
-msgstr "Alerta"
+msgstr ""
 
 #: ../content/market/market.pt:246
 #: ../content/market/market.py:328
 #: ../utils.py:130
 msgid "All"
-msgstr "Todas"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:138
 msgid "Alternative email"
-msgstr "Correo alternativo"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:144
 msgid "Alternative email name"
-msgstr "Nombre del correo alternativo"
+msgstr ""
 
 #: ../content/market/market.pt:421
 msgid "Assign the offer"
-msgstr "Asigna la oferta"
+msgstr ""
 
 #: ../content/application/application.py:123
 #: ../content/market/market.pt:114
 msgid "Body"
-msgstr "Comentarios"
+msgstr ""
 
 #: ../content/offer/offer.py:189
 msgid "Breu explicació dels aspectes bàsics del treball"
-msgstr "Breve explicación de los aspectos básicos del trabajo"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:74
 msgid "CA"
-msgstr "Catalán"
+msgstr ""
 
 #: ../browser/events/change.py:119
 msgid "Cancela"
-msgstr "Canceled"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:113
 msgid "Center code"
-msgstr "Código del centro"
+msgstr ""
 
 #: ../content/market/market.pt:120
 msgid "Close"
-msgstr "Cerrar"
+msgstr ""
 
 #: ../content/application/application.py:118
 msgid "Codi Expedient"
-msgstr "Código espediente"
+msgstr ""
 
 #: ../content/market/market.pt:371
 #: ../content/offer/offer.py:278
 msgid "Codirector"
-msgstr "Codirector/a"
+msgstr ""
 
 #: ../content/market/market.pt:462
 #: ../content/offer/offer.py:290
 msgid "Codirector Email"
-msgstr "Email del codirector/a"
+msgstr ""
 
 #: ../content/offer/offer.py:284
 msgid "Codirector Fullname"
-msgstr "Nombre del codirector/a"
+msgstr ""
 
 #: ../content/offer/offer.py:296
 #: ../widgets/codirector/text_input_codirector.pt:71
 msgid "Codirector University department"
-msgstr "Departamento del codirector/a"
+msgstr ""
 
 #: ../content/market/market.pt:244
 #: ../content/market/market.py:324
 #: ../content/offer/offer.py:354
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 #: ../content/application/application.py:53
 msgid "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
-msgstr "Comprueba que tu titulación corresponde a la titulación para la que se oferta el trabajo"
+msgstr ""
 
 #: ../content/offer/offer.py:325
 msgid "Coneixements previs necessaris per portar a terme el treball"
-msgstr "Conocimientos previos necesarios para llevar a cabo el trabajo"
+msgstr ""
 
 #: ../content/market/market.pt:582
 msgid "Confidential"
-msgstr "Confidencial (informativo)"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:56
 msgid "Confirm removal of offer."
-msgstr "Confirma la eliminación de la oferta."
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:46
 msgid "Confirm the copy of offer."
-msgstr "Cofirma la copia de la oferta."
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:66
 msgid "Confirm the rename of offer."
-msgstr "Confirma el cambio de nombre de la oferta."
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:35
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:20
 msgid "Copy offer"
-msgstr "Copiar oferta"
+msgstr ""
 
 #: ../content/market/market.pt:156
 msgid "Create an offer"
-msgstr "Crear oferta"
+msgstr ""
 
 #: ../utils.py:286
 msgid "DIRECTORI: Usuari no trobat en al directori"
-msgstr "DIRECTORIO: Usuario no encontrado en el directorio"
+msgstr ""
 
 #: ../content/application/application.py:89
 #: ../content/market/market.pt:99
 msgid "DNI"
-msgstr "DNI"
+msgstr ""
 
 #: ../content/market/market.pt:255
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 #: ../behaviors/configure.zcml:14
 msgid "Date range for offer"
-msgstr "Rango de fechas para la oferta"
+msgstr ""
 
 #: ../behaviors/publication_offer.py:29
 msgid "Dates"
-msgstr "Fechas"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_stats.pt:45
 #: ../content/market/market.pt:29
 msgid "Degree"
-msgstr "Titulación"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:21
 msgid "Degree code at PRISMA"
-msgstr "Código de titulación en PRISMA"
+msgstr ""
 
 #: ../utils.py:136
 msgid "Degree deleted"
-msgstr "Titulación eliminada"
+msgstr ""
 
 #: ../content/market/market.pt:473
 msgid "Degrees"
-msgstr "Titulaciones"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:47
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:20
 msgid "Delete offer"
-msgstr "Eliminar oferta"
+msgstr ""
 
 #: ../content/market/market.pt:451
 #: ../widgets/teacher/text_input_teacher.pt:74
 msgid "Departament"
-msgstr "Departamento"
+msgstr ""
 
 #: ../content/market/market.pt:80
 #: ../content/offer/offer.py:188
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: ../content/market/market.py:336
 #: ../content/offer/offer.py:101
 msgid "Design"
-msgstr "Diseño"
+msgstr ""
 
 #: ../content/market/market.pt:169
 msgid "Desplega tot <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
-msgstr "Muestra todo <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
+msgstr ""
 
 #: ../content/market/market.pt:282
 msgid "Developer language"
-msgstr "Idioma de trabajo"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:165
 msgid "Development languages"
-msgstr "Idiomas de elaboración del trabajo"
+msgstr ""
 
 #: ../content/offer/offer.py:242
 msgid "Direction"
-msgstr "Dirección"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:64
 #: ../browser/views_templates/tfemarket_utils_download_csv.pt:21
 msgid "Download CSV"
-msgstr "Descargar CSV"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:76
 msgid "EN"
-msgstr "Inglés"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:75
 msgid "ES"
-msgstr "Español"
+msgstr ""
 
 #: ../browser/events/change.py:223
 msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
-msgstr "Tu trabajo todavía no se ha inscrito.esta titulación requiere que te pongas en contacto con la secretaría de tu centro"
+msgstr ""
 
 #: ../utils.py:276
 msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses o ja has sol·licitat una amb aquesta mateixa titulació. Contacta amb la secretaria del teu centre."
-msgstr "El trabajo que quieres solicitar no está ofertado para la titulación que cursas o ya has solicitado una con esta misma titulación. contacta con la secretaría de tu centro."
+msgstr ""
 
 #: ../content/application/application.py:106
 #: ../content/market/market.pt:103
 #: ../widgets/codirector/text_input_codirector.pt:70
 msgid "Email"
-msgstr "Correo"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:64
 msgid "Enroll"
-msgstr "Inscripción"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:131
 msgid "Enroll type "
-msgstr "Tipo de inscripción "
+msgstr ""
 
 #: ../content/offer/offer.py:386
 msgid "Environmental Theme"
-msgstr "Temática ambiental"
+msgstr ""
 
 #: ../content/market/market.pt:577
 msgid "Environmental theme"
-msgstr "Temática ambiental"
+msgstr ""
 
 #: ../browser/views.py:333
 msgid "Error the identifier exists."
-msgstr "Error el identificador ya existe."
+msgstr ""
 
 #: ../browser/views.py:104
 msgid "Error you can't perform the action."
-msgstr "No puedes realizar esta acción."
+msgstr ""
 
 #: ../content/market/market.pt:598
 msgid "Expiration date"
-msgstr "Caducidad"
+msgstr ""
 
 #: ../content/offer/offer.py:162
 msgid "External"
-msgstr "Externo"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:77
 msgid "FR"
-msgstr "Francés"
+msgstr ""
 
 #: ../content/market/market.pt:138
 msgid "Falta carregar les titulacions."
-msgstr "Falta cargar las titulaciones."
+msgstr ""
 
 #: ../content/offer/offer.py:363
 msgid "Falta omplir \"Idioma del treball\""
-msgstr "Falta rellenar el idioma del trabajo."
+msgstr ""
 
 #: ../content/offer/offer.py:361
 msgid "Falta omplir les dades d'empresa"
-msgstr "Falta rellenar las datos de la empresa"
+msgstr ""
 
 #: ../content/market/market.pt:542
 msgid "Features"
-msgstr "Tareas a realizar/Características"
+msgstr ""
 
 #: ../content/application/application.py:95
 #: ../content/market/market.pt:95
 #: ../widgets/codirector/text_input_codirector.pt:69
 msgid "Fullname"
-msgstr "Nombre completo"
+msgstr ""
 
 #: ../content/market/market.pt:718
 msgid "Hide applications"
-msgstr "Esconder solicitudes"
+msgstr ""
 
 #: ../content/market/market.pt:165
 msgid "Hide search"
-msgstr "Ocultar buscador"
+msgstr ""
 
 #: ../utils.py:289
 msgid "IDENTITAT DIGITAL: %s"
-msgstr "IDENTIDAD DIGITAL: %s"
+msgstr ""
 
 #: ../content/market/market.pt:30
 msgid "Identifier Offer TFE"
-msgstr "Identificador de la oferta TFE"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:145
 msgid "If this field is not filled in, the default Genweb email name will be taken"
-msgstr "Si no se rellena el campo de correo se pillara el nombre del correo por defecto del Genweb"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:139
 msgid "If this field is not filled in, the default Genweb email will be taken"
-msgstr "Si no se rellena este campo se pillara el correo por defecto del Genweb"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:199
 msgid "Import offers"
-msgstr "Importar ofertas"
+msgstr ""
 
 #: ../browser/helpers_templates/import_titulacions.pt:25
 msgid "Import the degrees"
-msgstr "Importar todas las titulaciones"
+msgstr ""
 
 #: ../browser/helpers_templates/import_ofertes.pt:37
 msgid "Import the offers"
-msgstr "Importar las ofertas"
+msgstr ""
 
 #: ../content/market/market.pt:415
 msgid "Info"
-msgstr "Información"
+msgstr ""
 
 #: ../configure.zcml:28
 msgid "Installs the genweb6.tfemarket add-on."
-msgstr "Instalar paquete de genweb6.tfemarket"
+msgstr ""
 
 #: ../content/market/market.pt:312
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr ""
 
 #: ../content/market/market.pt:506
 msgid "Language work elaboration"
-msgstr "Idioma de elaboración del trabajo"
+msgstr ""
 
 #: ../content/market/market.pt:512
 msgid "Languages work elaboration"
-msgstr "Idiomas de elaboración del trabajo"
+msgstr ""
 
 #: ../content/market/market.py:330
 msgid "Last month"
-msgstr "Último mes"
+msgstr ""
 
 #: ../content/market/market.py:329
 msgid "Last week"
-msgstr "Última semana"
+msgstr ""
 
 #: ../content/market/market.pt:197
 #: ../content/market/market.py:333
 msgid "MAll"
-msgstr "Todos"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:30
 msgid "MEC code"
-msgstr "Código MEC"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:32
 msgid "MEC degree code"
-msgstr "Código MEC de la titulación"
+msgstr ""
 
 #: ../profiles/default/actions.xml
 msgid "Market of TFE"
-msgstr "Configuración del TFE"
+msgstr ""
 
 #: ../content/market/market.pt:619
 msgid "Mobile"
-msgstr "Móvil"
+msgstr ""
 
 #: ../content/market/market.pt:489
 #: ../content/offer/offer.py:341
 msgid "Modality"
-msgstr "Modalidad"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:184
 msgid "Months until expiration"
-msgstr "Meses hasta la expiración"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:185
 msgid "Months until the offer expires automatically"
-msgstr "Meses hasta la expiración automática de la oferta"
+msgstr ""
 
 #: ../content/market/market.pt:605
 msgid "More info"
-msgstr "Más info"
+msgstr ""
 
 #: ../content/offer/offer.py:310
 msgid "Màxim segons normativa del centre"
-msgstr "Máximo según la normativa del centro"
+msgstr ""
 
 #: ../content/market/market.pt:617
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:119
 msgid "Name center"
-msgstr "Nombre del centro"
+msgstr ""
 
 #: ../content/market/market.pt:501
 msgid "No"
-msgstr "No"
+msgstr ""
 
 #: ../content/offer/offer.py:424
 msgid "No esta correctament configurat: '%s'"
-msgstr "No está correctamente configurado: '%s'"
+msgstr ""
 
 #: ../content/market/market.pt:338
 #: ../widgets/codirector/text_input_codirector.pt:62
 #: ../widgets/teacher/text_input_teacher.pt:65
 msgid "No results found."
-msgstr "No se han encontrado resultados."
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:206
 msgid "Number of offers created"
-msgstr "Número de ofertas creadas"
+msgstr ""
 
 #: ../content/market/market.pt:559
 #: ../content/offer/offer.py:309
 msgid "Number of students"
-msgstr "Número de estudiantes"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:100
 msgid "Ofertes"
-msgstr "Ofertas"
+msgstr ""
 
 #: ../content/application/application.py:77
 #: ../content/market/market.pt:85
 #: ../content/offer/offer.py:178
 msgid "Offer id"
-msgstr "Identificador de la oferta"
+msgstr ""
 
 #: ../content/application/application.py:83
 #: ../content/market/market.pt:89
 msgid "Offer title"
-msgstr "Título de la oferta"
+msgstr ""
 
 #: ../content/offer/offer.py:369
 msgid "Options"
-msgstr "Opciones"
+msgstr ""
 
 #: ../content/offer/offer.py:304
 msgid "Other data"
-msgstr "Otros datos"
+msgstr ""
 
 #: ../content/market/market.py:337
 #: ../content/offer/offer.py:102
 msgid "Others"
-msgstr "Otro"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:19
 msgid "PRISMA code"
-msgstr "Código PRISMA"
+msgstr ""
 
 #: ../content/application/application.py:112
 msgid "PRISMA id"
-msgstr "ID de PRISMA"
+msgstr ""
 
 #: ../utils.py:280
 msgid "PRISMA: %s"
-msgstr "PRISMA: %s"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:132
 msgid "Parameter to post the student enroll"
-msgstr "Parámetro para publicar la inscripción del estudiante"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:36
 msgid "Plan year"
-msgstr "Año del plan"
+msgstr ""
 
 #: ../content/market/market.pt:170
 msgid "Plega tot <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
-msgstr "Oculta todo <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
+msgstr ""
 
 #: ../content/market/market.pt:499
 #: ../content/offer/offer.py:374
 msgid "Possibility of scholarship"
-msgstr "Posibilidad de beca / subvención"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:25
 msgid "Program type"
-msgstr "Tipo de programa"
+msgstr ""
 
 #: ../browser/views.py:245
 #: ../content/market/market.py:335
 #: ../content/offer/offer.py:100
 msgid "Project"
-msgstr "Proyecto"
+msgstr ""
 
 #: ../content/market/market.pt:594
 msgid "Publication date"
-msgstr "Publicación"
+msgstr ""
 
 #: ../content/market/market.pt:178
 msgid "Quines ofertes cerques?"
-msgstr "¿Qué ofertas buscas?"
+msgstr ""
 
 #: ../browser/events/change.py:108
 msgid "Rebutjada"
-msgstr "Declined"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:65
 msgid "Register"
-msgstr "Registro"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:41
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:20
 msgid "Rename offer"
-msgstr "Renombrar oferta"
+msgstr ""
 
 #: ../browser/events/change.py:113
 msgid "Renuncia"
-msgstr "Resignation"
+msgstr ""
 
 #: ../content/market/market.pt:708
 msgid "Request the offer"
-msgstr "Solicitar la oferta"
+msgstr ""
 
 #: ../content/market/market.pt:571
 msgid "Requirements"
-msgstr "Requesitos"
+msgstr ""
 
 #: ../content/offer/offer.py:195
 msgid "Resultat esperat d’aquest treball"
-msgstr "Resultado esperado de este trabajo"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:24
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:24
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:24
 msgid "Return to market"
-msgstr "Vuelve al mercado"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:124
 msgid "Review State"
-msgstr "Estado de revisión activo"
+msgstr ""
 
 #: ../content/market/market.pt:22
 msgid "SOA bus or Digital Identity not configured. Contact the site administrator."
-msgstr "Bus SOA o Identitat Digital no configurado. Pongase en contacto con el administrador del sitio."
+msgstr ""
 
 #: ../content/market/market.pt:587
 #: ../content/offer/offer.py:392
 msgid "Scope of cooperation"
-msgstr "Ámbito de cooperación"
+msgstr ""
 
 #: ../content/market/market.pt:333
 #: ../widgets/codirector/text_input_codirector.pt:55
 #: ../widgets/teacher/text_input_teacher.pt:57
 msgid "Search"
-msgstr "Buscar"
+msgstr ""
 
 #: ../widgets/codirector/text_input_codirector.pt:48
 msgid "Search codirector"
-msgstr "Buscar"
+msgstr ""
 
 #: ../widgets/teacher/text_input_teacher.pt:48
 msgid "Search teacher"
-msgstr "Busca el profesor/a"
+msgstr ""
 
 #: ../widgets/codirector/text_input_codirector.pt:37
 msgid "Search_codirector"
-msgstr "Buscar"
+msgstr ""
 
 #: ../widgets/teacher/text_input_teacher.pt:37
 msgid "Search_teacher"
-msgstr "Busca el profesor/a"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:126
 msgid "Select if you want to add \"Reviewer\" role"
-msgstr "Seleccionar si es necesario el rol de revisión"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_download_csv.pt:36
 msgid "Select the market from which you want to export the data."
-msgstr "Seleccione el mercado del cual desea exportar la información."
+msgstr ""
 
 #: ../browser/helpers_templates/import_ofertes.pt:23
 msgid "Select the market where you want to import the offers."
-msgstr "Seleccione el mercado donde desea importar las ofertas."
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:88
 msgid "Settings"
-msgstr "Configuración"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:60
 msgid "Shortname"
-msgstr "Nombre corto / Identificador"
+msgstr ""
 
 #: ../content/market/market.pt:714
 msgid "Show applications"
-msgstr "Mostrar solicitudes"
+msgstr ""
 
 #: ../content/market/market.pt:162
 msgid "Show search"
-msgstr "Mostrar buscador"
+msgstr ""
 
 #: ../browser/events/change.py:84
 msgid "Sol·licita"
-msgstr "Solicita"
+msgstr ""
 
 #: ../content/market/market.pt:267
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:58
 #: ../browser/views_templates/tfemarket_utils_stats.pt:26
 msgid "Stats"
-msgstr "Estadísticas"
+msgstr ""
 
 #: ../content/market/market.py:334
 #: ../content/offer/offer.py:99
 msgid "Study"
-msgstr "Estudio"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:51
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:61
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:71
 msgid "Submit"
-msgstr "Enviar"
+msgstr ""
 
 #: ../browser/events/change.py:59
 msgid "TFE Mercat"
-msgstr "TFE Market"
+msgstr ""
 
 #: ../content/market/market.pt:219
 msgid "TFEdepartament"
-msgstr "Departamento"
+msgstr ""
 
 #: ../content/market/market.pt:208
 #: ../content/offer/offer.py:248
 msgid "TFEteacher"
-msgstr "Profesor/a"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:158
 msgid "Tags"
-msgstr "Listado de palabras clave"
+msgstr ""
 
 #: ../content/market/market.pt:536
 msgid "Targets"
-msgstr "Objetivos"
+msgstr ""
 
 #: ../content/market/market.pt:446
 #: ../content/offer/offer.py:260
 msgid "Teacher Email"
-msgstr "Email del profesor/a"
+msgstr ""
 
 #: ../content/offer/offer.py:254
 msgid "Teacher Fullname"
-msgstr "Nombre del profesor/a"
+msgstr ""
 
 #: ../content/market/market.pt:367
 msgid "Teacher manager"
-msgstr "Director/a"
+msgstr ""
 
 #: ../content/application/application.py:100
 #: ../content/market/market.pt:108
 msgid "Telephone"
-msgstr "Teléfono"
+msgstr ""
 
 #: ../content/market/market.pt:180
 msgid "Text to search"
-msgstr "Texto a buscar"
+msgstr ""
 
 #: ../content/market/market.pt:418
 msgid "The current offer contains a confirmed application."
-msgstr "Esta oferta contiene una solicitud confirmada."
+msgstr ""
 
 #: ../browser/views.py:92
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
-msgstr "La oferta no puede ser asignada. Debe haber al menos una solicitud confirmada y las otras canceladas, rechazadas o renunciadas."
+msgstr ""
 
 #: ../browser/events/change.py:160
 msgid "The offer can't be canceled if it contains active applications."
-msgstr "La oferta no se puede cancelar si contiene solicitudes activas."
+msgstr ""
 
 #: ../browser/events/change.py:170
 msgid "The offer can't be deleted."
-msgstr "La oferta no se puede eliminar, tiene solicitudes activas."
+msgstr ""
 
 #: ../browser/views.py:279
 msgid "The offer could not be copied."
-msgstr "No se ha podido copiar la oferta."
+msgstr ""
 
 #: ../browser/views.py:378
 msgid "The offer could not be removed."
-msgstr "No se ha podido eliminar la oferta."
+msgstr ""
 
 #: ../browser/views.py:276
 msgid "The offer has been copied."
-msgstr "La oferta se ha copiado."
+msgstr ""
 
 #: ../browser/views.py:331
 msgid "The offer has been modified."
-msgstr "La oferta a sido modificada."
+msgstr ""
 
 #: ../browser/views.py:376
 msgid "The offer has been removed."
-msgstr "La oferta a sido eliminada."
+msgstr ""
 
 #: ../content/market/market.pt:432
 msgid "The offer is expired."
-msgstr "La oferta está caducada."
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:52
 #: ../content/offer/offer.py:183
 msgid "Title"
-msgstr "Título"
+msgstr ""
 
 #: ../content/application/application.py:64
 msgid "Title of the degree with which you request the offer"
-msgstr "Titulación con la que solicitas la oferta"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:94
 msgid "Titulacions"
-msgstr "Titulaciones"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:47
 msgid "Titulacions CA"
-msgstr "Titulaciones CA"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:53
 msgid "Titulacions EN"
-msgstr "Titulaciones EN"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:41
 msgid "Titulacions ES"
-msgstr "Titulaciones ES"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:200
 msgid "To import the offers access the following <a href=\"import_ofertes\">link</a>."
-msgstr "Para importar las ofertas acceda al siguiente <a href=\"import_ofertes\">enlace</a>."
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:207
 msgid "To reset the counter access the following <a href=\"reset_offers_counter\">link</a>."
-msgstr "Para restablecer el contador acceda al siguiente <a href=\"reset_offers_counter\">enlace</a>."
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils.pt:18
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:19
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:19
 msgid "Tools of the TFE"
-msgstr "Herramientas del TFE"
+msgstr ""
 
 #: ../content/market/market.pt:195
 msgid "Topic"
-msgstr "Tema"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:152
 msgid "Topics of the TFE"
-msgstr "Temas principales de los TFE's"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_stats.pt:50
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #: ../content/market/market.pt:230
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../content/offer/offer.py:271
 msgid "Type codirector"
-msgstr "Tipo de codirector/a"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:216
 msgid "UPC Mercat TFE"
-msgstr "Mercado de trabajos de final de estudios de la UPC"
+msgstr ""
 
 #: ../content/offer/offer.py:319
 msgid "Un crèdit ECTS equival a 25 hores de treball. La càrrega de treball s'adaptarà als crèdits de la titulació."
-msgstr "Un crédito ECTS equivale a 25 horas de trabajo. La carga de trabajo se adaptará a los créditos de la titulación."
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:192
 msgid "Uncheck this option if you do not want to see the number of students in an offer"
-msgstr "Desmarca está opción si no se quiere ver el número de estudiantes de una oferta"
+msgstr ""
 
 #: ../configure.zcml:37
 msgid "Uninstalls the genweb6.tfemarket add-on."
-msgstr "Desinstalar paquete de genweb6.tfemarket"
+msgstr ""
 
 #: ../content/offer/offer.py:121
 msgid "Universitat"
-msgstr "Universidad"
+msgstr ""
 
 #: ../content/market/market.py:325
 msgid "University"
-msgstr "Universidad"
+msgstr ""
 
 #: ../content/offer/offer.py:266
 msgid "University department"
-msgstr "Departamento del profesor/a"
+msgstr ""
 
 #: ../widgets/codirector/text_input_codirector.pt:68
 #: ../widgets/teacher/text_input_teacher.pt:71
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 #: ../utils.py:283
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
-msgstr "VINCULACIÓN: No hemos encontrado tu vinculación como de ESTUDIANTE. Contacta con tu secretaría."
+msgstr ""
 
 #: ../content/market/market.pt:327
 msgid "View all offers"
-msgstr "Ver todas las ofertas"
+msgstr ""
 
 #: ../content/market/market.pt:323
 msgid "View me offers"
-msgstr "Ver mis ofertas"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:191
 msgid "View number of students"
-msgstr "Ver el número de estudiantes"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:53
 msgid "When changing the title, the short name will be automatically updated."
-msgstr "Al modificar el título, el nombre corto se actualizará automáticamente."
+msgstr ""
 
 #: ../content/market/market.pt:565
 msgid "Workload"
-msgstr "Carga de trabajo"
+msgstr ""
 
 #: ../content/market/market.pt:500
 msgid "Yes"
-msgstr "Sí"
+msgstr ""
 
 #: ../utils.py:86
 msgid "You don't have permission for create a application."
-msgstr "No tienes permisos para crear una solicitud."
+msgstr ""
 
 #: ../content/application/application.py:150
 msgid "You have already created an application. You can see it on the main page of the market."
-msgstr "Ya has hecho una solicitud. Puedes visualizarla en la página principal del mercado."
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:36
 msgid "You will only be able to eliminate those offers that you face will not be assigned and have no active requests."
-msgstr "Sólo podrás eliminar las ofertas que no estén asignadas y no tengan ninguna solicitud activa."
+msgstr ""
 
 #: ../content/market/market.pt:25
 msgid "Your application"
-msgstr "Tu solicitud"
+msgstr ""
 
-#. Default: "Application"
 #: ../profiles/default/types/genweb.tfemarket.application.xml
 msgid "application"
-msgstr "Solicitud"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_stats.pt:80
 msgid "choose_tfe"
-msgstr "Elije un TFE"
+msgstr ""
 
 #: ../controlpanels/tfemarket.py:106
 msgid "classifications"
-msgstr "Clasificaciones"
+msgstr ""
 
 #: ../content/offer/offer.py:380
 msgid "confidential"
-msgstr "Confidencial (informativo)"
+msgstr ""
 
 #. Default: "Are you sure you want to reset the offers counter?"
 #: ../browser/views_templates/reset_offers_counter.pt:22
 msgid "confirm_reset_counter"
-msgstr "¿Estás seguro de reiniciar el contador de ofertas?"
+msgstr ""
 
 #: ../content/offer/offer.py:227
 msgid "degree"
-msgstr "Titulación"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_download_csv.pt:47
 msgid "download_applications"
-msgstr "Exportar solicitudes"
+msgstr ""
 
 #: ../browser/views_templates/tfemarket_utils_download_csv.pt:46
 msgid "download_offers"
-msgstr "Exportar ofertas"
+msgstr ""
 
 #: ../content/market/market.pt:67
 msgid "edit"
-msgstr "Editar"
+msgstr ""
 
 #: ../content/market/market.pt:359
 msgid "expired"
-msgstr "caducada"
+msgstr ""
 
 #: ../configure.zcml:28
 msgid "genweb6.tfemarket"
-msgstr "genweb6.tfemarket"
+msgstr ""
 
 #: ../configure.zcml:37
 msgid "genweb6.tfemarket (uninstall)"
-msgstr "genweb6.tfemarket (desinstalar)"
+msgstr ""
 
 #: ../content/market/market.pt:304
 msgid "grant"
-msgstr "Beca / subvención"
+msgstr ""
 
 #. Default: "The date the item will be published."
 #: ../behaviors/publication_offer.py:35
 msgid "help_effective_date"
-msgstr "La fecha en que se publicará el elemento."
+msgstr ""
 
 #. Default: "The date that the item will expire."
 #: ../behaviors/publication_offer.py:43
 msgid "help_expiration_date"
-msgstr "La fecha en que vencerá el elemento."
+msgstr ""
 
 #. Default: "Imported dades from csv"
 #: ../controlpanels/tfemarket.py:176
 msgid "help_titulacions_table"
-msgstr "Datos importados mediante un archivo csv. Puede importar las titulaciones desde el siguiente <a href=\"import_titulacions\"> enlace </a>."
+msgstr ""
 
 #: ../content/offer/offer.py:234
 msgid "keys"
-msgstr "Palabras clave"
+msgstr ""
 
 #. Default: "market"
 #: ../profiles/default/types/genweb.tfemarket.market.xml
 msgid "market"
-msgstr "Mercado"
+msgstr ""
 
 #: ../content/offer/offer.py:347
 msgid "modality"
-msgstr "Modalidad"
+msgstr ""
 
 #: ../widgets/codirector/text_input_codirector.pt:52
 #: ../widgets/teacher/text_input_teacher.pt:54
 msgid "name.surname"
-msgstr "nombre.apellido"
+msgstr ""
 
-#. Default: "offer"
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:35
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:35
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:35
 msgid "offer"
-msgstr "Oferta"
+msgstr ""
 
 #: ../content/offer/offer.py:172
 msgid "offer_center"
-msgstr "Centro"
+msgstr ""
 
 #: ../content/offer/offer.py:200
 msgid "offer_features"
-msgstr "Tareas a realizar / Características"
+msgstr ""
 
 #: ../content/offer/offer.py:194
 msgid "offer_targets"
-msgstr "Objetivos"
+msgstr ""
 
 #: ../content/offer/offer.py:205
 msgid "offer_topic"
-msgstr "Tema"
+msgstr ""
 
 #: ../content/offer/offer.py:211
 msgid "offer_type"
-msgstr "Tipo"
+msgstr ""
 
 #: ../content/offer/offer.py:318
 msgid "offer_workload"
-msgstr "Carga de trabajo"
+msgstr ""
 
 #: ../content/offer/offer.py:324
 msgid "requirements"
-msgstr "Requisitos"
+msgstr ""
 
 #. Default: "Reset counter"
 #: ../browser/views_templates/reset_offers_counter.pt:25
 msgid "reset_counter"
-msgstr "Reiniciar contador"
+msgstr ""
 
 #: ../content/offer/offer.py:332
 msgid "tfe_lang"
-msgstr "Idioma del trabajo"
+msgstr ""
 
 #: ../content/offer/offer.py:220
 msgid "tfgm"
-msgstr "TFG/TFM"
+msgstr ""
