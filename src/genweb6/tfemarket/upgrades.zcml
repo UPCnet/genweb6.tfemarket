@@ -1,0 +1,16 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="genweb">
+
+  <genericsetup:upgradeStep
+      title="Reinstall genweb6.tfemarket"
+      description="Reinstall package genweb6.tfemarket"
+      source="*"
+      destination="*"
+      handler="genweb6.tfemarket.upgrades.upgrade_by_reinstall"
+      profile="genweb6.tfemarket:default"
+      />
+
+</configure>

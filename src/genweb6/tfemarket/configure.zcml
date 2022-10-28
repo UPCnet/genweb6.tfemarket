@@ -17,6 +17,7 @@
   <include package=".widgets" />
 
   <include file="subscribers.zcml" />
+  <include file="upgrades.zcml" />
 
   <genericsetup:registerProfile
     name="default"
