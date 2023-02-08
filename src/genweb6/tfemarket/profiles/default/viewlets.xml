@@ -14,10 +14,6 @@
     <viewlet name="genweb.logosfooter"/>
     <viewlet name="genweb.footer"/>
   </order>
-
-  <hidden manager="plone.portaltop" skinname="GenwebTFEMarket">
-    <viewlet name="genweb.alumnipersonalbar"/>
-  </hidden>
   <hidden manager= "plone.portalheader" skinname="GenwebTFEMarket">
     <viewlet name="plone.personal_bar"/>
     <viewlet name="plone.logo"/>
