@@ -47,6 +47,22 @@ function changeLangAndReload(lang){
     }
 }
 
+function uncollapseAll(){
+    $("#collapseAll.collapsed").click(function() {
+        $("#accordionOfertes .accordion-button.collapsed").trigger('click').removeClass('collapsed').attr('aria-expanded', 'true');
+        $(this).removeClass('collapsed').attr('aria-expanded', 'true');
+        collapseAll();
+    });
+}
+
+function collapseAll(){
+    $("#collapseAll:not(.collapsed)").click(function() {
+        $("#accordionOfertes .accordion-button:not(.collapsed)").trigger('click').addClass('collapsed').attr('aria-expanded', 'false');
+        $(this).addClass('collapsed').attr('aria-expanded', 'false');
+        uncollapseAll();
+    });
+}
+
 $(function() {
     $('.buscador-mercat .btn').on('click', function() {
         $('.spinner-mercat').fadeIn(500);
@@ -88,4 +104,6 @@ $(function() {
             }
         }
     }
+
+    uncollapseAll();
 });

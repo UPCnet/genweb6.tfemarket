@@ -476,10 +476,11 @@
 
       <tal:llista tal:condition="offers">
 
-        <div class="d-inline-block w-100 text-end mb-3">
+        <div class="d-inline-block w-100 text-end mb-3"
+             tal:condition="False">
 
-          <a class="btn btn-outline-secondary collapseBtn" data-bs-toggle="collapse" href=".collapseOfertes"
-             role="button" aria-expanded="true" aria-controls="collapseOfertes">
+          <a id="collapseAll" class="btn btn-outline-secondary collapseBtn collapsed" data-bs-toggle="collapse"
+             role="button" aria-expanded="false" aria-controls="collapseAll">
 
             <span class="collapseShow" i18n:translate="">Desplega tot</span>
             <span class="collapseHide" i18n:translate="">Plega tot</span>
@@ -615,7 +616,7 @@
                 </div>
 
                 <tal:comment replace="nothing">
-                  <<< NOTIFICACIÓNES >>>
+                  <<< NOTIFICACIONES >>>
                 </tal:comment>
 
                 <div tal:attributes="id string:${offer/offer_id}-info" class="offerInfo mt-4"></div>
