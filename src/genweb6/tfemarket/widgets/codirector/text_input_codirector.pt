@@ -49,10 +49,13 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
           <input id="form-widgets-codirector-input" type="text" autocomplete="no"
+                 class="form-control mb-2"
                  i18n:attributes="placeholder name.surname"/>
 
           <input id="form-widgets-codirector-btn" type="button"
+                 class="btn btn-primary mb-2"
                  i18n:attributes="value Search"/>
 
           <p id="form-widgets-codirector-error" i18n:translate="">

@@ -48,6 +48,10 @@ function changeLangAndReload(lang){
 }
 
 $(function() {
+    $('.buscador-mercat .btn').on('click', function() {
+        $('.spinner-mercat').fadeIn(500);
+    });
+
     $('.setLangCA').click(function() {
         changeLangAndReload('ca');
     });
@@ -66,123 +70,22 @@ $(function() {
         }
     });
 
-    $('input[name="modality"]').click(function() {
-        if ($('input[name="modality"]:checked').length == 0) {
-            $(this).prop('checked', true);
-        }
-    });
-
-    $('.expand').click(function() {
-        $(this).hide();
-        $(this).parent().find('.notexpand').show();
-        $(this).parent().parent().parent().find('.offerData').slideDown();
-    });
-
-    $('.notexpand').click(function() {
-        $(this).hide();
-        $(this).parent().find('.expand').show();
-        $(this).parent().parent().parent().find('.offerData').slideUp();
-    });
-
-    $("#buttonsSearch").click(function() {
-        if ($("#collapseSearch").is(":visible")) {
-            $("#formSearchOffers").slideUp();
-            $("#expandSearch").show();
-            $("#collapseSearch").hide();
-        } else {
-            $("#formSearchOffers").slideDown();
-            $("#expandSearch").hide();
-            $("#collapseSearch").show();
-        }
-    });
-
-    $("#expandAll").click(function() {
-        $(".expand").parent().parent().parent().slideDown();
-        $(".expand").hide();
-        $(".notexpand").show();
-        $(".expand").parent().parent().parent().find('.offerData').slideDown();
-        $("#expandAll").hide();
-        $("#collapseAll").show();
-    });
-
-    $("#collapseAll").click(function() {
-        $(".notexpand").slideUp();
-        $(".notexpand").hide();
-        $(".expand").show();
-        $(".expand").parent().parent().parent().find('.offerData').slideUp();
-        $("#expandAll").show();
-        $("#collapseAll").hide();
-    });
-
     if ($('#formSearchOffers').attr('data-saved') == 1) {
         $('input[name="language"]').prop('checked', true);
-        $('input[name="modality"]').prop('checked', true);
     }
 
     var offer = $.urlParam('offer');
     if (offer) {
-        if($("#" + offer).length > 0){
-            $(".alert[role='alert']:not(.offerInfo)").appendTo("#" + offer + "-info");
+        if($("#heading-" + offer).length > 0){
+            $(".alert[role='alert']:not(.alert-mercat)").appendTo("#" + offer + "-info");
             $('html, body').animate({
-                scrollTop: $("#" + offer).offset().top - 50
+                scrollTop: $("#heading-" + offer).offset().top - 100
             }, 1000);
-            $("#" + offer).trigger('click');
             if ($.urlParam('open')) {
                 setTimeout(function() {
-                    $("#" + offer + "-applications").trigger('click');
+                    $("#heading-" + offer + " .accordion-button").trigger('click');
                 }, 500);
             }
         }
     }
-
-    $('.showMoreInfo').click(function() {
-        offerInfo = $(this).parent().parent().parent().find('.moreInfo');
-        if (offerInfo.hasClass('hide')) {
-            $(this).find('i.fa').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-            offerInfo.slideDown().removeClass('hide');
-        } else {
-            $(this).find('i.fa').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-            offerInfo.slideUp().addClass('hide');
-        }
-    });
-
-    $('.showApplications').click(function() {
-        applications = $(this).parent().parent().parent().find('.applications');
-        if (applications.hasClass('hide')) {
-            $(this).find('.showApplicationsLit').hide();
-            $(this).find('.hideApplicationsLit').show();
-            applications.slideDown().removeClass('hide');
-        } else {
-            $(applications).find('i.fa').removeClass('fa-chevron-up').addClass('fa-chevron-down')
-            $(this).find('.hideApplicationsLit').hide();
-            $(this).find('.showApplicationsLit').show();
-            applications.slideUp().addClass('hide');
-        }
-    });
-
-    $('#formSearchOffers .keyword').click(function() {
-        input = $(this).find('input[name="key"]');
-        if ($(input).prop('checked')) {
-            $(this).removeClass('checked');
-            $(input).prop('checked', false);
-        } else {
-            $(this).addClass('checked');
-            $(input).prop('checked', true);
-        }
-    });
-});
-
-$(function() {
-    $('#market #offersFilter').on('click', function() {
-        $('#formSearchOffers').submit();
-        $('#market .loaderContainer').fadeIn(500);
-    });
-
-    $('#market a[href="?allOffers"]').on('click', function() {
-        $('#market .loaderContainer').fadeIn(500);
-    });
-
-    $('#market .dropdown-menu a').on('click', function() {
-        $('#market .loaderContainer').fadeIn(500);
-    });
 });

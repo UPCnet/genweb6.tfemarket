@@ -25,12 +25,12 @@ $.ajax({
       $.each( results, function( key, value ){
         $("#form-widgets-teacher_manager-hint").show();
         field = "<tr>";
-        field += "<td class='teacher'>" + value['user'] + "</td>";
-        field += "<td class='fullname'>" + value['fullname'] + "</td>";
-        field += "<td class='email'>" + value['email'] + "</td>";
-        field += "<td class='dept'>" + value['dept'] + "</td>";
+        field += "<td class='align-middle teacher'>" + value['user'] + "</td>";
+        field += "<td class='align-middle fullname'>" + value['fullname'] + "</td>";
+        field += "<td class='align-middle email'>" + value['email'] + "</td>";
+        field += "<td class='align-middle dept'>" + value['dept'] + "</td>";
         field += "<td scope='row' class='actions'>";
-        field += "<a class='label add' alt='add' onclick='addTeacher(this)'>";
+        field += "<a class='btn btn-sm btn-outline-secondary label add' alt='add' onclick='addTeacher(this)'>";
         field += "<i class='bi bi-plus'></i>";
         field += "</a>";
         field += "</td>";

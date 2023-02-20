@@ -399,13 +399,13 @@ class View(BrowserView):
 
     def redirectToMarket(self):
         market_path = self.context.getParentNode().absolute_url()
-        self.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id)
+        self.request.response.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id)
 
 
 class AddForm(add.DefaultAddForm):
-    portal_type = 'genweb.tfemarket.oofer'
 
     def updateFields(self):
+        import ipdb; ipdb.set_trace()
         super(AddForm, self).updateFields()
         lang = self.request.get("MERCAT_TFE_LANG", 'ca')
         if lang in ['ca', 'en', 'es']:
@@ -418,6 +418,7 @@ class AddForm(add.DefaultAddForm):
             self.fields = self.fields.omit('num_students')
 
     def updateWidgets(self):
+        import ipdb; ipdb.set_trace()
         try:
             super(AddForm, self).updateWidgets()
         except ValueError as err:

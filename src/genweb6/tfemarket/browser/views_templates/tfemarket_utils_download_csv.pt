@@ -23,7 +23,7 @@
           <div class="documentDescription">
             <p tal:repeat="tfe tfes">
               <span i18n:translate="">Return to market </span>
-              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+              <a class="returnTFE text-decoration-none" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
             </p>
           </div>
 
@@ -33,18 +33,15 @@
 
           <div>
             <form id="formTFE" action="@@tfemarket-utils-export-csv" method="post">
-              <label i18n:translate="">Select the market from which you want to export the data.</label>
-              <select name="UID" required>
+              <label class="form-label" i18n:translate="">Select the market from which you want to export the data.</label>
+              <select class="form-select mb-3" name="UID" required>
                 <tal:block tal:repeat="tfe tfes">
                   <option tal:attributes="value tfe/UID" tal:content="tfe/Title"></option>
                 </tal:block>
               </select>
 
-              <br>
-              <br>
-
-              <input type="submit" name="submit_offers" i18n:attributes="value download_offers">
-              <input type="submit" name="submit_applications" i18n:attributes="value download_applications">
+              <input class="btn btn-primary" type="submit" name="submit_offers" i18n:attributes="value download_offers">
+              <input class="btn btn-primary" type="submit" name="submit_applications" i18n:attributes="value download_applications">
             </form>
           </div>
         </div>

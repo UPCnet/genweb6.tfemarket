@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 
 from io import StringIO
@@ -203,13 +204,17 @@ class getInfoRenameOffer(BrowserView):
 
 class resetCountOffers(BrowserView):
 
-    def update(self):
+    render = ViewPageTemplateFile("views_templates/reset_offers_counter.pt")
+
+    def __call__(self):
         if 'confirm' in self.request.form:
             registry = queryUtility(IRegistry)
             tfe_tool = registry.forInterface(ITfemarketSettings)
             tfe_tool.count_offers = 0
             transaction.commit()
             self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
+
+        return self.render()
 
 
 class tfemarketUtils(BrowserView):
@@ -223,13 +228,15 @@ class tfemarketUtils(BrowserView):
 
 class tfemarketUtilsCopyOffer(BrowserView):
 
+    render = ViewPageTemplateFile("views_templates/tfemarket_utils_copy_offer.pt")
+
     def getTFEs(self):
         return getUrlAllTFE(self)
 
     def getOffers(self):
         return getAllOffers(self)
 
-    def update(self):
+    def __call__(self):
         if 'submit' in self.request.form:
             pc = api.portal.get_tool('portal_catalog')
             offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
@@ -280,8 +287,12 @@ class tfemarketUtilsCopyOffer(BrowserView):
             else:
                 IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be copied."), 'error')
 
+        return self.render()
+
 
 class tfemarketUtilsRenameOffer(BrowserView):
+
+    render = ViewPageTemplateFile("views_templates/tfemarket_utils_rename_offer.pt")
 
     def getTFEs(self):
         return getUrlAllTFE(self)
@@ -312,7 +323,7 @@ class tfemarketUtilsRenameOffer(BrowserView):
                 res['ko'].append(data)
         return res
 
-    def update(self):
+    def __call__(self):
         if 'submit' in self.request.form:
             pc = api.portal.get_tool('portal_catalog')
             offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
@@ -334,8 +345,12 @@ class tfemarketUtilsRenameOffer(BrowserView):
             else:
                 IStatusMessage(self.request).addStatusMessage(_(u"Error the identifier exists."), 'error')
 
+        return self.render()
+
 
 class tfemarketUtilsDeleteOffer(BrowserView):
+
+    render = ViewPageTemplateFile("views_templates/tfemarket_utils_delete_offer.pt")
 
     def getTFEs(self):
         return getUrlAllTFE(self)
@@ -363,7 +378,7 @@ class tfemarketUtilsDeleteOffer(BrowserView):
                 res['ko'].append(data)
         return res
 
-    def update(self):
+    def __call__(self):
         if 'submit' in self.request.form:
             pc = api.portal.get_tool('portal_catalog')
             offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
@@ -378,6 +393,8 @@ class tfemarketUtilsDeleteOffer(BrowserView):
                     IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be removed."), 'error')
             else:
                 IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be removed."), 'error')
+
+        return self.render()
 
 
 class tfemarketUtilsStats(BrowserView):
@@ -447,155 +464,157 @@ class tfemarketUtilsDownloadCSV(BrowserView):
 class tfemarketUtilsExportCSV(BrowserView):
 
     def __call__(self):
-        wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        if 'UID' in self.request.form:
+            wf_tool = getToolByName(self.context, 'portal_workflow')
+            tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
-        output_file = StringIO()
-        writer = csv.writer(output_file, delimiter=',')
+            output_file = StringIO()
+            writer = csv.writer(output_file, delimiter=',')
 
-        pc = api.portal.get_tool('portal_catalog')
-        market = pc.searchResults({'portal_type': 'genweb.tfemarket.market',
-                                   'UID': self.request.form['UID']})[0]
+            pc = api.portal.get_tool('portal_catalog')
+            market = pc.searchResults({'portal_type': 'genweb.tfemarket.market',
+                                       'UID': self.request.form['UID']})[0]
 
-        if 'submit_offers' in self.request.form:
-            registry = queryUtility(IRegistry)
-            tfe_tool = registry.forInterface(ITfemarketSettings)
-
-            if tfe_tool.view_num_students:
-                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
-                               'Teacher ID', 'Teacher fullname', 'Teacher email', 'Teacher university department',
-                               'Type Codirector', 'Codirector ID', 'Codirector fullname', 'Codirector email',
-                               'Codirector university department', 'Number of students', 'Workload', 'Targets',
-                               'Features', 'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
-                               'Company contact', 'Company email', 'Possibility of scholarship',
-                               'Confidential', 'Environmental theme', 'Scope of cooperation',
-                               'Publication date', 'Expiration date', 'Expired', 'State']
-            else:  # Omit Num Students
-                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
-                               'Teacher ID', 'Teacher fullname', 'Teacher email', 'Teacher university department',
-                               'Type Codirector', 'Codirector ID', 'Codirector fullname', 'Codirector email',
-                               'Codirector university department', 'Workload', 'Targets', 'Features',
-                               'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
-                               'Company contact', 'Company email', 'Possibility of scholarship',
-                               'Confidential', 'Environmental theme', 'Scope of cooperation',
-                               'Publication date', 'Expiration date', 'Expired', 'State']
-
-            writer.writerow(data_header)
-
-            offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
-                                       'path': {"query": market.getPath()}})
-
-            for data in offers:
-                offer = data.getObject()
-
-                offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
-                offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)
-                offerState = offerWorkflow['states'][offerStatus['review_state']]
+            if 'submit_offers' in self.request.form:
+                registry = queryUtility(IRegistry)
+                tfe_tool = registry.forInterface(ITfemarketSettings)
 
                 if tfe_tool.view_num_students:
-                    writer.writerow([
-                        offer.offer_id.encode('utf-8'),
-                        offer.title.encode('utf-8'),
-                        offer.description.encode('utf-8'),
-                        offer.topic.encode('utf-8') if offer.topic else "",
-                        offer.offer_type.encode('utf-8') if offer.offer_type else "",
-                        '\n'.join(offer.tfgm) if offer.tfgm else "",
-                        '\n'.join(offer.degree) if offer.degree else "",
-                        '\n'.join(offer.keys) if offer.keys else "",
-                        offer.teacher_manager.encode('utf-8'),
-                        offer.teacher_fullname.encode('utf-8'),
-                        offer.teacher_email.encode('utf-8'),
-                        offer.dept.encode('utf-8'),
-                        offer.type_codirector.encode('utf-8') if offer.type_codirector else "",
-                        offer.codirector_id.encode('utf-8') if offer.codirector_id else "",
-                        offer.codirector.encode('utf-8') if offer.codirector else "",
-                        offer.codirector_email.encode('utf-8') if offer.codirector_email else "",
-                        offer.codirector_dept.encode('utf-8') if offer.codirector_dept else "",
-                        offer.num_students or "",
-                        offer.workload.encode('utf-8') if offer.workload else "",
-                        offer.targets.encode('utf-8') if offer.targets else "",
-                        offer.features.encode('utf-8') if offer.features else "",
-                        offer.requirements.encode('utf-8') if offer.requirements else "",
-                        '\n'.join(offer.lang) if offer.lang else "",
-                        offer.modality.encode('utf-8'),
-                        offer.company.encode('utf-8') if offer.company else "",
-                        'Yes' if offer.grant else 'No',
-                        'Yes' if offer.confidential else 'No',
-                        'Yes' if offer.environmental_theme else 'No',
-                        'Yes' if offer.scope_cooperation else 'No',
-                        offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
-                        offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
-                        'Yes' if offer.isExpired() else 'No',
-                        offerState.title.encode('utf-8')])
+                    data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
+                                   'Teacher ID', 'Teacher fullname', 'Teacher email', 'Teacher university department',
+                                   'Type Codirector', 'Codirector ID', 'Codirector fullname', 'Codirector email',
+                                   'Codirector university department', 'Number of students', 'Workload', 'Targets',
+                                   'Features', 'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
+                                   'Company contact', 'Company email', 'Possibility of scholarship',
+                                   'Confidential', 'Environmental theme', 'Scope of cooperation',
+                                   'Publication date', 'Expiration date', 'Expired', 'State']
                 else:  # Omit Num Students
+                    data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
+                                   'Teacher ID', 'Teacher fullname', 'Teacher email', 'Teacher university department',
+                                   'Type Codirector', 'Codirector ID', 'Codirector fullname', 'Codirector email',
+                                   'Codirector university department', 'Workload', 'Targets', 'Features',
+                                   'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
+                                   'Company contact', 'Company email', 'Possibility of scholarship',
+                                   'Confidential', 'Environmental theme', 'Scope of cooperation',
+                                   'Publication date', 'Expiration date', 'Expired', 'State']
+
+                writer.writerow(data_header)
+
+                offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                           'path': {"query": market.getPath()}})
+
+                for data in offers:
+                    offer = data.getObject()
+
+                    offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
+                    offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)
+                    offerState = offerWorkflow['states'][offerStatus['review_state']]
+
+                    expired = offer.expires().isPast()
+                    if tfe_tool.view_num_students:
+                        writer.writerow([
+                            offer.offer_id,
+                            offer.title,
+                            offer.description,
+                            offer.topic if offer.topic else "",
+                            offer.offer_type if offer.offer_type else "",
+                            '\n'.join(offer.tfgm) if offer.tfgm else "",
+                            '\n'.join(offer.degree) if offer.degree else "",
+                            '\n'.join(offer.keys) if offer.keys else "",
+                            offer.teacher_manager,
+                            offer.teacher_fullname,
+                            offer.teacher_email,
+                            offer.dept,
+                            offer.type_codirector if offer.type_codirector else "",
+                            offer.codirector_id if offer.codirector_id else "",
+                            offer.codirector if offer.codirector else "",
+                            offer.codirector_email if offer.codirector_email else "",
+                            offer.codirector_dept if offer.codirector_dept else "",
+                            offer.num_students or "",
+                            offer.workload if offer.workload else "",
+                            offer.targets if offer.targets else "",
+                            offer.features if offer.features else "",
+                            offer.requirements if offer.requirements else "",
+                            '\n'.join(offer.lang) if offer.lang else "",
+                            offer.modality,
+                            offer.company if offer.company else "",
+                            'Yes' if offer.grant else 'No',
+                            'Yes' if offer.confidential else 'No',
+                            'Yes' if offer.environmental_theme else 'No',
+                            'Yes' if offer.scope_cooperation else 'No',
+                            offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                            offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                            'Yes' if expired else 'No',
+                            offerState.title])
+                    else:  # Omit Num Students
+                        writer.writerow([
+                            offer.offer_id,
+                            offer.title,
+                            offer.description,
+                            offer.topic if offer.topic else "",
+                            offer.offer_type if offer.offer_type else "",
+                            '\n'.join(offer.tfgm) if offer.tfgm else "",
+                            '\n'.join(offer.degree) if offer.degree else "",
+                            '\n'.join(offer.keys) if offer.keys else "",
+                            offer.teacher_manager,
+                            offer.teacher_fullname,
+                            offer.teacher_email,
+                            offer.dept,
+                            offer.type_codirector if offer.type_codirector else "",
+                            offer.codirector_id if offer.codirector_id else "",
+                            offer.codirector if offer.codirector else "",
+                            offer.codirector_email if offer.codirector_email else "",
+                            offer.codirector_dept if offer.codirector_dept else "",
+                            offer.workload if offer.workload else "",
+                            offer.targets if offer.targets else "",
+                            offer.features if offer.features else "",
+                            offer.requirements if offer.requirements else "",
+                            '\n'.join(offer.lang) if offer.lang else "",
+                            offer.modality,
+                            offer.company if offer.company else "",
+                            'Yes' if offer.grant else 'No',
+                            'Yes' if offer.confidential else 'No',
+                            'Yes' if offer.environmental_theme else 'No',
+                            'Yes' if offer.scope_cooperation else 'No',
+                            offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                            offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                            'Yes' if expired else 'No',
+                            offerState.title])
+
+                filename = market.id + "-offers.csv"
+            else:
+                data_header = ['Offer ID', 'Degree ID', 'DNI', 'Fullname', 'Telephone', 'Email',
+                               'PRISMA ID', 'Expedient ID', 'Body', 'State']
+
+                writer.writerow(data_header)
+
+                requests = pc.searchResults({'portal_type': 'genweb.tfemarket.application',
+                                             'path': {"query": market.getPath()}})
+
+                for data in requests:
+                    app = data.getObject()
+
+                    appWorkflow = tools.workflow().getWorkflowsFor(app)[0]
+                    appStatus = wf_tool.getStatusOf(appWorkflow.id, app)
+                    appState = appWorkflow['states'][appStatus['review_state']]
+
                     writer.writerow([
-                        offer.offer_id.encode('utf-8'),
-                        offer.title.encode('utf-8'),
-                        offer.description.encode('utf-8'),
-                        offer.topic.encode('utf-8') if offer.topic else "",
-                        offer.offer_type.encode('utf-8') if offer.offer_type else "",
-                        '\n'.join(offer.tfgm) if offer.tfgm else "",
-                        '\n'.join(offer.degree) if offer.degree else "",
-                        '\n'.join(offer.keys) if offer.keys else "",
-                        offer.teacher_manager.encode('utf-8'),
-                        offer.teacher_fullname.encode('utf-8'),
-                        offer.teacher_email.encode('utf-8'),
-                        offer.dept.encode('utf-8'),
-                        offer.type_codirector.encode('utf-8') if offer.type_codirector else "",
-                        offer.codirector_id.encode('utf-8') if offer.codirector_id else "",
-                        offer.codirector.encode('utf-8') if offer.codirector else "",
-                        offer.codirector_email.encode('utf-8') if offer.codirector_email else "",
-                        offer.codirector_dept.encode('utf-8') if offer.codirector_dept else "",
-                        offer.workload.encode('utf-8') if offer.workload else "",
-                        offer.targets.encode('utf-8') if offer.targets else "",
-                        offer.features.encode('utf-8') if offer.features else "",
-                        offer.requirements.encode('utf-8') if offer.requirements else "",
-                        '\n'.join(offer.lang) if offer.lang else "",
-                        offer.modality.encode('utf-8'),
-                        offer.company.encode('utf-8') if offer.company else "",
-                        'Yes' if offer.grant else 'No',
-                        'Yes' if offer.confidential else 'No',
-                        'Yes' if offer.environmental_theme else 'No',
-                        'Yes' if offer.scope_cooperation else 'No',
-                        offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
-                        offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
-                        'Yes' if offer.isExpired() else 'No',
-                        offerState.title.encode('utf-8')])
+                        app.offer_id,
+                        app.degree_id,
+                        app.dni,
+                        app.title,
+                        app.phone if app.phone else "",
+                        app.email,
+                        app.prisma_id if app.prisma_id else "",
+                        app.codi_expedient if app.codi_expedient else "",
+                        app.body if app.body else "",
+                        appState.title])
 
-            filename = market.id + "-offers.csv"
-        else:
-            data_header = ['Offer ID', 'Degree ID', 'DNI', 'Fullname', 'Telephone', 'Email',
-                           'PRISMA ID', 'Expedient ID', 'Body', 'State']
+                filename = market.id + "-applications.csv"
 
-            writer.writerow(data_header)
-
-            requests = pc.searchResults({'portal_type': 'genweb.tfemarket.application',
-                                         'path': {"query": market.getPath()}})
-
-            for data in requests:
-                app = data.getObject()
-
-                appWorkflow = tools.workflow().getWorkflowsFor(app)[0]
-                appStatus = wf_tool.getStatusOf(appWorkflow.id, app)
-                appState = appWorkflow['states'][appStatus['review_state']]
-
-                writer.writerow([
-                    app.offer_id.encode('utf-8'),
-                    app.degree_id.encode('utf-8'),
-                    app.dni.encode('utf-8'),
-                    app.title.encode('utf-8'),
-                    app.phone.encode('utf-8') if app.phone else "",
-                    app.email.encode('utf-8'),
-                    app.prisma_id.encode('utf-8') if app.prisma_id else "",
-                    app.codi_expedient.encode('utf-8') if app.codi_expedient else "",
-                    app.body.encode('utf-8') if app.body else "",
-                    appState.title.encode('utf-8')])
-
-            filename = market.id + "-applications.csv"
-
-        self.request.response.setHeader('Content-Type', 'text/csv')
-        self.request.response.setHeader('Content-Disposition', 'attachment; filename="%s"' % filename)
-        return output_file.getvalue()
+            self.request.response.setHeader('Content-Type', 'text/csv')
+            self.request.response.setHeader('Content-Disposition', 'attachment; filename="%s"' % filename)
+            return output_file.getvalue()
 
 
 def getUrlAllTFE(self):

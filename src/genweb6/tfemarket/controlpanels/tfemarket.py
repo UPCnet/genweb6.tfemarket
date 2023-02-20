@@ -3,6 +3,8 @@ from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.app.registry.browser import controlpanel
 from plone.autoform import directives
+from plone.autoform.directives import read_permission
+from plone.autoform.directives import write_permission
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
@@ -194,14 +196,16 @@ class ITfemarketSettings(model.Schema):
         default=True,
     )
 
-    directives.mode(import_offers="display")
+    read_permission(import_offers='genweb.tfemarket.controlpanel')
+    write_permission(import_offers='genweb.manager')
     import_offers = schema.Text(
         title=_(u"Import offers"),
         description=_(u'To import the offers access the following <a href=\"import_ofertes\">link</a>.'),
         required=False,
     )
 
-    directives.mode(count_offers="display")
+    read_permission(count_offers='genweb.tfemarket.controlpanel')
+    write_permission(count_offers='genweb.manager')
     count_offers = schema.Int(
         title=_(u"Number of offers created"),
         description=_(u'To reset the counter access the following <a href=\"reset_offers_counter\">link</a>.'),

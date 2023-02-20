@@ -22,7 +22,7 @@
           <div class="documentDescription">
             <p tal:repeat="tfe view/getTFEs">
               <span i18n:translate="">Return to market </span>
-              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+              <a class="returnTFE text-decoration-none" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
             </p>
           </div>
 
@@ -32,13 +32,13 @@
 
           <div>
             <form id="formTFE" action="@@tfemarket-utils-delete-offer" method="post">
-              <label i18n:translate="">offer</label>
+              <label class="form-label" i18n:translate="">offer</label>
               <span class="formHelp" i18n:translate="">
                 You will only be able to eliminate those offers that you face will not be assigned and have no active requests.
               </span>
-              <select id="offer" name="offer" style="width: 100" required="required"
+              <select class="form-select mb-3" id="offer" name="offer" required="required"
                       tal:define="offers view/getOffers">
-                <option selected value i18n:translate=""></option>
+                <option></option>
                 <option tal:repeat="offer offers/ok"
                         tal:attributes="value offer/UID"
                         tal:content="string:[${offer/offer_id}] ${offer/Title}">
@@ -52,25 +52,19 @@
                 </option>
               </select>
 
-              <input id="confirm" type="checkbox" required="required">
-              <span i18n:translate="">Confirm removal of offer.</span>
+              <input id="confirm" class="form-check-input me-1" type="checkbox" required="required">
+              <span class="form-check-label" i18n:translate="">Confirm removal of offer.</span>
 
               <br>
               <br>
 
-              <input type="submit" name="submit" i18n:attributes="value Submit">
+              <input class="btn btn-primary" type="submit" name="submit" i18n:attributes="value Submit">
             </form>
           </div>
         </div>
 
-        <script type="text/javascript">
-          $(document).ready(function() {
-            $('#offer').select2();
-
-            $('#offer').on('change', function(){
-              $("#confirm").prop("checked", false);
-            });
-          });
+        <script type="text/javascript"
+                tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/tfemarket_utils_copy_delete_offer.min.js">
         </script>
 
       </tal:main-macro>

@@ -22,50 +22,52 @@
           <div class="documentDescription">
             <p tal:repeat="tfe view/getTFEs">
               <span i18n:translate="">Return to market </span>
-              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+              <a class="returnTFE text-decoration-none" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
             </p>
           </div>
 
-          <div>
-            <div style="float:left; margin-right: 1em; width: 29%">
-              <ul class="configlets">
-                <li>
-                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-copy-offer">
-                    <span class="fa fa-copy"></span>
-                    <span i18n:translate="">Copy offer</span>
-                  </a>
-                </li>
-                <li>
-                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-rename-offer">
-                    <span class="fa fa-edit"></span>
-                    <span i18n:translate="">Rename offer</span>
-                  </a>
-                </li>
-                 <li>
-                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-delete-offer">
-                    <span class="fa fa-trash"></span>
-                    <span i18n:translate="">Delete offer</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div class="container row">
+            <ul class="col-md-3 list-group">
+              <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-copy-offer">
+                  <span class="fa fa-copy"></span>
+                  <span i18n:translate="">Copy offer</span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-rename-offer">
+                  <span class="fa fa-edit"></span>
+                  <span i18n:translate="">Rename offer</span>
+                </a>
+              </li>
+               <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-delete-offer">
+                  <span class="fa fa-trash"></span>
+                  <span i18n:translate="">Delete offer</span>
+                </a>
+              </li>
+            </ul>
 
-            <div style="float:left; margin-right: 1em; width: 29%" tal:condition="view/canManageTFE">
-              <ul class="configlets">
-                <li>
-                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-stats">
-                    <span class="fa fa-area-chart"></span>
-                    <span i18n:translate="">Stats</span>
-                  </a>
-                </li>
-                <li>
-                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-download-csv">
-                    <span class="fa fa-download"></span>
-                    <span i18n:translate="">Download CSV</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ul class="col-md-3 list-group"
+                tal:condition="view/canManageTFE">
+              <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-stats">
+                  <span class="fa fa-area-chart"></span>
+                  <span i18n:translate="">Stats</span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-download-csv">
+                  <span class="fa fa-download"></span>
+                  <span i18n:translate="">Download CSV</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

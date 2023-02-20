@@ -14,9 +14,9 @@
       <tal:main-macro metal:define-macro="main">
 
         <link rel="stylesheet" type="text/css"
-              href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+              href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8"
-                src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+                src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 
         <div id="utils"
              tal:define="portal_url context/@@plone_portal_state/portal_url;
@@ -37,7 +37,7 @@
           </div>
 
           <div>
-            <table id="statsTable" class="table table-striped table-bordered table-sm"
+            <table id="statsTable" class="gw-datatable-search"
                    cellspacing="0" width="100%"
                    tal:define="states view/getStates">
               <thead>
@@ -77,9 +77,9 @@
               </tfoot>
             </table>
 
-            <div id="dialogTFE" i18n:attributes="title choose_tfe">
+            <div id="dialogTFE" class="d-none" i18n:attributes="title choose_tfe">
               <p tal:repeat="tfe tfes">
-                <span class="returnTFE" tal:attributes="data-href tfe/getURL" tal:content="tfe/Title">URL</span>
+                <span class="returnTFE text-decoration-none" tal:attributes="data-href tfe/getURL" tal:content="tfe/Title">URL</span>
               </p>
             </div>
 
@@ -87,49 +87,8 @@
           </div>
         </div>
 
-        <script type="text/javascript">
-          $(document).ready(function () {
-
-            urlLang = "https://datatables.net/plug-ins/i18n/English";
-            lang = $('html').attr('lang');
-            if(lang == 'ca'){
-              urlLang = "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
-            }
-
-            if(lang == 'es'){
-              urlLang = "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
-            }
-
-            $('#statsTable').DataTable({
-              'paging': false,
-              'language': {
-                'url': urlLang,
-              }
-            });
-
-            tfe = $('.returnTFE')
-            $('.redirect').on('click', function(){
-              filters = $(this).attr('data-filters');
-
-              if(tfe.length == 1){
-                urlTFE = tfe.attr('data-href') + filters;
-                window.open(urlTFE);
-              }else{
-                urlTFE = []
-                $.each(tfe, function(){
-                  urlTFE.push($(this).attr('data-href') + filters);
-                });
-                $('#dialogTFE').dialog({modal: true});
-
-                $('.returnTFE').on('click', function(){
-                  urlTFE = $(this).attr('data-href') + filters;
-                  $("#dialogTFE").dialog('close');
-                  window.open(urlTFE);
-                });
-              }
-            });
-
-          });
+        <script type="text/javascript"
+                tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/tfemarket_utils_stats.min.js">
         </script>
 
       </tal:main-macro>

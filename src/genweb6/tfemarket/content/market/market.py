@@ -31,7 +31,7 @@ from genweb6.upc.controlpanels.bus_soa import IBusSOASettings
 from genweb6.upc.utils import getTokenIdentitatDigital
 
 import ast
-import unicodedata
+import json
 import urllib
 
 
@@ -92,8 +92,9 @@ class View(BrowserView):
     def getOffers(self):
         searchMarket = self.request.cookies.get('MERCAT_TFE')
         if searchMarket and not searchMarket == "":
+            searchMarket = json.loads(searchMarket)
             if 'searchFilters' in self.request.form:
-                self.request.form = ast.literal_eval(searchMarket)
+                self.request.form = searchMarket
             else:
                 if 'search' not in self.request.form:
                     self.request.response.setCookie('MERCAT_TFE', "", path='/')
@@ -118,7 +119,7 @@ class View(BrowserView):
                     filters.update({'TFEoffer_id': self.request.form['offer']})
 
             if 'search' in self.request.form:
-                if 'title' in self.request.form and self.request.form['title'] != 'a':
+                if 'title' in self.request.form and self.request.form['title'] != '':
                     filters.update({'Title': self.request.form['title']})
 
                 if 'topic' in self.request.form and self.request.form['topic'] != 'a':
@@ -143,7 +144,7 @@ class View(BrowserView):
                     filters.update({'review_state': self.request.form['state']})
 
                 if 'language' in self.request.form:
-                    filters.update({'TFElang': self.request.form['language']})
+                    filters.update({'TFElang': self.flattenedList(self.request.form['language'])})
 
                 if 'modality' in self.request.form and len(self.request.form['modality']) == 1:
                     filters.update({'TFEmodality': 'Universitat' if self.request.form['modality'] == 'u' else 'Empresa'})
@@ -152,7 +153,7 @@ class View(BrowserView):
                     filters.update({'TFEgrant': self.request.form['grant'] == 'on'})
 
                 if 'key' in self.request.form:
-                    filters.update({'TFEkeys': self.request.form['key']})
+                    filters.update({'TFEkeys': self.flattenedList(self.request.form['key'])})
 
             pc = api.portal.get_tool('portal_catalog')
             values = pc.searchResults(**filters)
@@ -192,7 +193,8 @@ class View(BrowserView):
                     elif marketState.id == 'intranet':
                         workflowActions = [x for x in workflowActions if x.get('id') != 'publicaloferta']
 
-                    if not offer.isExpired() or self.checkPermissionCreateOffers():
+                    expired = offer.expires().isPast()
+                    if not expired or self.checkPermissionCreateOffers():
                         results.append(dict(title=offer.title,
                                             state=offerState.title,
                                             state_id=offerState.id,
@@ -236,17 +238,16 @@ class View(BrowserView):
                                             offer_type=offer.offer_type,
                                             if_propietary=isTeachersOffer(offer),
                                             assign_offer=self.assignOffer(offer, offerState.id),
-                                            is_expired=offer.isExpired()
+                                            is_expired=expired
                                             ))
 
             if 'search' in self.request.form:
-                self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
+                self.request.response.setCookie('MERCAT_TFE', json.dumps(self.clearFiltersCookie()), path='/')
 
                 if 'date' in self.request.form and self.request.form['date'] != 'a':
                     results = self.filterResultsForDate(results)
 
             return results
-
         else:
             return []
 
@@ -432,13 +433,13 @@ class View(BrowserView):
         return filters
 
     def filtersString(self):
-        return urllib.urlencode(self.request.form, True)
+        return urllib.parse.urlencode(self.request.form, True)
 
     def flattenedString(self, item):
-        if isinstance(item, str):
-            return unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
-        else:
-            return unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
+        if isinstance(item, bytes):
+            item = str(item, 'utf-8')
+
+        return item
 
     def flattenedList(self, listItems):
         if isinstance(listItems, list):
@@ -464,11 +465,12 @@ class View(BrowserView):
         else:
             return ''
 
-    def classViewSearch(self):
+    def classCollapseCercador(self):
         if not isManager() and self.checkPermissionCreateOffers() and self.request.form == {}:
-            return {'collapse': ' hide', 'expand': ''}
+            return {'btn': '', 'aria': 'true', 'cercador': 'collapse show'}
         else:
-            return {'collapse': '', 'expand': ' hide'}
+            return {'btn': '', 'aria': 'true', 'cercador': 'collapse show'}  # TODO QUITAR
+            return {'btn': 'collapsed', 'aria': 'false', 'cercador': 'collapse'}
 
     def assignOffer(self, offer, state):
         if checkPermission('cmf.RequestReview', offer) and checkOfferhasConfirmedApplications(offer):

@@ -51,11 +51,15 @@
         <div class="modal-body">
 
           <tal:block tal:condition="view/hasPermissions">
+
             <input id="form-widgets-teacher_manager-input" type="text" autocomplete="no"
+                   class="form-control mb-2"
                    i18n:attributes="placeholder name.surname" />
 
             <input id="form-widgets-teacher_manager-btn" type="button"
+                   class="btn btn-primary mb-2"
                    i18n:attributes="value Search" />
+
           </tal:block>
 
           <p id="form-widgets-teacher_manager-error" i18n:translate="">

@@ -131,9 +131,9 @@ class View(BrowserView):
         roles = api.user.get_current().getRoles()
         market_path = self.context.getParentNode().getParentNode().absolute_url()
         if 'Manager' in roles or 'TFE Manager' in roles:
-            self.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id + "&open=Y")
+            self.request.response.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id + "&open=Y")
         else:
-            self.redirect(market_path)
+            self.request.response.redirect(market_path)
 
 
 class AddForm(add.DefaultAddForm):
@@ -148,7 +148,7 @@ class AddForm(add.DefaultAddForm):
 
         if not checkPermissionCreateApplications(self, self.context, False):
             self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
-            self.redirect(self.context.absolute_url())
+            self.request.response.redirect(self.context.absolute_url())
 
 
 class AddView(add.DefaultAddView):
@@ -166,7 +166,7 @@ class EditForm(edit.DefaultEditForm):
 
         if not checkPermissionCreateApplications(self, self.context, False):
             self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
-            self.redirect(self.context.absolute_url())
+            self.request.response.redirect(self.context.absolute_url())
 
 
 def defineDregreecode(application, event):

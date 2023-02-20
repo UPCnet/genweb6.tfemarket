@@ -6,14 +6,7 @@
 
   <include package="plone.app.contentmenu" />
 
-  <browser:page
-    name="view"
-    for="genweb6.tfemarket.content.application.application.IApplication"
-    class=".application.application.View"
-    layer="..interfaces.IGenweb6TfemarketLayer"
-    permission="zope2.View"
-    template="application/application.pt"
-    />
+  <!-- MARKET -->
 
   <browser:page
     name="view"
@@ -23,6 +16,14 @@
     permission="zope2.View"
     template="market/market.pt"
     />
+
+  <subscriber
+    for=".market.market.IMarket
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".market.market.disablePortlets"
+    />
+
+  <!-- OFFER -->
 
   <browser:page
     name="view"
@@ -55,54 +56,6 @@
     class=".offer.offer.EditForm"
     layer="..interfaces.IGenweb6TfemarketLayer"
     permission="cmf.ModifyPortalContent"
-    />
-
-  <adapter
-    for="Products.CMFCore.interfaces.IFolderish
-         zope.publisher.interfaces.browser.IDefaultBrowserLayer
-         plone.dexterity.interfaces.IDexterityFTI"
-    provides="zope.publisher.interfaces.browser.IBrowserPage"
-    factory=".application.application.AddView"
-    name="genweb.tfemarket.application"
-    />
-
-  <class class=".application.application.AddView">
-    <require
-      permission="cmf.AddPortalContent"
-      interface="zope.publisher.interfaces.browser.IBrowserPage"
-      />
-  </class>
-
-  <browser:page
-    name="edit"
-    for=".application.application.IApplication"
-    class=".application.application.EditForm"
-    layer="..interfaces.IGenweb6TfemarketLayer"
-    permission="cmf.ModifyPortalContent"
-    />
-
-  <subscriber
-    for=".application.application.IApplication
-         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".application.application.defineDregreecode"
-    />
-
-  <subscriber
-    for=".application.application.IApplication
-         zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".application.application.defineDregreecode"
-    />
-
-  <subscriber
-    for=".application.application.IApplication
-         zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".application.application.getCodiExpedient"
-    />
-
-  <subscriber
-    for=".market.market.IMarket
-         zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".market.market.disablePortlets"
     />
 
   <subscriber
@@ -193,6 +146,59 @@
     provides="zope.schema.interfaces.IVocabularyFactory"
     name="genweb.tfemarket.TypeCodirector"
     factory=".offer.offer.TypeCodirectorVocabulary"
+    />
+
+  <!-- APPLICATION -->
+
+  <browser:page
+    name="view"
+    for="genweb6.tfemarket.content.application.application.IApplication"
+    class=".application.application.View"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    template="application/application.pt"
+    />
+
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".application.application.AddView"
+    name="genweb.tfemarket.application"
+    />
+
+  <class class=".application.application.AddView">
+    <require
+      permission="cmf.AddPortalContent"
+      interface="zope.publisher.interfaces.browser.IBrowserPage"
+      />
+  </class>
+
+  <browser:page
+    name="edit"
+    for=".application.application.IApplication"
+    class=".application.application.EditForm"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <subscriber
+    for=".application.application.IApplication
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".application.application.defineDregreecode"
+    />
+
+  <subscriber
+    for=".application.application.IApplication
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".application.application.defineDregreecode"
+    />
+
+  <subscriber
+    for=".application.application.IApplication
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".application.application.getCodiExpedient"
     />
 
 </configure>
