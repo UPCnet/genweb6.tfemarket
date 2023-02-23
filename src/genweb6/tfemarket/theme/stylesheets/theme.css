@@ -40,3 +40,14 @@ body.portaltype-genweb-tfemarket-market .collapseBtn > span:after {
 body.portaltype-genweb-tfemarket-market #collapseCercador > .card {
   background-image: url(++theme++genweb6.tfemarket/img/pattern-tfe.png);
 }
+@media (max-width: 576px) {
+  /* line 60, ../scss/_market.scss */
+  body.portaltype-genweb-tfemarket-market .badges {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  /* line 64, ../scss/_market.scss */
+  body.portaltype-genweb-tfemarket-market .badges .badge {
+    margin-bottom: 0.25rem;
+  }
+}

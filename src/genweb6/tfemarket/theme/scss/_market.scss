@@ -54,4 +54,16 @@ body.portaltype-genweb-tfemarket-market {
       background-image: url(++theme++genweb6.tfemarket/img/pattern-tfe.png);
     }
   }
+
+  @media (max-width: 576px) {
+
+    .badges {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+      .badge {
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
 }

@@ -40,6 +40,14 @@
     />
 
   <browser:page
+    name="requestOfferOtherUser"
+    for="zope.interface.Interface"
+    class=".views.requestOfferOtherUser"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:page
     name="getInfoRenameOffer"
     for="zope.interface.Interface"
     class=".views.getInfoRenameOffer"
@@ -117,6 +125,24 @@
     class=".views.tfemarketUtilsExportCSV"
     layer="..interfaces.IGenweb6TfemarketLayer"
     permission="genweb.tfemarket.utils"
+    />
+
+  <browser:page
+    name="tfemarket-utils-request-offer"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsRequestOffer"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    template="views_templates/tfemarket_utils_request_offer.pt"
+    />
+
+  <browser:page
+    name="tfemarket-utils-fix-owner-application"
+    for="zope.interface.Interface"
+    class=".views.tfemarketUtilsFixOwnerApplication"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    template="views_templates/tfemarket_utils_fix_owner_application.pt"
     />
 
   <browser:page

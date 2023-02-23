@@ -55,10 +55,8 @@
               </span>
               <input class="form-control mb-3" id="newTitle" name="newTitle" type="text" required="required">
 
-
               <label class="form-label" i18n:translate="">Shortname</label>
               <input class="form-control mb-3" id="newShortname" name="newShortname" type="text" required="required">
-
 
               <input class="form-check-input me-1" id="confirm" type="checkbox" required="required">
               <span class="form-check-label" i18n:translate="">Confirm the rename of offer.</span>

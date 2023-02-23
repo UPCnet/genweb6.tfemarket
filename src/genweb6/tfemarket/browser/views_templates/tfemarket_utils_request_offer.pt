@@ -17,7 +17,7 @@
              tal:define="portal_url context/@@plone_portal_state/portal_url;">
           <h1 class="documentFirstHeading">
             <tal:block i18n:translate="">Tools of the TFE</tal:block> -
-            <tal:block i18n:translate="">Copy offer</tal:block>
+            <tal:block i18n:translate="">Request offer</tal:block>
           </h1>
           <div class="documentDescription">
             <p tal:repeat="tfe view/getTFEs">
@@ -31,7 +31,7 @@
           </div>
 
           <div>
-            <form id="formTFE" action="@@tfemarket-utils-copy-offer" method="post">
+            <form id="formTFE" class="mb-4" action="@@tfemarket-utils-request-offer" method="post" target="_blank">
               <label class="form-label" i18n:translate="">offer</label>
               <select id="offer" name="offer" class="form-select mb-3" required="required">
                 <option></option>
@@ -42,14 +42,20 @@
                 </option>
               </select>
 
+              <label class="form-label" i18n:translate="">User</label>
+              <input class="form-control mb-3" id="userRequest" name="userRequest" type="text" required="required">
+
               <input id="confirm" class="form-check-input me-1" type="checkbox" required="required">
-              <span class="form-check-label" i18n:translate="">Confirm the copy of offer.</span>
+              <span class="form-check-label" i18n:translate="">Confirmar creació de la sol·licitud</span>
 
               <br>
               <br>
 
               <input class="btn btn-primary" type="submit" name="submit" i18n:attributes="value Submit">
             </form>
+
+            <a i18n:translate=""
+               tal:attributes="href string:${portal_url}/@@tfemarket_utils_fix_owner_application">Fix owner application</a>
           </div>
         </div>
 

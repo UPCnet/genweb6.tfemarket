@@ -184,6 +184,27 @@ class requestOffer(BrowserView):
             redirectToMarket(self)
 
 
+class requestOfferOtherUser(BrowserView):
+
+    def __call__(self):
+        try:
+            from plone.protect.interfaces import IDisableCSRFProtection
+            alsoProvides(self.request, IDisableCSRFProtection)
+        except:
+            pass
+
+        itemid = self.request.form.get('id')
+        portal = api.portal.get()
+        currentItem = portal.unrestrictedTraverse(itemid)
+        user = api.user.get(userid=self.request.form.get('userRequest'))
+        data = getStudentData(self, currentItem, user)
+        if data:
+            self.request.response.setCookie('APPLICATION_DATA', data, path='/')
+            self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
+        else:
+            redirectToMarket(self)
+
+
 class getInfoCreateApplication(BrowserView):
 
     def __call__(self):
@@ -224,6 +245,9 @@ class tfemarketUtils(BrowserView):
 
     def canManageTFE(self):
         return checkPermission("genweb.tfemarket.controlpanel", self)
+
+    def isManager(self):
+        return checkPermission("genweb.manager", self)
 
 
 class tfemarketUtilsCopyOffer(BrowserView):
@@ -617,6 +641,63 @@ class tfemarketUtilsExportCSV(BrowserView):
             return output_file.getvalue()
 
 
+class tfemarketUtilsRequestOffer(BrowserView):
+
+    render = ViewPageTemplateFile("views_templates/tfemarket_utils_request_offer.pt")
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+    def getOffers(self):
+        return getAllOffers(self)
+
+    def __call__(self):
+        if 'submit' in self.request.form:
+            pc = api.portal.get_tool('portal_catalog')
+            offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                      'UID': self.request.form['offer']})
+            if len(offer) > 0:
+                offerObj = offer[0].getObject()
+                self.request.response.redirect(offerObj.aq_parent.absolute_url() + '/requestOfferOtherUser?id=' + '/'.join(offerObj.getPhysicalPath()[2:]) + '&offer=' + offerObj.offer_id + '&userRequest=' + self.request.form['userRequest'] + '&open=Y')
+
+        return self.render()
+
+
+class tfemarketUtilsFixOwnerApplication(BrowserView):
+
+    render = ViewPageTemplateFile("views_templates/tfemarket_utils_fix_owner_application.pt")
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+    def getApplications(self):
+        return getAllApplications(self)
+
+    def __call__(self):
+        if 'submit' in self.request.form:
+            pc = api.portal.get_tool('portal_catalog')
+            app = pc.searchResults({'portal_type': 'genweb.tfemarket.application',
+                                    'UID': self.request.form['application']})
+
+            if len(app) > 0:
+                app = app[0].getObject()
+                currentUser = api.user.get_current()
+                newUser = self.request.form['userRequest']
+
+                app.manage_delLocalRoles([currentUser])
+                app.creators = tuple([newUser])
+                app.manage_setLocalRoles(newUser, ["Owner"])
+                app.setCreators(newUser)
+                app.addCreator(newUser)
+                app.reindexObjectSecurity()
+                app.reindexObject()
+                transaction.commit()
+
+                IStatusMessage(self.request).addStatusMessage(_(u'OK'), 'info')
+
+        return self.render()
+
+
 def getUrlAllTFE(self):
     pc = api.portal.get_tool('portal_catalog')
     return pc.searchResults({'portal_type': 'genweb.tfemarket.market'})
@@ -627,6 +708,7 @@ def getAllOffers(self):
     filters = {'portal_type': 'genweb.tfemarket.offer',
                'sort_on': 'sortable_title',
                'sort_order': 'ascending'}
+
     if 'TFE Teacher' in api.user.get_current().getRoles() and api.user.get_current().id != "admin":
         filters.update({'Creator': api.user.get_current().id})
 
@@ -636,6 +718,23 @@ def getAllOffers(self):
         res.append({'UID': offer.UID,
                     'Title': offer.Title,
                     'offer_id': offer.getObject().offer_id})
+    return res
+
+
+def getAllApplications(self):
+    pc = api.portal.get_tool('portal_catalog')
+    filters = {'portal_type': 'genweb.tfemarket.application',
+               'sort_on': 'sortable_title',
+               'sort_order': 'ascending'}
+
+    applications = pc.searchResults(**filters)
+    res = []
+    for app in applications:
+        offer = app.getObject().aq_parent
+        res.append({'UID': app.UID,
+                    'Title': app.Title,
+                    'offer_id': offer.offer_id,
+                    'offer_title': offer.Title})
     return res
 
 

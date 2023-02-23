@@ -15,10 +15,12 @@
 
         <div id="utils"
              tal:define="portal_url context/@@plone_portal_state/portal_url;">
+
           <h1 class="documentFirstHeading"
               i18n:translate="">
             Tools of the TFE
           </h1>
+
           <div class="documentDescription">
             <p tal:repeat="tfe view/getTFEs">
               <span i18n:translate="">Return to market </span>
@@ -27,48 +29,79 @@
           </div>
 
           <div class="container row">
+
             <ul class="col-md-3 list-group">
+
               <li class="list-group-item">
                 <a class="text-decoration-none"
                    tal:attributes="href string:${portal_url}/@@tfemarket-utils-copy-offer">
-                  <span class="fa fa-copy"></span>
+                  <i class="bi bi-clipboard"></i>
                   <span i18n:translate="">Copy offer</span>
                 </a>
               </li>
+
               <li class="list-group-item">
                 <a class="text-decoration-none"
                    tal:attributes="href string:${portal_url}/@@tfemarket-utils-rename-offer">
-                  <span class="fa fa-edit"></span>
+                  <i class="bi bi-pencil"></i>
                   <span i18n:translate="">Rename offer</span>
                 </a>
               </li>
+
                <li class="list-group-item">
                 <a class="text-decoration-none"
                    tal:attributes="href string:${portal_url}/@@tfemarket-utils-delete-offer">
-                  <span class="fa fa-trash"></span>
+                  <i class="bi bi-trash"></i>
                   <span i18n:translate="">Delete offer</span>
                 </a>
               </li>
+
             </ul>
 
             <ul class="col-md-3 list-group"
                 tal:condition="view/canManageTFE">
+
               <li class="list-group-item">
                 <a class="text-decoration-none"
                    tal:attributes="href string:${portal_url}/@@tfemarket-utils-stats">
-                  <span class="fa fa-area-chart"></span>
+                  <i class="bi bi-bar-chart"></i>
                   <span i18n:translate="">Stats</span>
                 </a>
               </li>
+
               <li class="list-group-item">
                 <a class="text-decoration-none"
                    tal:attributes="href string:${portal_url}/@@tfemarket-utils-download-csv">
-                  <span class="fa fa-download"></span>
+                  <i class="bi bi-download"></i>
                   <span i18n:translate="">Download CSV</span>
                 </a>
               </li>
+
             </ul>
+
+            <ul class="col-md-3 list-group"
+                tal:condition="view/isManager">
+
+              <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-request-offer">
+                  <i class="bi bi-envelope-paper"></i>
+                  <span i18n:translate="">Request offer</span>
+                </a>
+              </li>
+
+              <li class="list-group-item">
+                <a class="text-decoration-none"
+                   tal:attributes="href string:${portal_url}/@@tfemarket-utils-fix-owner-application">
+                  <i class="bi bi-person-gear"></i>
+                  <span i18n:translate="">Fix owner application</span>
+                </a>
+              </li>
+
+            </ul>
+
           </div>
+
         </div>
 
       </tal:main-macro>

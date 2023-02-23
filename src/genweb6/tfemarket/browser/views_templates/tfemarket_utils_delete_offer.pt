@@ -64,7 +64,7 @@
         </div>
 
         <script type="text/javascript"
-                tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/tfemarket_utils_copy_delete_offer.min.js">
+                tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/tfemarket_utils_offer.min.js">
         </script>
 
       </tal:main-macro>

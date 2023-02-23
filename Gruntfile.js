@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                     'js/widget-student.min.js': '../widgets/student/student.js',
                     'js/widget-teacher.min.js': '../widgets/teacher/teacher.js',
                     'js/widget-teacher-if-teacher.min.js': '../widgets/teacher/teacher-if-teacher.js',
-                    'js/tfemarket_utils_copy_delete_offer.min.js': '../browser/views_templates/tfemarket_utils_copy_delete_offer.js',
+                    'js/tfemarket_utils_offer.min.js': '../browser/views_templates/tfemarket_utils_offer.js',
                     'js/tfemarket_utils_rename_offer.min.js': '../browser/views_templates/tfemarket_utils_rename_offer.js',
                     'js/tfemarket_utils_stats.min.js': '../browser/views_templates/tfemarket_utils_stats.js'
                 }

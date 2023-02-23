@@ -17,7 +17,7 @@
              tal:define="portal_url context/@@plone_portal_state/portal_url;">
           <h1 class="documentFirstHeading">
             <tal:block i18n:translate="">Tools of the TFE</tal:block> -
-            <tal:block i18n:translate="">Copy offer</tal:block>
+            <tal:block i18n:translate="">Fix owner application</tal:block>
           </h1>
           <div class="documentDescription">
             <p tal:repeat="tfe view/getTFEs">
@@ -31,19 +31,22 @@
           </div>
 
           <div>
-            <form id="formTFE" action="@@tfemarket-utils-copy-offer" method="post">
-              <label class="form-label" i18n:translate="">offer</label>
-              <select id="offer" name="offer" class="form-select mb-3" required="required">
+            <form id="formTFE" class="mb-4" action="@@tfemarket-utils-fix-owner-application" method="post">
+              <label class="form-label" i18n:translate="">application</label>
+              <select id="application" name="application" class="form-select mb-3" required="required">
                 <option></option>
-                <option tal:repeat="offer view/getOffers"
-                        tal:attributes="value offer/UID"
-                        tal:content="string:[${offer/offer_id}] ${offer/Title}">
+                <option tal:repeat="application view/getApplications"
+                        tal:attributes="value application/UID"
+                        tal:content="string:${application/Title} - [${application/offer_id}] ${application/offer_title}">
                   Option
                 </option>
               </select>
 
+              <label class="form-label" i18n:translate="">User</label>
+              <input class="form-control mb-3" id="userRequest" name="userRequest" type="text" required="required">
+
               <input id="confirm" class="form-check-input me-1" type="checkbox" required="required">
-              <span class="form-check-label" i18n:translate="">Confirm the copy of offer.</span>
+              <span class="form-check-label" i18n:translate="">Confirmar acció</span>
 
               <br>
               <br>
