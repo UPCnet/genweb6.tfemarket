@@ -744,11 +744,11 @@ msgstr "L'oferta ha sigut copiada."
 
 #: ../browser/views.py:331
 msgid "The offer has been modified."
-msgstr "L'oferta a sigut modificada."
+msgstr "L'oferta ha sigut modificada."
 
 #: ../browser/views.py:376
 msgid "The offer has been removed."
-msgstr "L'oferta a sigut eliminada."
+msgstr "L'oferta ha sigut eliminada."
 
 #: ../content/market/market.pt:432
 msgid "The offer is expired."
