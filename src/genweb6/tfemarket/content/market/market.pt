@@ -8,12 +8,6 @@
 
 <body>
 
-<metal:head fill-slot="javascript_head_slot">
-  <script type="text/javascript"
-          tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/market.min.js">
-  </script>
-</metal:head>
-
 <metal:content-core fill-slot="content-core">
 
 <metal:block define-macro="content-core">
@@ -1053,6 +1047,10 @@
     </tal:ofertes>
 
   </div>
+
+  <script type="text/javascript"
+          tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/market.min.js">
+  </script>
 
 </metal:content-core>
 </body>
