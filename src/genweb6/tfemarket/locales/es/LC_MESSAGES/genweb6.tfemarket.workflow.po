@@ -13,7 +13,8 @@ msgstr ""
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb6.tfemarket.workflow\n"
-"X-Generator: Poedit
+"X-Generator: Poedit 1.5.4\n"
+"Language: es\n"
 
 msgid "Assignada (intranet)"
 msgstr "Asignada (intranet)"
