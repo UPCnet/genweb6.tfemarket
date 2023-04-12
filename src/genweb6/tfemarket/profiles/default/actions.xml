@@ -15,7 +15,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${globals_view/navigationRootUrl}/folder_contents</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+           <property name="icon_expr">string:plone-home</property>
             <property name="available_expr">context/@@genweb.utils/havePermissionAtRoot</property>
             <property name="permissions">
                 <element value="View" />
@@ -28,7 +28,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${globals_view/navigationRootUrl}/@@personal-preferences</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-user</property>
             <property name="available_expr">python:member is not None</property>
             <property name="permissions">
                 <element value="View" />
@@ -41,7 +41,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${portal_url}/@@overview-controlpanel</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-controlpanel</property>
             <property name="available_expr" />
             <property name="permissions">
                 <element value="Genweb: Webmaster Users" />
@@ -54,7 +54,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${portal_url}/tfemarket-settings</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-controlpanel</property>
             <property name="available_expr" />
             <property name="permissions">
                 <element value="Genweb TFEMarket: Edit Controlpanel" />
@@ -67,7 +67,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${portal_url}/tfemarket-utils</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-controlpanel</property>
             <property name="available_expr" />
             <property name="permissions">
                 <element value="Genweb TFEMarket: View utils" />
@@ -80,7 +80,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${globals_view/navigationRootUrl}/login_form</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-login</property>
             <property name="available_expr">python:member is None</property>
             <property name="permissions">
                 <element value="View" />
@@ -93,7 +93,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${globals_view/navigationRootUrl}/@@register</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-register</property>
             <property name="available_expr">python:member is None</property>
             <property name="permissions">
                 <element value="Add portal member" />
@@ -106,7 +106,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${globals_view/navigationRootUrl}/undo_form</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-undo</property>
             <property name="available_expr">python:member is not None</property>
             <property name="permissions">
                 <element value="List undoable changes" />
@@ -119,7 +119,7 @@
             <property name="description" i18n:translate="" />
             <property name="url_expr">string:${globals_view/navigationRootUrl}/logout</property>
             <property name="link_target" />
-            <property name="icon_expr" />
+            <property name="icon_expr">string:plone-logout</property>
             <property name="available_expr">python:member is not None</property>
             <property name="permissions">
                 <element value="View" />
