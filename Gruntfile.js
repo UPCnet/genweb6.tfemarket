@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         cssmin: {
             css : {
                 src : ["stylesheets/theme-concat.css"],
-                dest : "stylesheets/theme.min.css",
+                dest : "stylesheets/theme-tfemarket.min.css",
             }
         },
         watch: {

@@ -13,7 +13,7 @@
       <element>tfemarket-main</element>
     </value>
     <value key="jscompilation" />
-    <value key="csscompilation">++theme++genweb6.tfemarket/stylesheets/theme.min.css</value>
+    <value key="csscompilation">++theme++genweb6.tfemarket/stylesheets/theme-tfemarket.min.css</value>
 
   </records>
 
