@@ -508,8 +508,7 @@ class tfemarketUtilsExportCSV(BrowserView):
                                    'Teacher ID', 'Teacher fullname', 'Teacher email', 'Teacher university department',
                                    'Type Codirector', 'Codirector ID', 'Codirector fullname', 'Codirector email',
                                    'Codirector university department', 'Number of students', 'Workload', 'Targets',
-                                   'Features', 'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
-                                   'Company contact', 'Company email', 'Possibility of scholarship',
+                                   'Features', 'Requirements', 'Languages', 'Modality', 'Company', 'Possibility of scholarship',
                                    'Confidential', 'Environmental theme', 'Scope of cooperation',
                                    'Publication date', 'Expiration date', 'Expired', 'State']
                 else:  # Omit Num Students
@@ -517,8 +516,7 @@ class tfemarketUtilsExportCSV(BrowserView):
                                    'Teacher ID', 'Teacher fullname', 'Teacher email', 'Teacher university department',
                                    'Type Codirector', 'Codirector ID', 'Codirector fullname', 'Codirector email',
                                    'Codirector university department', 'Workload', 'Targets', 'Features',
-                                   'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
-                                   'Company contact', 'Company email', 'Possibility of scholarship',
+                                   'Requirements', 'Languages', 'Modality', 'Company', 'Possibility of scholarship',
                                    'Confidential', 'Environmental theme', 'Scope of cooperation',
                                    'Publication date', 'Expiration date', 'Expired', 'State']
 
