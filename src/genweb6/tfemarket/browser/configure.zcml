@@ -166,7 +166,7 @@
     for="zope.interface.Interface"
     class=".helpers.importTitulacions"
     layer="..interfaces.IGenweb6TfemarketLayer"
-    permission="cmf.ManagePortal"
+    permission="genweb.tfemarket.controlpanel"
     template="helpers_templates/import_titulacions.pt"
     />
 
@@ -175,7 +175,7 @@
     for="zope.interface.Interface"
     class=".helpers.importOfertes"
     layer="..interfaces.IGenweb6TfemarketLayer"
-    permission="cmf.ManagePortal"
+    permission="genweb.tfemarket.controlpanel"
     template="helpers_templates/import_ofertes.pt"
     />
 
