@@ -7,9 +7,8 @@ from Products.statusmessages.interfaces import IStatusMessage
 from io import StringIO
 from plone import api
 from plone.dexterity.utils import createContentInContainer
-from plone.registry.interfaces import IRegistry
+from plone.memoize.view import memoize
 from zope.component import getMultiAdapter
-from zope.component import queryUtility
 from zope.interface import alsoProvides
 from zope.security import checkPermission
 
@@ -17,6 +16,7 @@ from genweb6.tfemarket import _
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.tfemarket.utils import BusError
 from genweb6.tfemarket.utils import checkOfferhasAssign
+from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.utils import getApplicationsFromContent
 from genweb6.tfemarket.utils import getDegrees
 from genweb6.tfemarket.utils import getExactUserData
@@ -229,8 +229,7 @@ class resetCountOffers(BrowserView):
 
     def __call__(self):
         if 'confirm' in self.request.form:
-            registry = queryUtility(IRegistry)
-            tfe_tool = registry.forInterface(ITfemarketSettings)
+            tfe_tool = genwebTfemarketConfig()
             tfe_tool.count_offers = 0
             transaction.commit()
             self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
@@ -426,9 +425,9 @@ class tfemarketUtilsStats(BrowserView):
     def getTFEs(self):
         return getUrlAllTFE(self)
 
+    @memoize
     def getStates(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         review_state = tfe_tool.review_state
 
         results = []
@@ -500,8 +499,7 @@ class tfemarketUtilsExportCSV(BrowserView):
                                        'UID': self.request.form['UID']})[0]
 
             if 'submit_offers' in self.request.form:
-                registry = queryUtility(IRegistry)
-                tfe_tool = registry.forInterface(ITfemarketSettings)
+                tfe_tool = genwebTfemarketConfig()
 
                 if tfe_tool.view_num_students:
                     data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
@@ -743,8 +741,7 @@ def checkOfferhasApplications(offer):
 class fillEmptyTFGMOffers(BrowserView):
 
     def getDegreesProgramType(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
 
         result = {}
         if tfe_tool.titulacions_table:

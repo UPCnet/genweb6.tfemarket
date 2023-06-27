@@ -4,9 +4,7 @@ from Products.CMFCore.utils import getToolByName
 from datetime import date
 from datetime import datetime
 from plone import api
-from plone.registry.interfaces import IRegistry
 from zope.component import getMultiAdapter
-from zope.component import queryUtility
 from zope.globalrequest import getRequest
 
 from genweb6.tfemarket import _
@@ -19,8 +17,9 @@ from genweb6.tfemarket.browser.events.data.messages import M6
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.tfemarket.utils import BusError
 from genweb6.tfemarket.utils import checkOfferhasValidApplications
+from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.utils import sendMessage
-from genweb6.upc.controlpanels.bus_soa import IBusSOASettings
+from genweb6.upc.utils import genwebBusSOAConfig
 
 import requests
 import transaction
@@ -59,8 +58,7 @@ def applicationChanged(application, event):
         'signature': _(u'TFE Mercat'),
     }
 
-    registry = queryUtility(IRegistry)
-    tfe_tool = registry.forInterface(ITfemarketSettings)
+    tfe_tool = genwebTfemarketConfig()
 
     student_mail = application.email
     teacher_mail = application.getParentNode().teacher_email
@@ -179,9 +177,8 @@ def applicationRegistered(application, event):
     if event.transition:
         if event.transition.id == 'confirm':
             if application.degree_id[:2] not in ['DG', 'DM']:
-                registry = queryUtility(IRegistry)
-                tfe_tool = registry.forInterface(ITfemarketSettings)
-                bussoa_tool = registry.forInterface(IBusSOASettings)
+                tfe_tool = genwebTfemarketConfig()
+                bussoa_tool = genwebBusSOAConfig()
 
                 bussoa_url = bussoa_tool.bus_url
                 bussoa_user = bussoa_tool.bus_user

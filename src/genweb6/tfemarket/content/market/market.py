@@ -9,11 +9,9 @@ from plone import api
 from plone.portlets.constants import CONTEXT_CATEGORY
 from plone.portlets.interfaces import ILocalPortletAssignmentManager
 from plone.portlets.interfaces import IPortletManager
-from plone.registry.interfaces import IRegistry
 from plone.supermodel import model
 from zope.component import getMultiAdapter
 from zope.component import getUtility
-from zope.component import queryUtility
 from zope.security import checkPermission
 from zope.sequencesort.ssort import sort
 
@@ -23,11 +21,12 @@ from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb6.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb6.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
+from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.utils import getDegreeLiteralFromId
 from genweb6.tfemarket.utils import getDegrees
 from genweb6.tfemarket.utils import isManager
 from genweb6.tfemarket.utils import isTeachersOffer
-from genweb6.upc.controlpanels.bus_soa import IBusSOASettings
+from genweb6.upc.utils import genwebBusSOAConfig
 from genweb6.upc.utils import getTokenIdentitatDigital
 
 import ast
@@ -177,8 +176,7 @@ class View(BrowserView):
                     offerState = offerWorkflow['states'][offerStatus['review_state']]
 
                     if offerState.id == 'offered':
-                        registry = queryUtility(IRegistry)
-                        tfe_tool = registry.forInterface(ITfemarketSettings)
+                        tfe_tool = genwebTfemarketConfig()
                         review_state = tfe_tool.review_state
                         if review_state:
                             workflowActions = [x for x in workflowActions if x.get('id') == 'sendtoreview']
@@ -317,8 +315,7 @@ class View(BrowserView):
         return results
 
     def getLanguages(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         return tfe_tool.languages
 
     def getModalities(self):
@@ -398,8 +395,7 @@ class View(BrowserView):
         return sorted(results, key=lambda x: x['lit'])
 
     def getKeys(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         tags = []
 
         keys = tfe_tool.tags
@@ -410,8 +406,7 @@ class View(BrowserView):
         return tags
 
     def getTopics(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         topics = []
 
         keys = tfe_tool.topics
@@ -493,8 +488,7 @@ class View(BrowserView):
     def showErrorConfiguration(self):
         user_roles = api.user.get_current().getRoles()
         if 'Manager' in user_roles or 'TFE Manager' in user_roles:
-            registry = queryUtility(IRegistry)
-            bussoa_tool = registry.forInterface(IBusSOASettings)
+            bussoa_tool = genwebBusSOAConfig()
             if bussoa_tool.bus_url and bussoa_tool.bus_user and bussoa_tool.bus_password and bussoa_tool.bus_apikey and getTokenIdentitatDigital().status_code == 201:
                 return False
             return True
@@ -504,8 +498,7 @@ class View(BrowserView):
         user_roles = api.user.get_current().getRoles()
 
         if 'Manager' in user_roles or 'TFE Manager' in user_roles or 'TFE Teacher' in user_roles:
-            registry = queryUtility(IRegistry)
-            tfe_tool = registry.forInterface(ITfemarketSettings)
+            tfe_tool = genwebTfemarketConfig()
             titulacions = tfe_tool.titulacions_table
 
             if titulacions:
@@ -514,6 +507,5 @@ class View(BrowserView):
         return False
 
     def showNumEstudiants(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         return tfe_tool.view_num_students

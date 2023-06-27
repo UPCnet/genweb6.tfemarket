@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from Products.statusmessages.interfaces import IStatusMessage
+
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.app.registry.browser import controlpanel
@@ -6,9 +8,11 @@ from plone.autoform import directives
 from plone.autoform.directives import read_permission
 from plone.autoform.directives import write_permission
 from plone.supermodel import model
+from z3c.form import button
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.interface import implementer
+from zope.ramcache import ram
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 
@@ -218,6 +222,30 @@ class TfemarketSettingsEditForm(controlpanel.RegistryEditForm):
 
     schema = ITfemarketSettings
     label = _(u'UPC Mercat TFE')
+
+    def updateFields(self):
+        super(TfemarketSettingsEditForm, self).updateFields()
+
+    def updateWidgets(self):
+        super(TfemarketSettingsEditForm, self).updateWidgets()
+
+    @button.buttonAndHandler(_('Save'), name='save')
+    def handleSave(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+
+        ram.caches.clear()
+        self.applyChanges(data)
+
+        IStatusMessage(self.request).addStatusMessage(_("Changes saved"), "info")
+        self.request.response.redirect(self.request.getURL())
+
+    @button.buttonAndHandler(_("Cancel"), name='cancel')
+    def handleCancel(self, action):
+        IStatusMessage(self.request).addStatusMessage(_("Changes canceled."), "info")
+        self.request.response.redirect(self.context.absolute_url() + '/' + self.control_panel_view)
 
 
 class TfemarketSettingsControlPanel(controlpanel.ControlPanelFormWrapper):

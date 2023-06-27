@@ -7,11 +7,9 @@ from plone.autoform import directives
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
 from plone.indexer import indexer
-from plone.registry.interfaces import IRegistry
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
-from zope.component import queryUtility
 from zope.i18n import translate
 from zope.interface import implementer
 from zope.interface import Invalid
@@ -24,6 +22,7 @@ from genweb6.core.widgets import FieldsetFieldWidget
 from genweb6.core.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket import _
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
+from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.widgets import CodirectorInputFieldWidget
 from genweb6.tfemarket.widgets import SelectModalityInputFieldWidget
 from genweb6.tfemarket.widgets import TeacherInputFieldWidget
@@ -36,8 +35,7 @@ import unicodedata
 class LangsVocabulary(object):
 
     def __call__(self, context):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         results = tfe_tool.languages
 
         lang = api.portal.get_current_language()
@@ -55,8 +53,7 @@ class LangsVocabulary(object):
 class KeysVocabulary(object):
 
     def __call__(self, context):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         results = []
         tags = []
 
@@ -75,8 +72,7 @@ class KeysVocabulary(object):
 class TopicsVocabulary(object):
 
     def __call__(self, context):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         results = []
         topic = []
 
@@ -127,8 +123,7 @@ class ModalityVocabulary(object):
 class DegreesVocabulary(object):
 
     def __call__(self, context):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         current_language = api.portal.get_current_language()
 
         result = []
@@ -405,20 +400,18 @@ class View(BrowserView):
 class AddForm(add.DefaultAddForm):
 
     def updateFields(self):
-        import ipdb; ipdb.set_trace()
+        # TODO MIRAR QUE FUNCIONE EL TEMA DE TRADUCCION
         super(AddForm, self).updateFields()
         lang = self.request.get("MERCAT_TFE_LANG", 'ca')
         if lang in ['ca', 'en', 'es']:
             self.request['LANGUAGE'] = lang
             self.request.LANGUAGE_TOOL.LANGUAGE = lang
 
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         if not tfe_tool.view_num_students:
             self.fields = self.fields.omit('num_students')
 
     def updateWidgets(self):
-        import ipdb; ipdb.set_trace()
         try:
             super(AddForm, self).updateWidgets()
         except ValueError as err:
@@ -438,8 +431,7 @@ class EditForm(edit.DefaultEditForm):
             self.request['LANGUAGE'] = lang
             self.request.LANGUAGE_TOOL.LANGUAGE = lang
 
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         if not tfe_tool.view_num_students:
             self.fields = self.fields.omit('num_students')
 
@@ -451,8 +443,7 @@ class EditForm(edit.DefaultEditForm):
 
 
 def numOfferDefaultValue(offer, event):
-    registry = queryUtility(IRegistry)
-    tfe_tool = registry.forInterface(ITfemarketSettings)
+    tfe_tool = genwebTfemarketConfig()
     center = tfe_tool.center_code
     total = tfe_tool.count_offers + 1
 

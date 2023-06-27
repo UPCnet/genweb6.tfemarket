@@ -7,11 +7,10 @@ from plone import api
 from plone.app.event.base import dt_end_of_day
 from plone.app.event.base import dt_start_of_day
 from plone.dexterity.utils import createContentInContainer
-from plone.registry.interfaces import IRegistry
-from zope.component import queryUtility
 
 from genweb6.tfemarket.content.market.market import IMarket
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
+from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.utils import getExactUserData
 
 import csv
@@ -30,8 +29,7 @@ class importTitulacions(BrowserView):
             filename = fitxer.filename
 
             if filename != '' and filename.endswith('.csv'):
-                registry = queryUtility(IRegistry)
-                tfe_tool = registry.forInterface(ITfemarketSettings)
+                tfe_tool = genwebTfemarketConfig()
                 tfe_tool.titulacions_table = []
 
                 ifile = open(fitxer, "rb")
@@ -92,8 +90,7 @@ class importOfertes(BrowserView):
         return self.render()
 
     def createOffers(self, hasHeaders, fitxer, marketUID):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
 
         catalog = api.portal.get_tool(name='portal_catalog')
         market = catalog(UID=marketUID)[0].getObject()
@@ -175,14 +172,14 @@ class importOfertes(BrowserView):
                     actualTopics = tfe_tool.topics.split('\r\n')
                     newTopics = "\r\n".join([topic for topic in topics if topic not in actualTopics])
                     if newTopics:
-                        tfe_tool.topics += "\r\n" + newTopics
+                        tfe_tool.topics += "\r\n" + newTopics.strip()
 
                     strTags = row[6].decode("utf-8") + ","
                     tags = list(dict.fromkeys(strTags.split(",")[:-1]))
                     actualTags = tfe_tool.tags.split('\r\n')
                     newTags = "\r\n".join([tag for tag in tags if tag not in actualTags])
                     if newTags:
-                        tfe_tool.tags += "\r\n" + newTags
+                        tfe_tool.tags += "\r\n" + newTags.strip()
 
                     transaction.commit()
 
@@ -209,8 +206,7 @@ class importOfertes(BrowserView):
         return markets
 
     def checkNotValidDegrees(self, degrees):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
+        tfe_tool = genwebTfemarketConfig()
         allDegrees = [x['codi_mec'] for x in tfe_tool.titulacions_table]
         notValid = [x for x in degrees if x not in allDegrees]
         return notValid

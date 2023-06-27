@@ -10,14 +10,17 @@ from html import escape
 from operator import itemgetter
 from plone import api
 from plone.app.content.browser.folderfactories import _allowedTypes
+from plone.memoize import ram
+from plone.memoize.view import memoize
 from plone.registry.interfaces import IRegistry
+from time import time
 from zope.component import queryUtility
 from zope.security import checkPermission
 
 from genweb6.tfemarket import _
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
-from genweb6.upc.controlpanels.bus_soa import IBusSOASettings
-from genweb6.upc.controlpanels.identitat_digital import IIdentitatDigitalSettings
+from genweb6.upc.utils import genwebBusSOAConfig
+from genweb6.upc.utils import genwebIdentitatDigitalConfig
 from genweb6.upc.utils import getTokenIdentitatDigital
 
 import json
@@ -25,8 +28,7 @@ import requests
 
 
 def getDadesEst(self, cn, token):
-    registry = queryUtility(IRegistry)
-    identitat_digital_tool = registry.forInterface(IIdentitatDigitalSettings)
+    identitat_digital_tool = genwebIdentitatDigitalConfig()
     urlGetPerson = identitat_digital_tool.identitat_url + '/gcontrol/rest/externs/persones/' + cn.id + '/cn'
     headers = {'TOKEN': token}
     return requests.get(urlGetPerson, headers=headers)
@@ -68,8 +70,7 @@ def getUserData(user, typology=None):
     if result.status_code == 201:
         token = json.loads(result.content)['tokenAcl']
 
-        registry = queryUtility(IRegistry)
-        identitat_digital_tool = registry.forInterface(IIdentitatDigitalSettings)
+        identitat_digital_tool = genwebIdentitatDigitalConfig()
         urlGetPerson = identitat_digital_tool.identitat_url + '/gcontrol/rest/externs/identitats?cn=' + user + '&vistaTipus=DETALL_UEDETALL&perfil=PDI&perfil=PAS&perfil=PERSONAL&inactius=false'
         headers = {'TOKEN': token}
         result = requests.get(urlGetPerson, headers=headers)
@@ -108,9 +109,9 @@ def checkPermissionCreateObject(self, context, objectID):
     return False
 
 
+@memoize
 def getDegrees():
-    registry = queryUtility(IRegistry)
-    tfe_tool = registry.forInterface(ITfemarketSettings)
+    tfe_tool = genwebTfemarketConfig()
     current_language = api.portal.get_current_language()
 
     result = []
@@ -236,9 +237,8 @@ def getStudentData(self, item, user):
                     id_prisma = student_data['idPrisma']
                     numDocument = student_data['dni']
 
-                    registry = queryUtility(IRegistry)
-                    bussoa_tool = registry.forInterface(IBusSOASettings)
-                    tfe_tool = registry.forInterface(ITfemarketSettings)
+                    bussoa_tool = genwebBusSOAConfig()
+                    tfe_tool = genwebTfemarketConfig()
                     bussoa_url = bussoa_tool.bus_url
                     bussoa_user = bussoa_tool.bus_user
                     bussoa_pass = bussoa_tool.bus_password
@@ -288,6 +288,13 @@ def getStudentData(self, item, user):
     else:
         self.context.plone_utils.addPortalMessage(_(u"IDENTITAT DIGITAL: %s" % result.status_code), 'error')
         return None
+
+
+
+@ram.cache(lambda *args: time() // (24 * 60 * 60))
+def genwebTfemarketConfig():
+    registry = queryUtility(IRegistry)
+    return registry.forInterface(ITfemarketSettings)
 
 
 class genwebTFEMarketUtils(BrowserView):
