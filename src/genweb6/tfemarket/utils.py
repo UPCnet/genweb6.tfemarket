@@ -109,7 +109,6 @@ def checkPermissionCreateObject(self, context, objectID):
     return False
 
 
-@memoize
 def getDegrees():
     tfe_tool = genwebTfemarketConfig()
     current_language = api.portal.get_current_language()
