@@ -398,10 +398,11 @@ class View(BrowserView):
 
 
 class AddForm(add.DefaultAddForm):
+    portal_type = 'genweb.tfemarket.offer'
 
     def updateFields(self):
-        # TODO MIRAR QUE FUNCIONE EL TEMA DE TRADUCCION
         super(AddForm, self).updateFields()
+
         lang = self.request.get("MERCAT_TFE_LANG", 'ca')
         if lang in ['ca', 'en', 'es']:
             self.request['LANGUAGE'] = lang
@@ -426,6 +427,7 @@ class EditForm(edit.DefaultEditForm):
 
     def updateFields(self):
         super(EditForm, self).updateFields()
+
         lang = self.request.get("MERCAT_TFE_LANG", 'ca')
         if lang in ['ca', 'en', 'es']:
             self.request['LANGUAGE'] = lang

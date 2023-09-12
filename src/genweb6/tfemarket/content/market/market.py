@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collections import OrderedDict
 from datetime import date
@@ -47,6 +48,12 @@ def disablePortlets(market, event):
 
 
 class View(BrowserView):
+
+    index = ViewPageTemplateFile("market.pt")
+
+    def __call__(self):
+        self.update()
+        return self.index()
 
     def update(self):
         lang = self.request.get("MERCAT_TFE_LANG", 'ca')

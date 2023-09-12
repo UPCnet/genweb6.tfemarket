@@ -141,10 +141,6 @@ class AddForm(add.DefaultAddForm):
 
     def updateWidgets(self):
         super(AddForm, self).updateWidgets()
-        lang = self.request.get("MERCAT_TFE_LANG", 'ca')
-        if lang in ['ca', 'en', 'es']:
-            self.request['LANGUAGE'] = lang
-            self.request.LANGUAGE_TOOL.LANGUAGE = lang
 
         if not checkPermissionCreateApplications(self, self.context, False):
             self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
@@ -159,6 +155,7 @@ class EditForm(edit.DefaultEditForm):
 
     def updateWidgets(self):
         super(EditForm, self).updateWidgets()
+
         lang = self.request.get("MERCAT_TFE_LANG", 'ca')
         if lang in ['ca', 'en', 'es']:
             self.request['LANGUAGE'] = lang
