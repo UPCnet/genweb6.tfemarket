@@ -11,7 +11,7 @@
   <property name="schema">genweb6.tfemarket.content.offer.offer.IOffer</property>
   <property name="klass">genweb6.tfemarket.content.Offer</property>
   <property name="add_permission">genweb.tfemarket.add.offer</property>
-  <property name="factory">offer</property>
+  <property name="factory">genweb.tfemarket.offer</property>
   <property name="link_target" />
   <property name="immediate_view">view</property>
   <property name="add_view_expr">string:${folder_url}/++add++genweb.tfemarket.offer</property>
