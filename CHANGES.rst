@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.1 (unreleased)
+1.1 (2023-09-14)
 ----------------
 
-- Nothing changed yet.
-
+* Fix factory [Iago López]
+* Cambio de idioma [Iago López]
 
 1.0 (2023-09-12)
 ----------------
