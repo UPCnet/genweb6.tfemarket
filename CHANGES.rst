@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.2 (unreleased)
+1.2 (2023-11-13)
 ----------------
 
-- Nothing changed yet.
-
+* Cambios fase de migración [Iago López]
+* Fix grunt issues [Ruben Padilla Mateu]
 
 1.1 (2023-09-14)
 ----------------
