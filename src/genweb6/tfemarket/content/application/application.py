@@ -17,6 +17,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 from genweb6.core.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket import _
 from genweb6.tfemarket.utils import checkPermissionCreateApplications
+from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.utils import getDegreeLiteralFromId
 from genweb6.tfemarket.widgets import StudentInputFieldWidget
 
@@ -167,11 +168,19 @@ class EditForm(edit.DefaultEditForm):
 
 
 def defineDregreecode(application, event):
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     application.degree_title = getDegreeLiteralFromId(application.degree_id)
     application.reindexObject()
 
 
 def getCodiExpedient(application, event):
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     result = getCookie()
     degrees = result['degrees']
     codiexpedient = (item['codi_expedient'] for item in degrees if item['degree_id'] == application.degree_id)

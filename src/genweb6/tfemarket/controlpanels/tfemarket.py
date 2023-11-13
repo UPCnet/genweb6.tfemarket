@@ -92,7 +92,8 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['center_code', 'center_name', 'review_state', 'enroll_type', 'alternative_email', 'alternative_email_name'],
+        fields=['center_code', 'center_name', 'review_state', 'enroll_type', 'alternative_email',
+                'alternative_email_name'],
     )
 
     model.fieldset(
@@ -111,6 +112,12 @@ class ITfemarketSettings(model.Schema):
         'TopicTFE',
         _(u'classifications'),
         fields=['topics', 'tags', 'languages'],
+    )
+
+    model.fieldset(
+        'Migration',
+        _(u'Migració'),
+        fields=['enable_suscribers'],
     )
 
     # SETTINGS
@@ -200,21 +207,29 @@ class ITfemarketSettings(model.Schema):
         default=True,
     )
 
-    read_permission(import_offers='genweb.tfemarket.controlpanel')
-    write_permission(import_offers='genweb.manager')
+    directives.mode(import_offers='display')
     import_offers = schema.Text(
         title=_(u"Import offers"),
         description=_(u'To import the offers access the following <a href=\"import_ofertes\">link</a>.'),
         required=False,
     )
 
-    read_permission(count_offers='genweb.tfemarket.controlpanel')
-    write_permission(count_offers='genweb.manager')
+    directives.mode(count_offers='display')
     count_offers = schema.Int(
         title=_(u"Number of offers created"),
         description=_(u'To reset the counter access the following <a href=\"reset_offers_counter\">link</a>.'),
         required=False,
         default=0,
+    )
+
+    # MIGRACIO
+
+    read_permission(enable_suscribers='genweb.webmaster')
+    write_permission(enable_suscribers='genweb.manager')
+    enable_suscribers = schema.Bool(
+        title=_(u'Habilitar notificacions'),
+        required=False,
+        default=False,
     )
 
 

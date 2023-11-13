@@ -14,7 +14,6 @@ from genweb6.tfemarket.browser.events.data.messages import M3
 from genweb6.tfemarket.browser.events.data.messages import M4
 from genweb6.tfemarket.browser.events.data.messages import M5
 from genweb6.tfemarket.browser.events.data.messages import M6
-from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.tfemarket.utils import BusError
 from genweb6.tfemarket.utils import checkOfferhasValidApplications
 from genweb6.tfemarket.utils import genwebTfemarketConfig
@@ -44,9 +43,14 @@ def applicationChanged(application, event):
     """ If genweb.tfemarket.application change WF, sends email.
     """
 
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     lang = api.portal.get_current_language()
     if lang not in ['ca', 'en', 'es']:
         lang = 'en'
+
     data = {
         'student': application.title,
         'degree': application.degree_title,
@@ -58,7 +62,7 @@ def applicationChanged(application, event):
         'signature': _(u'TFE Mercat'),
     }
 
-    tfe_tool = genwebTfemarketConfig()
+    # tfe_tool = genwebTfemarketConfig()
 
     student_mail = application.email
     teacher_mail = application.getParentNode().teacher_email
@@ -130,6 +134,10 @@ def offerChanged(offer, event):
         will change the effective date.
     """
 
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     if event.transition is not None:
         if event.transition.id in ['publicaalintranet', 'publicaloferta']:
             wftool = getToolByName(offer, 'portal_workflow')
@@ -152,6 +160,10 @@ def offerCanceled(offer, event):
     """ If genweb.tfemarket.offer change WF, checks if can be canceled.
     """
 
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     if event.transition is not None:
         if event.transition.id == 'cancellaloferta':
             if checkOfferhasValidApplications(offer):
@@ -164,6 +176,10 @@ def offerDeleted(offer, event):
     """ Checks if can deleted genweb.tfemarket.offer.
     """
 
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     if checkOfferhasValidApplications(offer):
         offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
         request = getRequest()
@@ -174,10 +190,14 @@ def applicationRegistered(application, event):
     """ If genweb.tfemarket.offer change WF, checks if registered.
     """
 
+    tfe_tool = genwebTfemarketConfig()
+    if not tfe_tool.enable_suscribers:
+        return
+
     if event.transition:
         if event.transition.id == 'confirm':
             if application.degree_id[:2] not in ['DG', 'DM']:
-                tfe_tool = genwebTfemarketConfig()
+                # tfe_tool = genwebTfemarketConfig()
                 bussoa_tool = genwebBusSOAConfig()
 
                 bussoa_url = bussoa_tool.bus_url
