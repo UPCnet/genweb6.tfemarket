@@ -469,9 +469,9 @@ class View(BrowserView):
 
     def classCollapseCercador(self):
         if not isManager() and self.checkPermissionCreateOffers() and self.request.form == {}:
-            return {'btn': '', 'aria': 'true', 'cercador': 'collapse show'}
-        else:
             return {'btn': 'collapsed', 'aria': 'false', 'cercador': 'collapse'}
+        else:
+            return {'btn': '', 'aria': 'true', 'cercador': 'collapse show'}
 
     def assignOffer(self, offer, state):
         if checkPermission('cmf.RequestReview', offer) and checkOfferhasConfirmedApplications(offer):
