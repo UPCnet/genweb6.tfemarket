@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.3 (unreleased)
+1.3 (2023-11-20)
 ----------------
 
-- Nothing changed yet.
-
+* [FIX] Remove line TODO [Iago López]
 
 1.2 (2023-11-13)
 ----------------

@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='genweb6.tfemarket',
-    version='1.3.dev0',
+    version='1.3',
     description="Genweb 6 TFEMarket package",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
