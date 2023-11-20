@@ -471,7 +471,6 @@ class View(BrowserView):
         if not isManager() and self.checkPermissionCreateOffers() and self.request.form == {}:
             return {'btn': '', 'aria': 'true', 'cercador': 'collapse show'}
         else:
-            return {'btn': '', 'aria': 'true', 'cercador': 'collapse show'}  # TODO QUITAR
             return {'btn': 'collapsed', 'aria': 'false', 'cercador': 'collapse'}
 
     def assignOffer(self, offer, state):
