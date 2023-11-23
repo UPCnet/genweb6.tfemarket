@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.4 (unreleased)
+1.4 (2023-11-23)
 ----------------
 
-- Nothing changed yet.
-
+* [FIX] Collapse buscador ofertas [Iago López]
 
 1.3 (2023-11-20)
 ----------------
