@@ -528,7 +528,6 @@
 
                   <span class="me-2 badge text-bg-primary"
                         i18n:domain="genweb.tfemarket.workflow"
-                        tal:condition="offer/workflows"
                         tal:content="offer/state">State</span>
 
                   <span class="me-2 badge text-bg-danger"
@@ -1055,4 +1054,3 @@
 </metal:content-core>
 </body>
 </html>
-
