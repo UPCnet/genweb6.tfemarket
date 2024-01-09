@@ -424,7 +424,14 @@ class View(BrowserView):
         return topics
 
     def saveFilters(self):
+        searchMarket = self.request.cookies.get('MERCAT_TFE')
+        if searchMarket and not searchMarket == "":
+            searchMarket = json.loads(searchMarket)
+            if 'searchFilters' in self.request.form:
+                self.request.form = searchMarket
+
         filters = self.request.form
+        # filters.pop('state', None)
 
         if 'key' in filters:
             filters['key'] = self.flattenedList(filters['key'])
