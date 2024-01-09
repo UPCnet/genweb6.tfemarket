@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.5 (unreleased)
+1.5 (2024-01-09)
 ----------------
 
-- Nothing changed yet.
-
+* Mantener mejor la búsqueda despues de realizar acciones [Iago López]
+* Ver estado de las ofertas deslogueado [Iago López]
 
 1.4 (2023-11-23)
 ----------------
