@@ -6,13 +6,14 @@ from plone import api
 from plone.autoform import directives
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
+from plone.dexterity.interfaces import IDexteritySchema
 from plone.indexer import indexer
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.i18n import translate
-from zope.interface import implementer
 from zope.interface import Invalid
+from zope.interface import implementer
 from zope.interface import invariant
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
@@ -158,7 +159,7 @@ class TypeCodirectorVocabulary(object):
         return SimpleVocabulary(types)
 
 
-class IOffer(model.Schema):
+class IOffer(model.Schema, IDexteritySchema):
     """ Folder that contains information about a TFE and its applications
     """
 

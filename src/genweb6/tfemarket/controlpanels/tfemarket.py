@@ -7,6 +7,7 @@ from plone.app.registry.browser import controlpanel
 from plone.autoform import directives
 from plone.autoform.directives import read_permission
 from plone.autoform.directives import write_permission
+from plone.dexterity.interfaces import IDexteritySchema
 from plone.supermodel import model
 from z3c.form import button
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
@@ -19,7 +20,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 from genweb6.tfemarket import _
 
 
-class ITableTitulacions(model.Schema):
+class ITableTitulacions(model.Schema, IDexteritySchema):
 
     codi_prisma = schema.TextLine(
         title=_(u'PRISMA code'),
@@ -84,7 +85,7 @@ class AllLanguageVocabulary(object):
         return SimpleVocabulary(languages)
 
 
-class ITfemarketSettings(model.Schema):
+class ITfemarketSettings(model.Schema, IDexteritySchema):
     """ Global TFE Market settings. This describes records stored in the
     configuration registry and obtainable via plone.registry.
     """

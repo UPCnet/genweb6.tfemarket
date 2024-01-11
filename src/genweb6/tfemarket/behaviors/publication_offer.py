@@ -6,6 +6,7 @@ from plone.app.dexterity.behaviors.metadata import MetadataBase
 from plone.app.event.base import dt_end_of_day
 from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.dexterity.interfaces import IDexteritySchema
 from plone.supermodel import model
 from z3c.form.interfaces import IAddForm
 from z3c.form.interfaces import IEditForm
@@ -22,7 +23,7 @@ def expiresDefaultValue():
     return dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365))
 
 
-class IPublicationOffer(model.Schema):
+class IPublicationOffer(model.Schema, IDexteritySchema):
 
     directives.widget('fieldset_opt', FieldsetFieldWidget)
     fieldset_opt = schema.Text(

@@ -5,6 +5,7 @@ from plone import api
 from plone.autoform import directives
 from plone.dexterity.browser import add
 from plone.dexterity.browser import edit
+from plone.dexterity.interfaces import IDexteritySchema
 from plone.supermodel import model
 from z3c.form.interfaces import IEditForm
 from zope import schema
@@ -57,7 +58,7 @@ def getDegrees(context):
             return SimpleVocabulary(titulacions)
 
 
-class IApplication(model.Schema):
+class IApplication(model.Schema, IDexteritySchema):
     """ Application for an offer
     """
     directives.mode(degree_title='hidden')

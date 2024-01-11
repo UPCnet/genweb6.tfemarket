@@ -7,6 +7,7 @@ from collections import OrderedDict
 from datetime import date
 from datetime import datetime
 from plone import api
+from plone.dexterity.interfaces import IDexteritySchema
 from plone.portlets.constants import CONTEXT_CATEGORY
 from plone.portlets.interfaces import ILocalPortletAssignmentManager
 from plone.portlets.interfaces import IPortletManager
@@ -35,7 +36,7 @@ import json
 import urllib
 
 
-class IMarket(model.Schema):
+class IMarket(model.Schema, IDexteritySchema):
     """ Folder that contains all the TFE's
     """
 
