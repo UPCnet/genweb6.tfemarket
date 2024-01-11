@@ -98,7 +98,7 @@
                 </tal:comment>
 
                 <button class="btn btn-outline-secondary disabled me-2" type="button"
-                        i18n:domain="genweb.tfemarket.workflow"
+                        i18n:domain="genweb6.tfemarket.workflow"
                         tal:condition="not:app/workflows"
                         tal:content="app/state">
                   State
@@ -109,7 +109,7 @@
 
                   <button class="btn btn-outline-secondary dropdown-toggle"
                           type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                          i18n:domain="genweb.tfemarket.workflow"
+                          i18n:domain="genweb6.tfemarket.workflow"
                           tal:content="app/state">
                     State
                   </button>
@@ -121,7 +121,7 @@
                       <a class="dropdown-item"
                          tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&${view/filtersString}">
 
-                        <span i18n:domain="genweb.tfemarket.workflow"
+                        <span i18n:domain="genweb6.tfemarket.workflow"
                               tal:content="estat/title">
                           Estat
                         </span>
@@ -527,7 +527,7 @@
                         tal:content="tfgm">TFG</span>
 
                   <span class="me-2 badge text-bg-primary"
-                        i18n:domain="genweb.tfemarket.workflow"
+                        i18n:domain="genweb6.tfemarket.workflow"
                         tal:content="offer/state">State</span>
 
                   <span class="me-2 badge text-bg-danger"
@@ -584,7 +584,7 @@
 
                     <button class="btn btn-outline-secondary dropdown-toggle"
                             type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                            i18n:domain="genweb.tfemarket.workflow"
+                            i18n:domain="genweb6.tfemarket.workflow"
                             tal:content="offer/state">
                       State
                     </button>
@@ -596,7 +596,7 @@
                         <a class="dropdown-item"
                            tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
 
-                          <span i18n:domain="genweb.tfemarket.workflow"
+                          <span i18n:domain="genweb6.tfemarket.workflow"
                                 tal:content="estat/title">
                             Estat
                           </span>
@@ -904,7 +904,7 @@
                           </tal:comment>
 
                           <button class="btn btn-outline-secondary disabled me-2" type="button"
-                                  i18n:domain="genweb.tfemarket.workflow"
+                                  i18n:domain="genweb6.tfemarket.workflow"
                                   tal:condition="not:app/workflows"
                                   tal:content="app/state">
                             State
@@ -915,7 +915,7 @@
 
                             <button class="btn btn-outline-secondary dropdown-toggle"
                                     type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                    i18n:domain="genweb.tfemarket.workflow"
+                                    i18n:domain="genweb6.tfemarket.workflow"
                                     tal:content="app/state">
                               State
                             </button>
@@ -927,7 +927,7 @@
                                 <a class="dropdown-item"
                                    tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&${view/filtersString}">
 
-                                  <span i18n:domain="genweb.tfemarket.workflow"
+                                  <span i18n:domain="genweb6.tfemarket.workflow"
                                         tal:content="estat/title">
                                     Estat
                                   </span>
