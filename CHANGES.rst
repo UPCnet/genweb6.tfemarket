@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.6 (unreleased)
+1.6 (2024-01-15)
 ----------------
 
-- Nothing changed yet.
-
+* Add IDexteritySchema a nuestros contenidos para que si hay imagen haga del plone.app.caching.purge.py el purge class ScalesPurgePaths [Pilar Marinas]
+* [FIX] i18n domain workflow [Iago López]
 
 1.5 (2024-01-09)
 ----------------
