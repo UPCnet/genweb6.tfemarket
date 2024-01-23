@@ -93,6 +93,7 @@ class OfferTypesVocabulary(object):
 
     def __call__(self, context):
         types = []
+        types.append(SimpleTerm(value="--NOVALUE--", title=_(u'Selecciona una opció')))
         types.append(SimpleVocabulary.createTerm(u'Study', 'Study', _(u'Study')))
         types.append(SimpleVocabulary.createTerm(u'Project', 'Project', _(u'Project')))
         types.append(SimpleVocabulary.createTerm(u'Design', 'Design', _(u'Design')))
@@ -206,8 +207,7 @@ class IOffer(model.Schema, IDexteritySchema):
     offer_type = schema.Choice(
         title=_(u'offer_type'),
         vocabulary=u"genweb.tfemarket.OfferTypes",
-        default=_(u'Project'),
-        required=False
+        required=True
     )
 
     directives.widget(tfgm=CheckBoxFieldWidget)
