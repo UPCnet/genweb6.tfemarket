@@ -347,8 +347,8 @@
               <div class="col-md-6">
                 <label for="company" class="form-label" i18n:translate="">Company</label>
                 <select name="company" class="form-select" id="searchCompany">
+                  <option value="a" i18n:translate="">All</option>
                   <tal:block tal:repeat="company view/getCompanys">
-                    <option value="a" i18n:translate="">All</option>
                     <tal:block tal:define="selected python:'company' in keys and not save['company'] == 'a' and company == save['company']">
                       <option tal:attributes="value company;
                                               selected python:True if selected else False"
