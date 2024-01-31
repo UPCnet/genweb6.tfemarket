@@ -2,11 +2,13 @@ Changelog
 =========
 
 
-1.7 (unreleased)
+1.7 (2024-01-31)
 ----------------
 
-- Nothing changed yet.
-
+* [FIX] Solucionar error al solicitar una oferta [Iago López]
+* [UPD] Vista mercado, mejorar alineación ofertas [Iago López]
+* [FIX] Vista mercado buscador de Empresa, se repetia el valor de Todas [Iago López]
+* [UPD] Campo tipo de oferta obligatorio y sin valor por defecto [Iago López]
 
 1.6 (2024-01-15)
 ----------------
