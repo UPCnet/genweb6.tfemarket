@@ -178,7 +178,7 @@ class requestOffer(BrowserView):
         currentUser = api.user.get_current()
         data = getStudentData(self, currentItem, currentUser)
         if data:
-            self.request.response.setCookie('APPLICATION_DATA', data, path='/')
+            self.request.response.setCookie('APPLICATION_DATA', json.dumps(data), path='/')
             self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
         else:
             redirectToMarket(self)
@@ -199,7 +199,7 @@ class requestOfferOtherUser(BrowserView):
         user = api.user.get(userid=self.request.form.get('userRequest'))
         data = getStudentData(self, currentItem, user)
         if data:
-            self.request.response.setCookie('APPLICATION_DATA', data, path='/')
+            self.request.response.setCookie('APPLICATION_DATA', json.dumps(data), path='/')
             self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
         else:
             redirectToMarket(self)
