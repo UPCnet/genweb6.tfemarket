@@ -58,7 +58,7 @@
     permission="cmf.ModifyPortalContent"
     />
 
-  <!-- <subscriber
+  <subscriber
     for=".offer.offer.IOffer
          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".offer.offer.defineTeacherAsEditor"
@@ -74,7 +74,7 @@
     for=".offer.offer.IOffer
          zope.lifecycleevent.interfaces.IObjectAddedEvent"
     handler=".offer.offer.numOfferDefaultValue"
-    /> -->
+    />
 
   <adapter factory=".offer.offer.offer_id" name="TFEoffer_id" />
 
