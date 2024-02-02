@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.8 (unreleased)
+1.8 (2024-02-02)
 ----------------
 
-- Nothing changed yet.
-
+* [FIX] suscribers offer [Iago López]
 
 1.7 (2024-01-31)
 ----------------
