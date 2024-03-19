@@ -505,7 +505,7 @@
 
                   <p class="mb-0">
 
-                    <strong><tal:omit-tag i18n:translate="">Teacher manager</tal:omit-tag>: </strong>
+                    <span class="fw-bold"><span i18n:translate="">Teacher manager</span>: </span>
                     <tal:omit-tag tal:content="offer/teacher_fullname">Aureli Condogvia</tal:omit-tag>
 
                   </p>
@@ -513,7 +513,7 @@
                   <p class="mb-0"
                      tal:condition="offer/codirector">
 
-                    <strong><tal:omit-tag i18n:translate="">Codirector</tal:omit-tag>: </strong>
+                    <span class="fw-bold"><span i18n:translate="">Codirector</span>: </span>
                     <tal:omit-tag tal:content="offer/codirector">Codirector</tal:omit-tag>
 
                   </p>
@@ -645,18 +645,18 @@
                     <div class="mb-3">
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Teacher manager</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Teacher manager</span>: </span>
                         <tal:omit-tag tal:content="offer/teacher_fullname">Aureli Condogvia</tal:omit-tag>
                       </p>
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Teacher Email</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Teacher Email</span>: </span>
                         <a tal:content="offer/teacher_email"
                            tal:attributes="href string:mailto:${offer/teacher_email}">???@???.???</a>
                       </p>
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Departament</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Departament</span>: </span>
                         <tal:omit-tag tal:content="offer/dept">Departament</tal:omit-tag>
                       </p>
 
@@ -665,18 +665,18 @@
                     <div class="mb-3">
 
                       <p class="mb-1" tal:condition="offer/codirector">
-                        <strong><tal:omit-tag i18n:translate="">Codirector</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Codirector</span>: </span>
                         <tal:omit-tag tal:content="offer/codirector">Aureli Condogvia</tal:omit-tag>
                       </p>
 
                       <p class="mb-1" tal:condition="offer/codirector_email">
-                        <strong><tal:omit-tag i18n:translate="">Codirector Email</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Codirector Email</span>: </span>
                         <a tal:content="offer/codirector_email"
                            tal:attributes="href string:mailto:${offer/codirector_email}">???@???.???</a>
                       </p>
 
                       <p class="mb-1" tal:condition="offer/codirector_dept">
-                        <strong><tal:omit-tag i18n:translate="">Departament</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Departament</span>: </span>
                         <tal:omit-tag tal:content="offer/codirector_dept">Departament</tal:omit-tag>
                       </p>
 
@@ -684,7 +684,7 @@
 
                     <div class="mb-3">
 
-                      <strong><tal:omit-tag i18n:translate="">Degrees</tal:omit-tag>: </strong>
+                      <span class="fw-bold"><span i18n:translate="">Degrees</span>: </span>
                       <ul>
                         <li tal:repeat="degree offer/degrees"
                             tal:content="python:view.getDegreeLiteralFromId(degree)">Degree</li>
@@ -700,7 +700,7 @@
                     <div class="mb-3">
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Offer id</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Offer id</span>: </span>
                         <tal:omit-tag tal:content="offer/offer_id">Identificador</tal:omit-tag>
                       </p>
 
@@ -709,19 +709,19 @@
                     <div class="mb-3">
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Modality</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Modality</span>: </span>
                         <tal:omit-tag tal:content="offer/modality">Modalitat</tal:omit-tag>
                       </p>
 
                       <tal:block tal:condition="offer/if_modality_company">
                         <p class="mb-1">
-                          <strong><tal:omit-tag i18n:translate="">Company</tal:omit-tag>: </strong>
+                          <span class="fw-bold"><span i18n:translate="">Company</span>: </span>
                           <tal:omit-tag tal:content="offer/company">Company</tal:omit-tag>
                         </p>
                       </tal:block>
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Possibility of scholarship</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Possibility of scholarship</span>: </span>
                         <tal:omit-tag tal:condition="offer/grant"
                                       i18n:translate="">Yes</tal:omit-tag>
                         <tal:omit-tag tal:condition="not: offer/grant"
@@ -733,7 +733,7 @@
                     <div class="mb-3">
 
                       <p class="mb-1" tal:condition="not: offer/multiple_langs">
-                        <strong><tal:omit-tag i18n:translate="">Language work elaboration</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Language work elaboration</span>: </span>
                         <tal:block tal:repeat="lang offer/langs">
                           <tal:omit-tag i18n:translate=""
                                         tal:content="lang">Language</tal:omit-tag>
@@ -741,7 +741,7 @@
                       </p>
 
                       <div class="language" tal:condition="offer/multiple_langs">
-                        <strong><tal:omit-tag i18n:translate="">Languages work elaboration</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Languages work elaboration</span>: </span>
                         <ul>
                           <li tal:repeat="lang offer/langs"
                               i18n:translate=""
@@ -755,7 +755,7 @@
                          tal:condition="offer/keywords">
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Keywords</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Keywords</span>: </span>
                       </p>
                       <span class="badge text-bg-secondary px-3 py-2 me-1 mb-2"
                             tal:repeat="keyword offer/keywords"
@@ -768,65 +768,65 @@
                   <div class="col-md-12">
 
                     <div class="mb-3" tal:condition="offer/description">
-                      <p class="mb-0"><strong><tal:omit-tag i18n:translate="">Description<tal:omit-tag>: </strong></p>
+                      <p class="mb-0"><span class="fw-bold"><span i18n:translate="">Description</span>: </span></p>
                       <p class="mb-0" tal:content="offer/description">Nam fermentum tellus vel tellus imperdiet.</p>
                     </div>
 
                     <div class="mb-3" tal:condition="offer/targets">
-                      <p class="mb-0"><strong><tal:omit-tag i18n:translate="">Targets<tal:omit-tag>: </strong></p>
+                      <p class="mb-0"><span class="fw-bold"><span i18n:translate="">Targets</span>: </span></p>
                       <p class="mb-0" tal:content="offer/targets"></p>
                     </div>
 
                     <div class="mb-3" tal:condition="offer/features">
-                      <p class="mb-0"><strong><tal:omit-tag i18n:translate="">Features<tal:omit-tag>: </strong></p>
+                      <p class="mb-0"><span class="fw-bold"><span i18n:translate="">Features</span>: </span></p>
                       <p class="mb-0" tal:content="offer/features"></p>
                     </div>
 
                     <div class="mb-3">
 
                       <p class="mb-1" tal:condition="offer/topic">
-                        <strong><tal:omit-tag i18n:translate="">Topic</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Topic</span>: </span>
                         <tal:omit-tag tal:content="offer/topic">Topic</tal:omit-tag>
                       </p>
 
                       <p class="mb-1" tal:condition="offer/offer_type">
-                        <strong><tal:omit-tag i18n:translate="">Type</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Type</span>: </span>
                         <tal:omit-tag i18n:translate="" tal:content="offer/offer_type">Type</tal:omit-tag>
                       </p>
 
                       <p class="mb-1" tal:condition="view/showNumEstudiants">
-                        <strong><tal:omit-tag i18n:translate="">Number of students</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Number of students</span>: </span>
                         <tal:omit-tag tal:content="offer/num_students">1</tal:omit-tag>
                       </p>
 
                     </div>
 
                     <div class="mb-3" tal:condition="offer/workload">
-                      <p class="mb-0"><strong><tal:omit-tag i18n:translate="">Workload<tal:omit-tag>: </strong></p>
+                      <p class="mb-0"><span class="fw-bold"><span i18n:translate="">Workload</span>: </span></p>
                       <p class="mb-0" tal:content="offer/workload">Workload</p>
                     </div>
 
                     <div class="mb-3" tal:condition="offer/requirements">
-                      <p class="mb-0"><strong><tal:omit-tag i18n:translate="">Requirements<tal:omit-tag>: </strong></p>
+                      <p class="mb-0"><span class="fw-bold"><span i18n:translate="">Requirements</span>: </span></p>
                       <p class="mb-0" tal:content="offer/requirements"></p>
                     </div>
 
                     <div class="mb-3">
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Environmental theme</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Environmental theme</span>: </span>
                         <tal:omit-tag tal:condition="offer/environmental_theme" i18n:translate="">Yes</tal:omit-tag>
                         <tal:omit-tag tal:condition="not: offer/environmental_theme" i18n:translate="">No</tal:omit-tag>
                       </p>
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Confidential</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Confidential</span>: </span>
                         <tal:omit-tag tal:condition="offer/confidential" i18n:translate="">Yes</tal:omit-tag>
                         <tal:omit-tag tal:condition="not: offer/confidential" i18n:translate="">No</tal:omit-tag>
                       </p>
 
                       <p class="mb-1">
-                        <strong><tal:omit-tag i18n:translate="">Scope of cooperation</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Scope of cooperation</span>: </span>
                         <tal:omit-tag tal:condition="offer/scope_cooperation" i18n:translate="">Yes</tal:omit-tag>
                         <tal:omit-tag tal:condition="not: offer/scope_cooperation" i18n:translate="">No</tal:omit-tag>
                       </p>
@@ -836,12 +836,12 @@
                     <div class="mb-3">
 
                       <p class="mb-1" tal:condition="offer/effective_date">
-                        <strong><tal:omit-tag i18n:translate="">Publication date</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Publication date</span>: </span>
                         <tal:omit-tag tal:content="offer/effective_date">expirationDate</tal:omit-tag>
                       </p>
 
                       <p class="mb-1" tal:condition="offer/expiration_date">
-                        <strong><tal:omit-tag i18n:translate="">Expiration date</tal:omit-tag>: </strong>
+                        <span class="fw-bold"><span i18n:translate="">Expiration date</span>: </span>
                         <tal:omit-tag tal:content="offer/expiration_date">2018/04/29</tal:omit-tag>
                       </p>
 
