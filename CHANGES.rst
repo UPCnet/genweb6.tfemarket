@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.9 (unreleased)
+1.9 (2024-03-20)
 ----------------
 
-- Nothing changed yet.
-
+* [FIX] Traducciones [Iago López]
+* Add .DS_Store in gitignore [Pilar Marinas]
 
 1.8 (2024-02-02)
 ----------------
