@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.10 (unreleased)
+1.10 (2024-04-02)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] Actions URL [Iago López]
 
 1.9 (2024-03-20)
 ----------------
