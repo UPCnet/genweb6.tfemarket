@@ -179,4 +179,28 @@
     template="helpers_templates/import_ofertes.pt"
     />
 
+  <browser:page
+    name="get_errors_keys"
+    for="zope.interface.Interface"
+    class=".views.getErrorsKeys"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+    name="clear_errors_keys"
+    for="zope.interface.Interface"
+    class=".views.clearErrorsKeys"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+    name="fix_errors_keys"
+    for="zope.interface.Interface"
+    class=".fix.fixErrorsKeys"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>
