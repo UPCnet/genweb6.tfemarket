@@ -119,7 +119,7 @@
                     <li tal:repeat="estat app/workflows">
 
                       <a class="dropdown-item"
-                         tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&${view/filtersString}">
+                         tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}&open=Y">
 
                         <span i18n:domain="genweb6.tfemarket.workflow"
                               tal:content="estat/title">
@@ -594,7 +594,7 @@
                       <li tal:repeat="estat offer/workflows">
 
                         <a class="dropdown-item"
-                           tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
+                           tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${offer/item_path}&offer=${offer/offer_id}&open=Y">
 
                           <span i18n:domain="genweb6.tfemarket.workflow"
                                 tal:content="estat/title">
@@ -626,7 +626,7 @@
                     <span i18n:translate="">The current offer contains a confirmed application.</span>
 
                     <a class="btn btn-success" i18n:translate=""
-                       tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${offer/assign_offer}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
+                       tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${offer/assign_offer}&id=${offer/item_path}&offer=${offer/offer_id}&open=Y">
                       Assign the offer
                     </a>
 
@@ -925,7 +925,7 @@
                               <li tal:repeat="estat app/workflows">
 
                                 <a class="dropdown-item"
-                                   tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&${view/filtersString}">
+                                   tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}&open=Y">
 
                                   <span i18n:domain="genweb6.tfemarket.workflow"
                                         tal:content="estat/title">
