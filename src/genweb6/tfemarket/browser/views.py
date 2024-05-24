@@ -531,75 +531,79 @@ class tfemarketUtilsExportCSV(BrowserView):
                     offerState = offerWorkflow['states'][offerStatus['review_state']]
 
                     expired = offer.expires().isPast()
-                    if tfe_tool.view_num_students:
-                        writer.writerow([
-                            offer.offer_id,
-                            offer.title,
-                            offer.description,
-                            offer.topic if offer.topic else "",
-                            offer.offer_type if offer.offer_type else "",
-                            '\n'.join(offer.tfgm) if offer.tfgm else "",
-                            '\n'.join(offer.degree) if offer.degree else "",
-                            '\n'.join(offer.keys) if offer.keys else "",
-                            offer.teacher_manager,
-                            offer.teacher_fullname,
-                            offer.teacher_email,
-                            offer.dept,
-                            offer.type_codirector if offer.type_codirector else "",
-                            offer.codirector_id if offer.codirector_id else "",
-                            offer.codirector if offer.codirector else "",
-                            offer.codirector_email if offer.codirector_email else "",
-                            offer.codirector_dept if offer.codirector_dept else "",
-                            offer.num_students or "",
-                            offer.workload if offer.workload else "",
-                            offer.targets if offer.targets else "",
-                            offer.features if offer.features else "",
-                            offer.requirements if offer.requirements else "",
-                            '\n'.join(offer.lang) if offer.lang else "",
-                            offer.modality,
-                            offer.company if offer.company else "",
-                            'Yes' if offer.grant else 'No',
-                            'Yes' if offer.confidential else 'No',
-                            'Yes' if offer.environmental_theme else 'No',
-                            'Yes' if offer.scope_cooperation else 'No',
-                            offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
-                            offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
-                            'Yes' if expired else 'No',
-                            offerState.title])
-                    else:  # Omit Num Students
-                        writer.writerow([
-                            offer.offer_id,
-                            offer.title,
-                            offer.description,
-                            offer.topic if offer.topic else "",
-                            offer.offer_type if offer.offer_type else "",
-                            '\n'.join(offer.tfgm) if offer.tfgm else "",
-                            '\n'.join(offer.degree) if offer.degree else "",
-                            '\n'.join(offer.keys) if offer.keys else "",
-                            offer.teacher_manager,
-                            offer.teacher_fullname,
-                            offer.teacher_email,
-                            offer.dept,
-                            offer.type_codirector if offer.type_codirector else "",
-                            offer.codirector_id if offer.codirector_id else "",
-                            offer.codirector if offer.codirector else "",
-                            offer.codirector_email if offer.codirector_email else "",
-                            offer.codirector_dept if offer.codirector_dept else "",
-                            offer.workload if offer.workload else "",
-                            offer.targets if offer.targets else "",
-                            offer.features if offer.features else "",
-                            offer.requirements if offer.requirements else "",
-                            '\n'.join(offer.lang) if offer.lang else "",
-                            offer.modality,
-                            offer.company if offer.company else "",
-                            'Yes' if offer.grant else 'No',
-                            'Yes' if offer.confidential else 'No',
-                            'Yes' if offer.environmental_theme else 'No',
-                            'Yes' if offer.scope_cooperation else 'No',
-                            offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
-                            offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
-                            'Yes' if expired else 'No',
-                            offerState.title])
+                    try:
+                        if tfe_tool.view_num_students:
+                            writer.writerow([
+                                offer.offer_id,
+                                offer.title,
+                                offer.description,
+                                offer.topic if offer.topic else "",
+                                offer.offer_type if offer.offer_type else "",
+                                '\n'.join(offer.tfgm) if offer.tfgm else "",
+                                '\n'.join(offer.degree) if offer.degree else "",
+                                '\n'.join(offer.keys) if offer.keys else "",
+                                offer.teacher_manager,
+                                offer.teacher_fullname,
+                                offer.teacher_email,
+                                offer.dept,
+                                offer.type_codirector if offer.type_codirector else "",
+                                offer.codirector_id if offer.codirector_id else "",
+                                offer.codirector if offer.codirector else "",
+                                offer.codirector_email if offer.codirector_email else "",
+                                offer.codirector_dept if offer.codirector_dept else "",
+                                offer.num_students or "",
+                                offer.workload if offer.workload else "",
+                                offer.targets if offer.targets else "",
+                                offer.features if offer.features else "",
+                                offer.requirements if offer.requirements else "",
+                                '\n'.join(offer.lang) if offer.lang else "",
+                                offer.modality,
+                                offer.company if offer.company else "",
+                                'Yes' if offer.grant else 'No',
+                                'Yes' if offer.confidential else 'No',
+                                'Yes' if offer.environmental_theme else 'No',
+                                'Yes' if offer.scope_cooperation else 'No',
+                                offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                                offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                                'Yes' if expired else 'No',
+                                offerState.title])
+                        else:  # Omit Num Students
+                            writer.writerow([
+                                offer.offer_id,
+                                offer.title,
+                                offer.description,
+                                offer.topic if offer.topic else "",
+                                offer.offer_type if offer.offer_type else "",
+                                '\n'.join(offer.tfgm) if offer.tfgm else "",
+                                '\n'.join(offer.degree) if offer.degree else "",
+                                '\n'.join(offer.keys) if offer.keys else "",
+                                offer.teacher_manager,
+                                offer.teacher_fullname,
+                                offer.teacher_email,
+                                offer.dept,
+                                offer.type_codirector if offer.type_codirector else "",
+                                offer.codirector_id if offer.codirector_id else "",
+                                offer.codirector if offer.codirector else "",
+                                offer.codirector_email if offer.codirector_email else "",
+                                offer.codirector_dept if offer.codirector_dept else "",
+                                offer.workload if offer.workload else "",
+                                offer.targets if offer.targets else "",
+                                offer.features if offer.features else "",
+                                offer.requirements if offer.requirements else "",
+                                '\n'.join(offer.lang) if offer.lang else "",
+                                offer.modality,
+                                offer.company if offer.company else "",
+                                'Yes' if offer.grant else 'No',
+                                'Yes' if offer.confidential else 'No',
+                                'Yes' if offer.environmental_theme else 'No',
+                                'Yes' if offer.scope_cooperation else 'No',
+                                offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                                offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                                'Yes' if expired else 'No',
+                                offerState.title])
+                    except:
+                        import ipdb; ipdb.set_trace()
+                        pass
 
                 filename = market.id + "-offers.csv"
             else:
@@ -786,3 +790,30 @@ class changeUPCCodirectorValues(BrowserView):
                     offer.codirector = codirector_tmp
                     offer.reindexObject()
         return json.dumps(result)
+
+
+class getErrorsKeys(BrowserView):
+
+    def __call__(self):
+        pc = api.portal.get_tool('portal_catalog')
+        offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer'})
+        listado = []
+        for offer in offers:
+            offer_obj = offer.getObject()
+            if type(offer_obj.keys).__name__ == 'method':
+                listado.append(offer_obj.id)
+
+        return json.dumps(listado)
+
+class clearErrorsKeys(BrowserView):
+
+    def __call__(self):
+        pc = api.portal.get_tool('portal_catalog')
+        offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer'})
+        for offer in offers:
+            offer_obj = offer.getObject()
+            if type(offer_obj.keys).__name__ == 'method':
+                offer_obj.keys = []
+                offer_obj.reindexObject()
+
+        transaction.commit()
