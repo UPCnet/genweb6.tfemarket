@@ -72,8 +72,8 @@ def applicationChanged(application, event):
         sender_email = tfe_tool.alternative_email
         sender_name = tfe_tool.alternative_email_name if tfe_tool.alternative_email_name else ''
     else:
-        sender_email = portal.getProperty('email_from_address')
-        sender_name = portal.getProperty('email_from_name').encode('utf-8')
+        sender_email = api.portal.get_registry_record('plone.email_from_address')
+        sender_name = api.portal.get_registry_record('plone.email_from_name')
 
     email_charset = portal.getProperty('email_charset')
 
@@ -267,8 +267,8 @@ def applicationRegistered(application, event):
                     sender_email = tfe_tool.alternative_email
                     sender_name = tfe_tool.alternative_email_name if tfe_tool.alternative_email_name else ''
                 else:
-                    sender_email = portal.getProperty('email_from_address')
-                    sender_name = portal.getProperty('email_from_name').encode('utf-8')
+                    sender_email = api.portal.get_registry_record('plone.email_from_address')
+                    sender_name = api.portal.get_registry_record('plone.email_from_name')
 
                 email_charset = portal.getProperty('email_charset')
 
