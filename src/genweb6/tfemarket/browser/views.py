@@ -27,7 +27,10 @@ from genweb6.tfemarket.utils import isTeachersOffer
 
 import csv
 import json
+import logging
 import transaction
+
+logger = logging.getLogger('genweb6.tfemarket')
 
 
 def redirectToMarket(self):
@@ -90,6 +93,7 @@ class changeActualState(BrowserView):
                 if currentItem.portal_type == 'genweb.tfemarket.offer':
                     if estat in ['assign', 'assignalofertaintranet']:
                         if not checkOfferhasAssign(currentItem):
+                            logger.error("Error TFE: No se puede asignar la oferta. Debe haber al menos una solicitud confirmada y las demás canceladas, rechazadas o renunciadas.")
                             self.context.plone_utils.addPortalMessage(_(u"The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"), 'error')
                             redirectToMarket(self)
                             return None
@@ -102,6 +106,7 @@ class changeActualState(BrowserView):
                     marketState = marketWorkflow['states'][marketStatus['review_state']]
 
                     if (marketState.id == 'published' and estat == 'publicaalintranet') or (marketState.id == 'intranet' and estat == 'publicaloferta'):
+                        logger.error("Error TFE: El mercado ha cambiado de estado y no se puede realizar la acción.")
                         self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
                         redirectToMarket(self)
                         return None
@@ -110,12 +115,24 @@ class changeActualState(BrowserView):
                 wftool.doActionFor(currentItem, estat)
                 redirectToMarket(self)
             else:
+                logger.error("Error TFE: No tienes permisos de professor para realizar la acción.")
+                logger.error("Error TFE: isSolicitudCreator " + str(isCreator))
+                logger.error("Error TFE: isOfertaCreator " + str(isTeachersOffer(currentItem.getParentNode())))
+                logger.error("Error TFE: estat " + str(estat))
+                logger.error("Error TFE: itemid " + str(itemid))
+
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
                 redirectToMarket(self)
         except BusError as err:
             self.context.plone_utils.addPortalMessage(err.value['resultat'], 'error')
             redirectToMarket(self)
-        except:
+        except Exception as e:
+            logger.error("Error TFE: No se puede realizar la accion - " + str(e))
+            logger.error("Error TFE: isSolicitudCreator " + str(isCreator))
+            logger.error("Error TFE: isOfertaCreator " + str(isTeachersOffer(currentItem.getParentNode())))
+            logger.error("Error TFE: estat " + str(estat))
+            logger.error("Error TFE: itemid " + str(itemid))
+
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
             redirectToMarket(self)
 
