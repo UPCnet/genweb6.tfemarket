@@ -2,11 +2,13 @@ Changelog
 =========
 
 
-1.11 (unreleased)
+1.11 (2024-05-29)
 -----------------
 
-- Nothing changed yet.
-
+* [ADD] loggers de seguimiento [Iago López]
+* [FIX] Recogida del correo de plone [Iago López]
+* [UPD] Cambiar funcionalidad al cambiar estados, que devuelva la oferta en la busqueda [Iago López]
+* [ADD] Vistas para arreglar todo el tema de las keys [Iago López]
 
 1.10 (2024-04-02)
 -----------------
