@@ -29,7 +29,7 @@ def offerHasAnotherApplicationsPending(application):
     wf_tool = getToolByName(application, 'portal_workflow')
     tools = getMultiAdapter((application, getRequest()), name='plone_tools')
     parent = application.getParentNode()
-    for offer in parent.getChildNodes():
+    for offer in parent.objectValues():
         if offer.id != application.id:
             offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
             offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)

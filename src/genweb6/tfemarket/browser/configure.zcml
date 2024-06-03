@@ -203,4 +203,12 @@
     permission="cmf.ManagePortal"
     />
 
+  <browser:page
+    name="fix_modality"
+    for="zope.interface.Interface"
+    class=".fix.fixModality"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>

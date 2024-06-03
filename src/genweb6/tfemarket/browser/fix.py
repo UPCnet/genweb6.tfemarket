@@ -4965,3 +4965,24 @@ class fixErrorsKeys(BrowserView):
 
         transaction.commit()
         return json.dumps(listado)
+
+
+class fixModality(BrowserView):
+
+    def __call__(self):
+        pc = api.portal.get_tool('portal_catalog')
+        offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer'})
+        listado = []
+        for offer in offers:
+            offer_obj = offer.getObject()
+            if offer_obj.modality == 'Universidad' or offer_obj.modality == 'University':
+                offer_obj.modality = 'Universitat'
+                offer_obj.reindexObject()
+                listado.append(offer_obj.id)
+            elif offer_obj.modality == 'Company':
+                offer_obj.modality = 'Empresa'
+                offer_obj.reindexObject()
+                listado.append(offer_obj.id)
+
+        transaction.commit()
+        return json.dumps(listado)

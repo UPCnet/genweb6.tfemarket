@@ -64,7 +64,7 @@
 
       <h2 i18n:translate="">Your application</h2>
 
-      <div class="table-responsive">
+      <div>
 
         <table class="table table-borderless border-bottom">
 
@@ -119,7 +119,7 @@
                     <li tal:repeat="estat app/workflows">
 
                       <a class="dropdown-item"
-                         tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}&open=Y">
+                         tal:attributes="href string:${context/absolute_url}/changeActualState?estat=${estat/id}&id=${app/item_path}&open=Y">
 
                         <span i18n:domain="genweb6.tfemarket.workflow"
                               tal:content="estat/title">
@@ -857,7 +857,7 @@
 
               <tal:block tal:condition="python:view.openApplicationsTav() and applications">
 
-                <div class="table-responsive">
+                <div>
 
                   <table class="table table-borderless border-bottom"
                          tal:condition="applications">
