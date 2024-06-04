@@ -211,4 +211,12 @@
     permission="cmf.ManagePortal"
     />
 
+  <browser:page
+    name="fix_state"
+    for="zope.interface.Interface"
+    class=".fix_state.fixState"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>
