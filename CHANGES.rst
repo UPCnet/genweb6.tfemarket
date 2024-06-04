@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.13 (unreleased)
+1.13 (2024-06-04)
 -----------------
 
-- Nothing changed yet.
-
+* [ADD] Fix states [Iago López]
 
 1.12 (2024-06-04)
 -----------------
