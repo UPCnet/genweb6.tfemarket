@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.12 (unreleased)
+1.12 (2024-06-04)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] Errores TFE [Iago López]
 
 1.11 (2024-05-29)
 -----------------
