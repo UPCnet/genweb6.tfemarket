@@ -124,7 +124,14 @@ class changeActualState(BrowserView):
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
                 redirectToMarket(self)
         except BusError as err:
-            self.context.plone_utils.addPortalMessage(err.value['resultat'], 'error')
+            if isinstance(err.value, BusError):
+                self.context.plone_utils.addPortalMessage(err.value.value['resultat'], 'error')
+                logger.error("Error TFE PRISMA: " + err.value.value['resultat'])
+            else:
+                self.context.plone_utils.addPortalMessage(err.value['resultat'], 'error')
+                logger.error("Error TFE PRISMA: " + err.value['resultat'])
+
+            logger.error("Error TFE PRISMA: itemid " + str(itemid))
             redirectToMarket(self)
         except Exception as e:
             logger.error("Error TFE: No se puede realizar la accion - " + str(e))
