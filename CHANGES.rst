@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.14 (unreleased)
+1.14 (2024-06-19)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] Mostrar error de prisma [Iago López]
+* [DEL] ipdb [Iago López]
 
 1.13 (2024-06-04)
 -----------------
