@@ -82,7 +82,7 @@ def getUserData(user, typology=None):
 def checkPermissionCreateApplications(self, context, errors=False):
     roles = api.user.get_roles()
 
-    if 'TFE Manager' in roles or 'TFE Teacher' in roles:
+    if 'TFE Manager' in roles:
         if errors:
             self.context.plone_utils.addPortalMessage(_(u"You don't have permission for create a application."), 'error')
         return False
