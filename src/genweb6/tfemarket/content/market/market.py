@@ -12,6 +12,7 @@ from plone.portlets.constants import CONTEXT_CATEGORY
 from plone.portlets.interfaces import ILocalPortletAssignmentManager
 from plone.portlets.interfaces import IPortletManager
 from plone.supermodel import model
+from zope import schema
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.security import checkPermission
@@ -39,7 +40,11 @@ import urllib
 class IMarket(model.Schema, IDexteritySchema):
     """ Folder that contains all the TFE's
     """
-
+    show_all = schema.Bool(
+        title=_(u"Show all offers by default"),
+        default=False,
+        required=False,
+    )
 
 def disablePortlets(market, event):
     for column in [u"plone.leftcolumn", u"plone.rightcolumn"]:
@@ -97,15 +102,18 @@ class View(BrowserView):
         return results
 
     def getOffers(self):
-        searchMarket = self.request.cookies.get('MERCAT_TFE')
-        if searchMarket and not searchMarket == "":
+        if self.context.show_all and not self.request.cookies.get('MERCAT_TFE'):
+            searchMarket = '{"search": "", "title": "", "degree": "a", "topic": "a", "teacher": "a", "departament": "a", "type": "a", "company": "a", "date": "a", "state": "a", "language": ["CA", "ES", "EN"], "allOffers": ""}'
+            self.request.form = json.loads(searchMarket)        
+        else:
+            searchMarket = self.request.cookies.get('MERCAT_TFE')
+        if searchMarket:
             searchMarket = json.loads(searchMarket)
             if 'searchFilters' in self.request.form:
                 self.request.form = searchMarket
             else:
                 if 'search' not in self.request.form:
                     self.request.response.setCookie('MERCAT_TFE', "", path='/')
-
         if not isManager() and self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
             if len(self.request.form.keys()) == 1 and self.request.form.get('ts', False):
                 return []
@@ -116,8 +124,7 @@ class View(BrowserView):
             filters = {'portal_type': 'genweb.tfemarket.offer',
                        'path': {"query": '/'.join(self.context.getPhysicalPath())}}
 
-            if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
-                filters.update({'show_inactive': 1})
+            if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":   
                 if 'searchOffer' not in self.request.form and 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
 
@@ -158,7 +165,7 @@ class View(BrowserView):
 
                 if 'grant' in self.request.form:
                     filters.update({'TFEgrant': self.request.form['grant'] == 'on'})
-
+                
                 if 'key' in self.request.form:
                     filters.update({'TFEkeys': self.flattenedList(self.request.form['key'])})
 
@@ -175,6 +182,7 @@ class View(BrowserView):
             marketState = marketWorkflow['states'][marketStatus['review_state']]
 
             results = []
+          
             for offer in values:
                 offer = offer.getObject()
                 if checkPermission('zope2.View', offer):
@@ -200,7 +208,9 @@ class View(BrowserView):
                         workflowActions = [x for x in workflowActions if x.get('id') != 'publicaloferta']
 
                     expired = offer.expires().isPast()
-                    if not expired or self.checkPermissionCreateOffers():
+                    
+                    if 'expired' not in self.request.form and not expired or 'expired' in self.request.form:
+                        
                         results.append(dict(title=offer.title,
                                             state=offerState.title,
                                             state_id=offerState.id,
@@ -246,7 +256,6 @@ class View(BrowserView):
                                             assign_offer=self.assignOffer(offer, offerState.id),
                                             is_expired=expired
                                             ))
-
             if 'search' in self.request.form:
                 self.request.response.setCookie('MERCAT_TFE', json.dumps(self.clearFiltersCookie()), path='/')
 
@@ -361,7 +370,8 @@ class View(BrowserView):
 
     def getTeachers(self):
         results = []
-        for offer in self.getAllOffers():
+        offers = self.getAllOffers()
+        for offer in offers:
             if checkPermission('zope2.View', offer) and offer.teacher_manager:
                 teacherNotInList = True
                 for teacher in results:
@@ -375,7 +385,8 @@ class View(BrowserView):
 
     def getDepartaments(self):
         results = []
-        for offer in self.getAllOffers():
+        offers = self.getAllOffers()
+        for offer in offers:
             if checkPermission('zope2.View', offer) and offer.dept:
                 results.append(offer.dept)
 
@@ -383,7 +394,8 @@ class View(BrowserView):
 
     def getCompanys(self):
         results = []
-        for offer in self.getAllOffers():
+        offers = self.getAllOffers()
+        for offer in offers:
             if checkPermission('zope2.View', offer) and offer.company:
                 results.append(offer.company)
 

@@ -1024,3 +1024,6 @@ msgstr "Idioma del treball"
 #: ../content/offer/offer.py:220
 msgid "tfgm"
 msgstr "TFG/TFM"
+
+msgid "show expired"
+msgstr "Mostrar vençudes"

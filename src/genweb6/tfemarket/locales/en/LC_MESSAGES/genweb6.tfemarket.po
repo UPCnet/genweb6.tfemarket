@@ -1024,3 +1024,6 @@ msgstr "Thesis language"
 #: ../content/offer/offer.py:220
 msgid "tfgm"
 msgstr "TFG/TFM"
+
+msgid "show expired"
+msgstr "Show expired"

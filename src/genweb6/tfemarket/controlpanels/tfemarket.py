@@ -94,7 +94,7 @@ class ITfemarketSettings(model.Schema, IDexteritySchema):
         'Settings',
         _(u'Settings'),
         fields=['center_code', 'center_name', 'review_state', 'enroll_type', 'alternative_email',
-                'alternative_email_name'],
+                'alternative_email_name','show_all'],
     )
 
     model.fieldset(
@@ -157,6 +157,12 @@ class ITfemarketSettings(model.Schema, IDexteritySchema):
     alternative_email_name = schema.TextLine(
         title=_(u"Alternative email name"),
         description=_(u'If this field is not filled in, the default Genweb email name will be taken'),
+        required=False,
+    )
+
+    show_all = schema.Bool(
+        title=_(u"Show all offers by default"),
+        default=False,
         required=False,
     )
 
