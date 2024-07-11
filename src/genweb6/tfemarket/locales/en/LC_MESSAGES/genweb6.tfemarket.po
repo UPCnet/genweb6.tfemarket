@@ -1030,3 +1030,9 @@ msgstr "Show expired"
 
 msgid "disable request"
 msgstr "Disable request button"
+
+msgid "Show all offers by default"
+msgstr "Show all offers by default"
+
+msgid "Teachers will still see their default offers when accessing"
+msgstr "Teachers will still see their default offers when accessing"
