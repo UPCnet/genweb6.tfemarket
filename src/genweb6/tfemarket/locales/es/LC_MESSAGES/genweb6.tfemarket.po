@@ -1027,3 +1027,6 @@ msgstr "TFG/TFM"
 
 msgid "show expired"
 msgstr "Mostrar vencidas"
+
+msgid "disable request"
+msgstr "Deshabilitar botón de solicitar"

@@ -94,7 +94,7 @@ class ITfemarketSettings(model.Schema, IDexteritySchema):
         'Settings',
         _(u'Settings'),
         fields=['center_code', 'center_name', 'review_state', 'enroll_type', 'alternative_email',
-                'alternative_email_name','show_all'],
+                'alternative_email_name','disable_request'],
     )
 
     model.fieldset(
@@ -160,8 +160,8 @@ class ITfemarketSettings(model.Schema, IDexteritySchema):
         required=False,
     )
 
-    show_all = schema.Bool(
-        title=_(u"Show all offers by default"),
+    disable_request = schema.Bool(
+        title=_(u"Disable request button"),
         default=False,
         required=False,
     )

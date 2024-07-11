@@ -46,10 +46,12 @@ class IMarket(model.Schema, IDexteritySchema):
         required=False,
     )
 
+    
 def disablePortlets(market, event):
     for column in [u"plone.leftcolumn", u"plone.rightcolumn"]:
         manager = getUtility(IPortletManager, name=column)
-        blacklist = getMultiAdapter((market, manager), ILocalPortletAssignmentManager)
+        blacklist = getMultiAdapter(
+            (market, manager), ILocalPortletAssignmentManager)
         blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
 
 
@@ -84,7 +86,8 @@ class View(BrowserView):
             # Filter date
             if 'effective_date' in item and item['effective_date']:
                 today = date.today()
-                effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
+                effective_date = datetime.strptime(
+                    item['effective_date'], '%d/%m/%Y').date()
                 diff_days = today - effective_date
                 diff_days = diff_days.days
                 if filters['date'] == 'w' and diff_days > 7 \
@@ -104,7 +107,7 @@ class View(BrowserView):
     def getOffers(self):
         if self.context.show_all and not self.request.cookies.get('MERCAT_TFE'):
             searchMarket = '{"search": "", "title": "", "degree": "a", "topic": "a", "teacher": "a", "departament": "a", "type": "a", "company": "a", "date": "a", "state": "a", "language": ["CA", "ES", "EN"], "allOffers": ""}'
-            self.request.form = json.loads(searchMarket)        
+            self.request.form = json.loads(searchMarket)
         else:
             searchMarket = self.request.cookies.get('MERCAT_TFE')
         if searchMarket:
@@ -119,12 +122,13 @@ class View(BrowserView):
                 return []
 
             wf_tool = getToolByName(self.context, 'portal_workflow')
-            tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+            tools = getMultiAdapter(
+                (self.context, self.request), name='plone_tools')
 
             filters = {'portal_type': 'genweb.tfemarket.offer',
                        'path': {"query": '/'.join(self.context.getPhysicalPath())}}
 
-            if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":   
+            if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
                 if 'searchOffer' not in self.request.form and 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
 
@@ -143,31 +147,40 @@ class View(BrowserView):
                     filters.update({'TFEdegree': self.request.form['degree']})
 
                 if 'teacher' in self.request.form and self.request.form['teacher'] != 'a':
-                    filters.update({'TFEteacher_manager': self.request.form['teacher']})
+                    filters.update(
+                        {'TFEteacher_manager': self.request.form['teacher']})
 
                 if 'departament' in self.request.form and self.request.form['departament'] != 'a':
-                    filters.update({'TFEdept': self.request.form['departament']})
+                    filters.update(
+                        {'TFEdept': self.request.form['departament']})
 
                 if 'type' in self.request.form and self.request.form['type'] != 'a':
-                    filters.update({'TFEoffer_type': self.request.form['type']})
+                    filters.update(
+                        {'TFEoffer_type': self.request.form['type']})
 
                 if 'company' in self.request.form and self.request.form['company'] != 'a':
-                    filters.update({'TFEcompany': self.request.form['company']})
+                    filters.update(
+                        {'TFEcompany': self.request.form['company']})
 
                 if 'state' in self.request.form and self.request.form['state'] != 'a':
-                    filters.update({'review_state': self.request.form['state']})
+                    filters.update(
+                        {'review_state': self.request.form['state']})
 
                 if 'language' in self.request.form:
-                    filters.update({'TFElang': self.flattenedList(self.request.form['language'])})
+                    filters.update({'TFElang': self.flattenedList(
+                        self.request.form['language'])})
 
                 if 'modality' in self.request.form and len(self.request.form['modality']) == 1:
-                    filters.update({'TFEmodality': 'Universitat' if self.request.form['modality'] == 'u' else 'Empresa'})
+                    filters.update(
+                        {'TFEmodality': 'Universitat' if self.request.form['modality'] == 'u' else 'Empresa'})
 
                 if 'grant' in self.request.form:
-                    filters.update({'TFEgrant': self.request.form['grant'] == 'on'})
-                
+                    filters.update(
+                        {'TFEgrant': self.request.form['grant'] == 'on'})
+
                 if 'key' in self.request.form:
-                    filters.update({'TFEkeys': self.flattenedList(self.request.form['key'])})
+                    filters.update(
+                        {'TFEkeys': self.flattenedList(self.request.form['key'])})
 
             pc = api.portal.get_tool('portal_catalog')
             values = pc.searchResults(**filters)
@@ -182,7 +195,7 @@ class View(BrowserView):
             marketState = marketWorkflow['states'][marketStatus['review_state']]
 
             results = []
-          
+
             for offer in values:
                 offer = offer.getObject()
                 if checkPermission('zope2.View', offer):
@@ -195,32 +208,39 @@ class View(BrowserView):
                         tfe_tool = genwebTfemarketConfig()
                         review_state = tfe_tool.review_state
                         if review_state:
-                            workflowActions = [x for x in workflowActions if x.get('id') == 'sendtoreview']
+                            workflowActions = [
+                                x for x in workflowActions if x.get('id') == 'sendtoreview']
                         else:
-                            workflowActions = [x for x in workflowActions if x.get('id') != 'sendtoreview']
+                            workflowActions = [
+                                x for x in workflowActions if x.get('id') != 'sendtoreview']
 
                     if offerState.id == 'pending' and self.currentUserIsAloneTeacher():
                         workflowActions = []
 
                     if marketState.id == 'published':
-                        workflowActions = [x for x in workflowActions if x.get('id') != 'publicaalintranet']
+                        workflowActions = [x for x in workflowActions if x.get(
+                            'id') != 'publicaalintranet']
                     elif marketState.id == 'intranet':
-                        workflowActions = [x for x in workflowActions if x.get('id') != 'publicaloferta']
+                        workflowActions = [x for x in workflowActions if x.get(
+                            'id') != 'publicaloferta']
 
                     expired = offer.expires().isPast()
-                    
+
                     if 'expired' not in self.request.form and not expired or 'expired' in self.request.form:
-                        
+
                         results.append(dict(title=offer.title,
                                             state=offerState.title,
                                             state_id=offerState.id,
                                             url=offer.absolute_url(),
                                             path='/'.join(offer.getPhysicalPath()),
-                                            item_path='/'.join(offer.getPhysicalPath()[2:]),
+                                            item_path='/'.join(
+                                                offer.getPhysicalPath()[2:]),
                                             dept=offer.dept,
                                             company=offer.company,
-                                            effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
-                                            expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
+                                            effective_date=offer.effective_date.strftime(
+                                                '%d/%m/%Y') if offer.effective_date else None,
+                                            expiration_date=offer.expiration_date.strftime(
+                                                '%d/%m/%Y') if offer.expiration_date else None,
                                             teacher_manager=offer.teacher_manager,
                                             teacher_fullname=offer.teacher_fullname,
                                             teacher_email=offer.teacher_email,
@@ -235,13 +255,16 @@ class View(BrowserView):
                                             grant=offer.grant,
                                             tfgm=offer.tfgm,
                                             degrees=offer.degree,
-                                            multiple_degrees=len(offer.degree) > 1,
+                                            multiple_degrees=len(
+                                                offer.degree) > 1,
                                             keywords=offer.keys,
                                             offer_id=offer.offer_id,
                                             center=offer.center,
                                             workflows=workflowActions,
-                                            can_edit=checkPermission('cmf.ModifyPortalContent', offer),
-                                            can_create_application=CPCreateApplications(self, offer),
+                                            can_edit=checkPermission(
+                                                'cmf.ModifyPortalContent', offer),
+                                            can_create_application=CPCreateApplications(
+                                                self, offer),
                                             if_modality_company=True if offer.modality == 'Empresa' else False,
                                             num_students=offer.num_students,
                                             workload=offer.workload,
@@ -252,12 +275,16 @@ class View(BrowserView):
                                             scope_cooperation=offer.scope_cooperation,
                                             topic=offer.topic,
                                             offer_type=offer.offer_type,
-                                            if_propietary=isTeachersOffer(offer),
-                                            assign_offer=self.assignOffer(offer, offerState.id),
-                                            is_expired=expired
+                                            if_propietary=isTeachersOffer(
+                                                offer),
+                                            assign_offer=self.assignOffer(
+                                                offer, offerState.id),
+                                            is_expired=expired,
+                                            show_request=self.context.show_request
                                             ))
             if 'search' in self.request.form:
-                self.request.response.setCookie('MERCAT_TFE', json.dumps(self.clearFiltersCookie()), path='/')
+                self.request.response.setCookie(
+                    'MERCAT_TFE', json.dumps(self.clearFiltersCookie()), path='/')
 
                 if 'date' in self.request.form and self.request.form['date'] != 'a':
                     results = self.filterResultsForDate(results)
@@ -269,7 +296,8 @@ class View(BrowserView):
     def userApplications(self):
         catalog = api.portal.get_tool(name='portal_catalog')
         wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        tools = getMultiAdapter(
+            (self.context, self.request), name='plone_tools')
         results = []
         values = catalog(path={'query': '/'.join(self.context.getPhysicalPath()), 'depth': 3},
                          object_provides=IApplication.__identifier__,
@@ -284,7 +312,8 @@ class View(BrowserView):
                                 title=item.Title,
                                 state=workflows['states'][item.review_state].title,
                                 url=item.getURL(),
-                                item_path='/'.join(application.getPhysicalPath()[2:]),
+                                item_path='/'.join(
+                                    application.getPhysicalPath()[2:]),
                                 dni=application.dni,
                                 name=application.title,
                                 email=application.email,
@@ -294,28 +323,32 @@ class View(BrowserView):
                                 degree_title=application.degree_title,
                                 body=application.body,
                                 workflows=workflowActions,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
+                                can_edit=checkPermission(
+                                    'cmf.ModifyPortalContent', application),
                                 ))
         return results
 
     def getApplications(self, offer):
         catalog = api.portal.get_tool(name='portal_catalog')
         wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        tools = getMultiAdapter(
+            (self.context, self.request), name='plone_tools')
         results = []
         values = catalog(path={'query': offer['path'], 'depth': 1},
                          object_provides=IApplication.__identifier__)
 
         for item in values:
             application = item.getObject()
-            workflowActions = wf_tool.listActionInfos(object=application) if offer['if_propietary'] else []
+            workflowActions = wf_tool.listActionInfos(
+                object=application) if offer['if_propietary'] else []
             workflows = tools.workflow().getWorkflowsFor(application)[0]
 
             results.append(dict(UID=item.UID,
                                 title=item.Title,
                                 state=workflows['states'][item.review_state].title,
                                 url=item.getURL(),
-                                item_path='/'.join(application.getPhysicalPath()[2:]),
+                                item_path='/'.join(
+                                    application.getPhysicalPath()[2:]),
                                 dni=application.dni,
                                 name=application.title,
                                 email=application.email,
@@ -326,8 +359,10 @@ class View(BrowserView):
                                 body=application.body,
                                 workflows=workflowActions,
                                 can_change_workflows=True,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', application) and not self.currentUserIsAloneTeacher(),
-                                style='ignore' if item.review_state in ['cancelled', 'rejected', 'renounced'] else '',
+                                can_edit=checkPermission(
+                                    'cmf.ModifyPortalContent', application) and not self.currentUserIsAloneTeacher(),
+                                style='ignore' if item.review_state in [
+                                    'cancelled', 'rejected', 'renounced'] else '',
                                 ))
         return results
 
@@ -379,7 +414,8 @@ class View(BrowserView):
                         teacherNotInList = False
                         break
                 if teacherNotInList:
-                    results.append({'id': offer.teacher_manager, 'lit': offer.teacher_fullname})
+                    results.append({'id': offer.teacher_manager,
+                                   'lit': offer.teacher_fullname})
 
         return sorted(list(results), key=self.getLiteral)
 
@@ -535,3 +571,4 @@ class View(BrowserView):
     def showNumEstudiants(self):
         tfe_tool = genwebTfemarketConfig()
         return tfe_tool.view_num_students
+  
