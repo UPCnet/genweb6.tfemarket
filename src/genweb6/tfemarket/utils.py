@@ -71,7 +71,7 @@ def getUserData(user, typology=None):
         token = json.loads(result.content)['tokenAcl']
 
         identitat_digital_tool = genwebIdentitatDigitalConfig()
-        urlGetPerson = identitat_digital_tool.identitat_url + '/gcontrol/rest/externs/identitats?cn=' + user + '&vistaTipus=DETALL_UEDETALL&perfil=PDI&perfil=PAS&perfil=PERSONAL&inactius=false'
+        urlGetPerson = identitat_digital_tool.identitat_url + '/gcontrol/rest/externs/identitats?cn=' + user + '&vistaTipus=DETALL_UEDETALL&perfil=PDI&perfil=PAS&perfil=PERSONAL&perfil=CONVIDAT&inactius=false'
         headers = {'TOKEN': token}
         result = requests.get(urlGetPerson, headers=headers)
         if result.status_code == 200:
