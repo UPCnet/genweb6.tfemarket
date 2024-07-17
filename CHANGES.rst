@@ -2,11 +2,15 @@ Changelog
 =========
 
 
-1.15 (unreleased)
+1.15 (2024-07-17)
 -----------------
 
-- Nothing changed yet.
-
+* [UPD] Búsqueda de profesores - permitir encontrar personal con perfil de CONVIDAT [Iago López Fernández]
+* [FIX] Busquedas [Iago López]
+* [ADD] new checkbox to enable or disable the request button [Clàudia Andreu]
+* [UPD] Several changes in TFEMarket [Clàudia Andreu]
+* [UPD] Quitar limitacion de que un TFE Teacher no puedo crear sol·licitudes si tmb es TFE Student [Iago López]
+* [UPDATE] añadir titulo ofertas tfe [Clàudia Andreu]
 
 1.14 (2024-06-19)
 -----------------
