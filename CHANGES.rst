@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.16 (unreleased)
+1.16 (2024-07-18)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] Traduccion [Iago López]
+* [FIX] Solo un professor no ve por defecto todas sus ofertas [Iago López]
 
 1.15 (2024-07-17)
 -----------------
