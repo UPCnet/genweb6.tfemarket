@@ -1028,7 +1028,7 @@ msgstr "TFG/TFM"
 msgid "show expired"
 msgstr "Mostrar vençudes"
 
-msgid "disable request"
+msgid "Disable request button"
 msgstr "Deshabilitar botó de sol·licitar"
 
 msgid "Show all offers by default"
