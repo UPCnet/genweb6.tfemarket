@@ -106,8 +106,8 @@ class View(BrowserView):
         return results
 
     def getOffers(self):
-        checkPermissionCreateOffers = self.checkPermissionCreateOffers()
-        if self.context.show_all and self.request.form == {} and not checkPermissionCreateOffers:
+        currentUserIsAloneTeacher = self.currentUserIsAloneTeacher()
+        if self.context.show_all and self.request.form == {} and not currentUserIsAloneTeacher:
             searchMarket = '{"allOffers": ""}'
             self.request.form = json.loads(searchMarket)
         else:
@@ -127,6 +127,7 @@ class View(BrowserView):
                 dataAllOffers.update({'expired': ''})
             self.request.form = dataAllOffers
 
+        checkPermissionCreateOffers = self.checkPermissionCreateOffers()
         if not isManager() and checkPermissionCreateOffers or self.request.form != {} and 'form.button.confirm' not in self.request.form:
             if len(self.request.form.keys()) == 1 and self.request.form.get('ts', False):
                 return []
@@ -224,7 +225,7 @@ class View(BrowserView):
                             workflowActions = [
                                 x for x in workflowActions if x.get('id') != 'sendtoreview']
 
-                    if offerState.id == 'pending' and self.currentUserIsAloneTeacher():
+                    if offerState.id == 'pending' and currentUserIsAloneTeacher:
                         workflowActions = []
 
                     if marketState.id == 'published':
