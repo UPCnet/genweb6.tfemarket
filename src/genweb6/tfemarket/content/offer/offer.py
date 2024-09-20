@@ -22,7 +22,6 @@ from zope.schema.vocabulary import SimpleVocabulary
 from genweb6.core.widgets import FieldsetFieldWidget
 from genweb6.core.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket import _
-from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.widgets import CodirectorInputFieldWidget
 from genweb6.tfemarket.widgets import SelectModalityInputFieldWidget

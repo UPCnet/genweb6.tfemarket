@@ -169,12 +169,10 @@ def offerDeleted(offer, event):
 def applicationRegistered(application, event):
     """ If genweb.tfemarket.offer change WF, checks if registered.
     """
-    tfe_tool = genwebTfemarketConfig()
-
     if event.transition:
         if event.transition.id == 'confirm':
             if application.degree_id[:2] not in ['DG', 'DM']:
-                # tfe_tool = genwebTfemarketConfig()
+                tfe_tool = genwebTfemarketConfig()
                 bussoa_tool = genwebBusSOAConfig()
 
                 bussoa_url = bussoa_tool.bus_url
