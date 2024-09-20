@@ -448,9 +448,6 @@ class EditForm(edit.DefaultEditForm):
 def numOfferDefaultValue(offer, event):
     tfe_tool = genwebTfemarketConfig()
 
-    if not tfe_tool.enable_suscribers:
-        return
-
     center = tfe_tool.center_code
     total = tfe_tool.count_offers + 1
 
@@ -462,10 +459,6 @@ def numOfferDefaultValue(offer, event):
 
 
 def defineTeacherAsEditor(offer, event):
-    tfe_tool = genwebTfemarketConfig()
-    if not tfe_tool.enable_suscribers:
-        return
-
     creator = getattr(offer.getOwner(), '_id', None)
     teacher = offer.teacher_manager
 
