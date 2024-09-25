@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.17 (unreleased)
+1.17 (2024-09-25)
 -----------------
 
-- Nothing changed yet.
-
+* [UPD] Quitar enable_suscribers [Iago López]
+* [UPD] Quitar enable_suscribers [Iago López]
 
 1.16 (2024-07-18)
 -----------------
