@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.18 (unreleased)
+1.18 (2024-10-08)
 -----------------
 
-- Nothing changed yet.
-
+* [UPD] El campo del correo del estudiante es editable, a veces no nos llegaba el dato y daba errores [Iago López]
 
 1.17 (2024-09-25)
 -----------------
