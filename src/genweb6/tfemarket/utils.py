@@ -17,7 +17,7 @@ from time import time
 from zope.component import queryUtility
 from zope.security import checkPermission
 
-from genweb6.tfemarket import _ 
+from genweb6.tfemarket import _
 from genweb6.tfemarket.controlpanels.tfemarket import ITfemarketSettings
 from genweb6.upc.utils import genwebBusSOAConfig
 from genweb6.upc.utils import genwebIdentitatDigitalConfig
@@ -80,12 +80,12 @@ def getUserData(user, typology=None):
 
 
 def checkPermissionCreateApplications(self, context, errors=False):
-    
+
     tfe_tool = genwebTfemarketConfig()
 
     if tfe_tool.disable_request:
         return False
-    
+
     roles = api.user.get_roles()
     if 'TFE Manager' in roles:
         if errors:
@@ -225,7 +225,7 @@ def getStudentData(self, item, user):
                         'offer_id': item.offer_id,
                         'offer_title': item.title,
                         'dni': str(est['document']),
-                        'email': str(est['emailPreferent']),
+                        'email': str(est['emailPreferent']) if 'emailPreferent' in est else '',
                         'idPrisma': str(col['idOrigen']),
                         'degrees': []
                     }
