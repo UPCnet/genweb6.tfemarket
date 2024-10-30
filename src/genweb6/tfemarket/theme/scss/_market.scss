@@ -67,3 +67,21 @@ body.portaltype-genweb-tfemarket-market {
     }
   }
 }
+
+#form-widgets-teacher_manager-error,
+#form-widgets-codirector-error {
+  color: #FF0000;
+  display: none
+}
+
+#form-widgets-teacher_manager-error.viewError,
+#form-widgets-teacher_manager-warn.viewWarn,
+#form-widgets-codirector-error.viewError,
+#form-widgets-codirector-warn.viewWarn {
+  display: block
+}
+
+#form-widgets-teacher_manager-warn,
+#form-widgets-codirector-warn {
+  display: none
+}
