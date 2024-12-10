@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.19 (unreleased)
+1.19 (2024-12-10)
 -----------------
 
-- Nothing changed yet.
-
+* [UPD] Estilos error busqueda persona [Iago López]
 
 1.18 (2024-10-08)
 -----------------
