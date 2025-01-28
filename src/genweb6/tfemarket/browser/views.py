@@ -188,10 +188,22 @@ class getExactTeacher(BrowserView):
             for perfil in teacher['uePerfil']:
                 if 'PDI' in perfil['perfilId']:
                     teacherDept = perfil['ueId'] + '-' + perfil['ueAcronim']
+
+            if 'sobrenom' in teacher:
+                if 'cognom2' in teacher:
+                    fullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['sobrenom'].capitalize()}"
+                else:
+                    fullname = f"{teacher['cognom1'].capitalize()}, {teacher['sobrenom'].capitalize()}"
+            else:
+                if 'cognom2' in teacher:
+                    fullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['nom'].capitalize()}"
+                else:
+                    fullname = f"{teacher['cognom1'].capitalize()}, {teacher['nom'].capitalize()}"
+            
             data = {
                 'user': teacher['commonName'],
                 'email': teacher['emailPreferent'],
-                'fullname': teacher['cognom1'].capitalize() + ' ' + teacher['cognom2'].capitalize() + ', ' + teacher['nom'].capitalize() if 'cognom2' in teacher else teacher['cognom1'].capitalize() + ', ' + teacher['nom'].capitalize(),
+                'fullname': fullname,
                 'dept': teacherDept
             }
             return json.dumps(data)

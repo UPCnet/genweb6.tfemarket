@@ -218,7 +218,6 @@ def getStudentData(self, item, user):
         if result.status_code == 200:
             est = json.loads(result.content)
             est_colectius = est['uePerfil']
-
             for col in est_colectius:
                 if col['perfilId'] in ['EST', 'ESTMASTER']:
                     student_data = {
@@ -230,13 +229,17 @@ def getStudentData(self, item, user):
                         'degrees': []
                     }
 
-                    if 'cognom2' in est:
-                        fullname = str(est['nom']) + ' ' + str(est['cognom1']) + ' ' + str(est['cognom2'])
-                        student_data.update({'fullname': fullname})
-
+                    if 'sobrenom' in est:
+                        if 'cognom2' in est:
+                            fullname = str(est['sobrenom']) + ' ' + str(est['cognom1']) + ' ' + str(est['cognom2'])
+                        else:
+                            fullname = str(est['sobrenom']) + ' ' + str(est['cognom1'])
                     else:
-                        fullname = str(est['nom']) + ' ' + str(est['cognom1'])
-                        student_data.update({'fullname': fullname})
+                        if 'cognom2' in est:
+                            fullname = str(est['nom']) + ' ' + str(est['cognom1']) + ' ' + str(est['cognom2'])
+                        else:
+                            fullname = str(est['nom']) + ' ' + str(est['cognom1'])
+                    student_data.update({'fullname': fullname})
 
                     id_prisma = student_data['idPrisma']
                     numDocument = student_data['dni']

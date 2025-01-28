@@ -112,6 +112,18 @@ class importOfertes(BrowserView):
                     for perfil in teacher['uePerfil']:
                         if 'PDI' in perfil['perfilId']:
                             teacherDept = perfil['ueId'] + '-' + perfil['ueAcronim']
+                    
+                    if 'sobrenom' in teacher:
+                        if 'cognom2' in teacher:
+                            teacherFullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['sobrenom'].capitalize()}"
+                        else:
+                            teacherFullname = f"{teacher['cognom1'].capitalize()}, {teacher['sobrenom'].capitalize()}"
+                    else:
+                        if 'cognom2' in teacher:
+                            teacherFullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['nom'].capitalize()}"
+                        else:
+                            teacherFullname = f"{teacher['cognom1'].capitalize()}, {teacher['nom'].capitalize()}"
+                    
                     data = {
                         'title': row[0].decode("utf-8"),
                         'description': row[1].decode("utf-8"),
@@ -121,7 +133,7 @@ class importOfertes(BrowserView):
                         'degree': row[5].decode("utf-8").split(","),
                         'keys': row[6].decode("utf-8").split(","),
                         'teacher_manager': teacher['commonName'],
-                        'teacher_fullname': teacher['cognom1'].capitalize() + ' ' + teacher['cognom2'].capitalize() + ', ' + teacher['nom'].capitalize() if 'cognom2' in teacher else teacher['cognom1'].capitalize() + ', ' + teacher['nom'].capitalize(),
+                        'teacher_fullname': teacherFullname,
                         'teacher_email': teacher['emailPreferent'],
                         'dept': teacherDept,
                         'num_students': int(row[10].decode("utf-8")),
@@ -147,9 +159,21 @@ class importOfertes(BrowserView):
                             for perfil in codirector['uePerfil']:
                                 if 'PDI' in perfil['perfilId']:
                                     codirectorDept = perfil['ueId'] + '-' + perfil['ueAcronim']
+                            
+                            if 'sobrenom' in codirector:
+                                if 'cognom2' in codirector:
+                                    codirectorFullname = f"{codirector['cognom1'].capitalize()} {codirector['cognom2'].capitalize()}, {codirector['sobrenom'].capitalize()}"
+                                else:
+                                    codirectorFullname = f"{codirector['cognom1'].capitalize()}, {codirector['sobrenom'].capitalize()}"
+                            else:
+                                if 'cognom2' in codirector:
+                                    codirectorFullname = f"{codirector['cognom1'].capitalize()} {codirector['cognom2'].capitalize()}, {codirector['nom'].capitalize()}"
+                                else:
+                                    codirectorFullname = f"{codirector['cognom1'].capitalize()}, {codirector['nom'].capitalize()}"
+                            
                             data.update({
                                 'codirector_id': codirector['commonName'],
-                                'codirector': codirector['cognom1'].capitalize() + ' ' + codirector['cognom2'].capitalize() + ', ' + codirector['nom'].capitalize() if 'cognom2' in codirector else codirector['cognom1'].capitalize() + ', ' + codirector['nom'].capitalize(),
+                                'codirector': codirectorFullname,
                                 'codirector_email': codirector['emailPreferent'],
                                 'codirector_dept': codirectorDept
                             })
