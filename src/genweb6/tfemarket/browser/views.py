@@ -154,14 +154,26 @@ class getTeacher(BrowserView):
                 for teacherInfo in teacher['uePerfil']:
                     try:
                         teacherDept = teacherInfo['ueId'] + '-' + teacherInfo['ueAcronim']
+
+                        if 'sobrenom' in teacher and teacher['sobrenom']:
+                            if 'cognom2' in teacher and teacher['cognom2']:
+                                fullname = f"{teacher['sobrenom'].capitalize()} {teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}"
+                            else:
+                                fullname = f"{teacher['sobrenom'].capitalize()} {teacher['cognom1'].capitalize()}"
+                        else:
+                            if 'cognom2' in teacher and teacher['cognom2']:
+                                fullname = f"{teacher['nom'].capitalize()} {teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}"
+                            else:
+                                fullname = f"{teacher['nom'].capitalize()} {teacher['cognom1'].capitalize()}"
                         listTeachers.append({
                             'user': teacher['commonName'],
                             'email': teacher['emailPreferent'],
-                            'fullname': teacher['cognom1'].capitalize() + ' ' + teacher['cognom2'].capitalize() + ', ' + teacher['nom'].capitalize() if 'cognom2' in teacher else teacher['cognom1'].capitalize() + ', ' + teacher['nom'].capitalize(),
+                            'fullname': fullname,
                             'dept': teacherDept
                         })
-                    except:
+                    except Exception as e:
                         pass
+
             return json.dumps(listTeachers)
         else:
             return None
