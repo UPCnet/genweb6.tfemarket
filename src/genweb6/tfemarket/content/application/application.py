@@ -10,6 +10,7 @@ from plone.supermodel import model
 from z3c.form.interfaces import IEditForm
 from zope import schema
 from zope.globalrequest import getRequest
+from zope.interface import Invalid
 from zope.interface import provider
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleTerm
@@ -18,11 +19,22 @@ from zope.schema.vocabulary import SimpleVocabulary
 from genweb6.core.widgets import ReadOnlyInputFieldWidget
 from genweb6.tfemarket import _
 from genweb6.tfemarket.utils import checkPermissionCreateApplications
-from genweb6.tfemarket.utils import genwebTfemarketConfig
 from genweb6.tfemarket.utils import getDegreeLiteralFromId
 from genweb6.tfemarket.widgets import StudentInputFieldWidget
 
 import ast
+import re
+
+
+class InvalidEmail(Invalid):
+    __doc__ = "La dirección de correo electrónico no es válida."
+
+
+def validar_email(value):
+    email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    if not re.match(email_regex, value):
+        raise InvalidEmail(value)
+    return True
 
 
 def getCookie():
@@ -103,10 +115,10 @@ class IApplication(model.Schema, IDexteritySchema):
         required=False,
     )
 
-    directives.widget('email', ReadOnlyInputFieldWidget)
     email = schema.TextLine(
         title=_(u'Email'),
         required=True,
+        constraint=validar_email,
     )
 
     directives.mode(prisma_id='hidden')
@@ -169,19 +181,11 @@ class EditForm(edit.DefaultEditForm):
 
 
 def defineDregreecode(application, event):
-    tfe_tool = genwebTfemarketConfig()
-    if not tfe_tool.enable_suscribers:
-        return
-
     application.degree_title = getDegreeLiteralFromId(application.degree_id)
     application.reindexObject()
 
 
 def getCodiExpedient(application, event):
-    tfe_tool = genwebTfemarketConfig()
-    if not tfe_tool.enable_suscribers:
-        return
-
     result = getCookie()
     degrees = result['degrees']
     codiexpedient = (item['codi_expedient'] for item in degrees if item['degree_id'] == application.degree_id)

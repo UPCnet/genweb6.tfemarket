@@ -363,13 +363,13 @@
 									<div class="col-md-3">
 										<label for="grant" class="form-label" i18n:translate="">grant</label>
 										<div class="form-check form-switch">
-											<input name="grant" class="form-check-input" type="checkbox" id="searchGrant" role="switch" id="flexSwitchCheckDefault" tal:attributes="checked python:True if 'grant' in keys else False">
+											<input name="grant" class="form-check-input" type="checkbox" id="searchGrant" role="switch" tal:attributes="checked python:True if 'grant' in keys else False">
 										</div>
 									</div>
 									<div class="col-md-3" tal:condition="view/checkPermissionCreateOffers">
 										<label for="expired" class="form-label" i18n:translate="">show expired</label>
 										<div class="form-check form-switch">
-											<input name="expired" class="form-check-input" type="checkbox" id="searchExpired" role="switch" id="switchCheckDefault" tal:attributes="checked python:True if 'expired' in keys else False">
+											<input name="expired" class="form-check-input" type="checkbox" id="searchExpired" role="switch" tal:attributes="checked python:True if 'expired' in keys else False">
 										</div>
 									</div>
 								</div>
@@ -458,7 +458,7 @@
                                                     <p class="mb-0">
 
                                                       <span class="fw-bold">
-                                                        <span i18n:translate="">Teacher manager</span>: 
+                                                        <span i18n:translate="">Teacher manager</span>:
                                                       </span>
                                                       <tal:omit-tag tal:content="offer/teacher_fullname">Aureli Condogvia</tal:omit-tag>
 
@@ -467,7 +467,7 @@
                                                     <p class="mb-0" tal:condition="offer/codirector">
 
                                                       <span class="fw-bold">
-                                                        <span i18n:translate="">Codirector</span>: 
+                                                        <span i18n:translate="">Codirector</span>:
                                                       </span>
                                                       <tal:omit-tag tal:content="offer/codirector">Codirector</tal:omit-tag>
 
@@ -1032,7 +1032,7 @@
 				</div>
 
 				<script type="text/javascript" tal:attributes="src string:${context/absolute_url}/++theme++genweb6.tfemarket/js/market.min.js">
-					
+
 				</script>
 
 	</metal:content-core>

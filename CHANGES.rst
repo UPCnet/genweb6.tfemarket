@@ -2,11 +2,43 @@ Changelog
 =========
 
 
-1.15 (unreleased)
+1.20 (unreleased)
 -----------------
 
 - Nothing changed yet.
 
+
+1.19 (2024-12-10)
+-----------------
+
+* [UPD] Estilos error busqueda persona [Iago López]
+
+1.18 (2024-10-08)
+-----------------
+
+* [UPD] El campo del correo del estudiante es editable, a veces no nos llegaba el dato y daba errores [Iago López]
+
+1.17 (2024-09-25)
+-----------------
+
+* [UPD] Quitar enable_suscribers [Iago López]
+* [UPD] Quitar enable_suscribers [Iago López]
+
+1.16 (2024-07-18)
+-----------------
+
+* [FIX] Traduccion [Iago López]
+* [FIX] Solo un professor no ve por defecto todas sus ofertas [Iago López]
+
+1.15 (2024-07-17)
+-----------------
+
+* [UPD] Búsqueda de profesores - permitir encontrar personal con perfil de CONVIDAT [Iago López Fernández]
+* [FIX] Busquedas [Iago López]
+* [ADD] new checkbox to enable or disable the request button [Clàudia Andreu]
+* [UPD] Several changes in TFEMarket [Clàudia Andreu]
+* [UPD] Quitar limitacion de que un TFE Teacher no puedo crear sol·licitudes si tmb es TFE Student [Iago López]
+* [UPDATE] añadir titulo ofertas tfe [Clàudia Andreu]
 
 1.14 (2024-06-19)
 -----------------

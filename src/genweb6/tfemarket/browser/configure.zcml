@@ -30,6 +30,14 @@
     />
 
   <browser:page
+    name="getExactTeacher"
+    for="zope.interface.Interface"
+    class=".views.getExactTeacher"
+    layer="..interfaces.IGenweb6TfemarketLayer"
+    permission="zope2.View"
+    />
+
+  <browser:page
     name="requestOffer"
     for="zope.interface.Interface"
     class=".views.requestOffer"

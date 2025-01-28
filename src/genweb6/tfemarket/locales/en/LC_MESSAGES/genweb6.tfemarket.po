@@ -1028,5 +1028,11 @@ msgstr "TFG/TFM"
 msgid "show expired"
 msgstr "Show expired"
 
-msgid "disable request"
+msgid "Disable request button"
 msgstr "Disable request button"
+
+msgid "Show all offers by default"
+msgstr "Show all offers by default"
+
+msgid "Teachers will still see their default offers when accessing"
+msgstr "Teachers will still see their default offers when accessing"

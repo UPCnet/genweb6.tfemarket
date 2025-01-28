@@ -42,11 +42,12 @@ class IMarket(model.Schema, IDexteritySchema):
     """
     show_all = schema.Bool(
         title=_(u"Show all offers by default"),
+        description=_(u"Teachers will still see their default offers when accessing"),
         default=False,
         required=False,
     )
 
-    
+
 def disablePortlets(market, event):
     for column in [u"plone.leftcolumn", u"plone.rightcolumn"]:
         manager = getUtility(IPortletManager, name=column)
@@ -105,11 +106,13 @@ class View(BrowserView):
         return results
 
     def getOffers(self):
-        if self.context.show_all and not self.request.cookies.get('MERCAT_TFE'):
-            searchMarket = '{"search": "", "title": "", "degree": "a", "topic": "a", "teacher": "a", "departament": "a", "type": "a", "company": "a", "date": "a", "state": "a", "language": ["CA", "ES", "EN"], "allOffers": ""}'
+        currentUserIsAloneTeacher = self.currentUserIsAloneTeacher()
+        if self.context.show_all and self.request.form == {} and not currentUserIsAloneTeacher:
+            searchMarket = '{"allOffers": ""}'
             self.request.form = json.loads(searchMarket)
         else:
             searchMarket = self.request.cookies.get('MERCAT_TFE')
+
         if searchMarket:
             searchMarket = json.loads(searchMarket)
             if 'searchFilters' in self.request.form:
@@ -117,7 +120,15 @@ class View(BrowserView):
             else:
                 if 'search' not in self.request.form:
                     self.request.response.setCookie('MERCAT_TFE', "", path='/')
-        if not isManager() and self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
+
+        if 'allOffers' in self.request.form:
+            dataAllOffers = {'allOffers': ''}
+            if 'expired' in self.request.form:
+                dataAllOffers.update({'expired': ''})
+            self.request.form = dataAllOffers
+
+        checkPermissionCreateOffers = self.checkPermissionCreateOffers()
+        if not isManager() and checkPermissionCreateOffers or self.request.form != {} and 'form.button.confirm' not in self.request.form:
             if len(self.request.form.keys()) == 1 and self.request.form.get('ts', False):
                 return []
 
@@ -128,7 +139,7 @@ class View(BrowserView):
             filters = {'portal_type': 'genweb.tfemarket.offer',
                        'path': {"query": '/'.join(self.context.getPhysicalPath())}}
 
-            if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
+            if checkPermissionCreateOffers and api.user.get_current().id != "admin":
                 if 'searchOffer' not in self.request.form and 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
 
@@ -214,7 +225,7 @@ class View(BrowserView):
                             workflowActions = [
                                 x for x in workflowActions if x.get('id') != 'sendtoreview']
 
-                    if offerState.id == 'pending' and self.currentUserIsAloneTeacher():
+                    if offerState.id == 'pending' and currentUserIsAloneTeacher:
                         workflowActions = []
 
                     if marketState.id == 'published':
@@ -225,9 +236,7 @@ class View(BrowserView):
                             'id') != 'publicaloferta']
 
                     expired = offer.expires().isPast()
-
-                    if 'expired' not in self.request.form and not expired or 'expired' in self.request.form:
-
+                    if 'expired' not in self.request.form and not expired or 'expired' in self.request.form or 'searchOffer' in self.request.form:
                         results.append(dict(title=offer.title,
                                             state=offerState.title,
                                             state_id=offerState.id,
@@ -279,8 +288,7 @@ class View(BrowserView):
                                                 offer),
                                             assign_offer=self.assignOffer(
                                                 offer, offerState.id),
-                                            is_expired=expired,
-                                            show_request=self.context.show_request
+                                            is_expired=expired
                                             ))
             if 'search' in self.request.form:
                 self.request.response.setCookie(
@@ -571,4 +579,3 @@ class View(BrowserView):
     def showNumEstudiants(self):
         tfe_tool = genwebTfemarketConfig()
         return tfe_tool.view_num_students
-  

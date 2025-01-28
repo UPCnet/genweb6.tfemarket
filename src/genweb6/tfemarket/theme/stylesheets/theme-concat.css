@@ -51,3 +51,24 @@ body.portaltype-genweb-tfemarket-market #collapseCercador > .card {
     margin-bottom: 0.25rem;
   }
 }
+
+/* line 71, ../scss/_market.scss */
+#form-widgets-teacher_manager-error,
+#form-widgets-codirector-error {
+  color: #FF0000;
+  display: none;
+}
+
+/* line 77, ../scss/_market.scss */
+#form-widgets-teacher_manager-error.viewError,
+#form-widgets-teacher_manager-warn.viewWarn,
+#form-widgets-codirector-error.viewError,
+#form-widgets-codirector-warn.viewWarn {
+  display: block;
+}
+
+/* line 84, ../scss/_market.scss */
+#form-widgets-teacher_manager-warn,
+#form-widgets-codirector-warn {
+  display: none;
+}

@@ -115,12 +115,6 @@ class ITfemarketSettings(model.Schema, IDexteritySchema):
         fields=['topics', 'tags', 'languages'],
     )
 
-    model.fieldset(
-        'Migration',
-        _(u'Migració'),
-        fields=['enable_suscribers'],
-    )
-
     # SETTINGS
 
     center_code = schema.Int(
@@ -227,16 +221,6 @@ class ITfemarketSettings(model.Schema, IDexteritySchema):
         description=_(u'To reset the counter access the following <a href=\"reset_offers_counter\">link</a>.'),
         required=False,
         default=0,
-    )
-
-    # MIGRACIO
-
-    read_permission(enable_suscribers='genweb.webmaster')
-    write_permission(enable_suscribers='genweb.manager')
-    enable_suscribers = schema.Bool(
-        title=_(u'Habilitar notificacions'),
-        required=False,
-        default=False,
     )
 
 
