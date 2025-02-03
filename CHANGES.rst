@@ -2,11 +2,13 @@ Changelog
 =========
 
 
-1.20 (unreleased)
+1.20 (2025-02-03)
 -----------------
 
-- Nothing changed yet.
-
+* [UPD] classes to handle cases with or without sobrenom [Clàudia Andreu]
+* Merge branch 'master' of github.com:UPCnet/genweb6.tfemarket [Clàudia Andreu]
+* [UPD] class getTeacher to handle cases with/without sobrenom [Clàudia Andreu]
+* [FIX] Añadir vista no definida [Iago López]
 
 1.19 (2024-12-10)
 -----------------
