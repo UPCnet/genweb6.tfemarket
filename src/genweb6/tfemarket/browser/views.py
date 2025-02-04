@@ -157,14 +157,14 @@ class getTeacher(BrowserView):
 
                         if 'sobrenom' in teacher and teacher['sobrenom']:
                             if 'cognom2' in teacher and teacher['cognom2']:
-                                fullname = f"{teacher['sobrenom'].capitalize()} {teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}"
+                                fullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['sobrenom'].capitalize()}"
                             else:
-                                fullname = f"{teacher['sobrenom'].capitalize()} {teacher['cognom1'].capitalize()}"
+                                fullname = f"{teacher['cognom1'].capitalize()}, {teacher['sobrenom'].capitalize()}"
                         else:
                             if 'cognom2' in teacher and teacher['cognom2']:
-                                fullname = f"{teacher['nom'].capitalize()} {teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}"
+                                fullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['nom'].capitalize()}"
                             else:
-                                fullname = f"{teacher['nom'].capitalize()} {teacher['cognom1'].capitalize()}"
+                                fullname = f"{teacher['cognom1'].capitalize()}, {teacher['nom'].capitalize()}"
                         listTeachers.append({
                             'user': teacher['commonName'],
                             'email': teacher['emailPreferent'],
@@ -199,7 +199,7 @@ class getExactTeacher(BrowserView):
                     fullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['nom'].capitalize()}"
                 else:
                     fullname = f"{teacher['cognom1'].capitalize()}, {teacher['nom'].capitalize()}"
-            
+
             data = {
                 'user': teacher['commonName'],
                 'email': teacher['emailPreferent'],
