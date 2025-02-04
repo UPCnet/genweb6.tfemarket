@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.21 (unreleased)
+1.21 (2025-02-04)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] Cambiar formato en la que se muestra el nombre completo del profesor [Iago López]
 
 1.20 (2025-02-03)
 -----------------
