@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.22 (unreleased)
+1.22 (2025-06-03)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] Cache controlpanel [«Iago]
 
 1.21 (2025-02-04)
 -----------------
