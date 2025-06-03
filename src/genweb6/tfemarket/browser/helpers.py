@@ -29,7 +29,8 @@ class importTitulacions(BrowserView):
             filename = fitxer.filename
 
             if filename != '' and filename.endswith('.csv'):
-                tfe_tool = genwebTfemarketConfig()
+                request = getattr(self.context, 'REQUEST', None)
+                tfe_tool = genwebTfemarketConfig(request)
                 tfe_tool.titulacions_table = []
 
                 ifile = open(fitxer, "rb")
@@ -90,7 +91,8 @@ class importOfertes(BrowserView):
         return self.render()
 
     def createOffers(self, hasHeaders, fitxer, marketUID):
-        tfe_tool = genwebTfemarketConfig()
+        request = getattr(self.context, 'REQUEST', None)
+        tfe_tool = genwebTfemarketConfig(request)
 
         catalog = api.portal.get_tool(name='portal_catalog')
         market = catalog(UID=marketUID)[0].getObject()
@@ -112,7 +114,7 @@ class importOfertes(BrowserView):
                     for perfil in teacher['uePerfil']:
                         if 'PDI' in perfil['perfilId']:
                             teacherDept = perfil['ueId'] + '-' + perfil['ueAcronim']
-                    
+
                     if 'sobrenom' in teacher:
                         if 'cognom2' in teacher:
                             teacherFullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['sobrenom'].capitalize()}"
@@ -123,7 +125,7 @@ class importOfertes(BrowserView):
                             teacherFullname = f"{teacher['cognom1'].capitalize()} {teacher['cognom2'].capitalize()}, {teacher['nom'].capitalize()}"
                         else:
                             teacherFullname = f"{teacher['cognom1'].capitalize()}, {teacher['nom'].capitalize()}"
-                    
+
                     data = {
                         'title': row[0].decode("utf-8"),
                         'description': row[1].decode("utf-8"),
@@ -159,7 +161,7 @@ class importOfertes(BrowserView):
                             for perfil in codirector['uePerfil']:
                                 if 'PDI' in perfil['perfilId']:
                                     codirectorDept = perfil['ueId'] + '-' + perfil['ueAcronim']
-                            
+
                             if 'sobrenom' in codirector:
                                 if 'cognom2' in codirector:
                                     codirectorFullname = f"{codirector['cognom1'].capitalize()} {codirector['cognom2'].capitalize()}, {codirector['sobrenom'].capitalize()}"
@@ -170,7 +172,7 @@ class importOfertes(BrowserView):
                                     codirectorFullname = f"{codirector['cognom1'].capitalize()} {codirector['cognom2'].capitalize()}, {codirector['nom'].capitalize()}"
                                 else:
                                     codirectorFullname = f"{codirector['cognom1'].capitalize()}, {codirector['nom'].capitalize()}"
-                            
+
                             data.update({
                                 'codirector_id': codirector['commonName'],
                                 'codirector': codirectorFullname,
@@ -230,7 +232,8 @@ class importOfertes(BrowserView):
         return markets
 
     def checkNotValidDegrees(self, degrees):
-        tfe_tool = genwebTfemarketConfig()
+        request = getattr(self.context, 'REQUEST', None)
+        tfe_tool = genwebTfemarketConfig(request)
         allDegrees = [x['codi_mec'] for x in tfe_tool.titulacions_table]
         notValid = [x for x in degrees if x not in allDegrees]
         return notValid

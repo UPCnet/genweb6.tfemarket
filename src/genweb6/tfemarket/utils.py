@@ -15,6 +15,7 @@ from plone.memoize.view import memoize
 from plone.registry.interfaces import IRegistry
 from time import time
 from zope.component import queryUtility
+from zope.globalrequest import getRequest
 from zope.security import checkPermission
 
 from genweb6.tfemarket import _
@@ -80,8 +81,8 @@ def getUserData(user, typology=None):
 
 
 def checkPermissionCreateApplications(self, context, errors=False):
-
-    tfe_tool = genwebTfemarketConfig()
+    request = getattr(self.context, 'REQUEST', None)
+    tfe_tool = genwebTfemarketConfig(request)
 
     if tfe_tool.disable_request:
         return False
@@ -115,7 +116,7 @@ def checkPermissionCreateObject(self, context, objectID):
 
 
 def getDegrees():
-    tfe_tool = genwebTfemarketConfig()
+    tfe_tool = genwebTfemarketConfig(getRequest())
     current_language = api.portal.get_current_language()
 
     result = []
@@ -244,8 +245,9 @@ def getStudentData(self, item, user):
                     id_prisma = student_data['idPrisma']
                     numDocument = student_data['dni']
 
+                    request = getattr(self.context, 'REQUEST', None)
                     bussoa_tool = genwebBusSOAConfig()
-                    tfe_tool = genwebTfemarketConfig()
+                    tfe_tool = genwebTfemarketConfig(request)
                     bussoa_url = bussoa_tool.bus_url
                     bussoa_user = bussoa_tool.bus_user
                     bussoa_pass = bussoa_tool.bus_password
@@ -298,9 +300,17 @@ def getStudentData(self, item, user):
 
 
 
-@ram.cache(lambda *args: time() // (24 * 60 * 60))
-def genwebTfemarketConfig():
+def genwebTfemarketConfig(request=None):
+    if request is not None and hasattr(request, '_tfemarket_config'):
+        return request._tfemarket_config
+
     registry = queryUtility(IRegistry)
+    res = registry.forInterface(ITfemarketSettings)
+
+    if request is not None:
+        request._tfemarket_config = res
+    return res
+
     return registry.forInterface(ITfemarketSettings)
 
 

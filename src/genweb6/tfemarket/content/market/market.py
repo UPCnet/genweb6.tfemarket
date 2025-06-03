@@ -216,7 +216,8 @@ class View(BrowserView):
                     offerState = offerWorkflow['states'][offerStatus['review_state']]
 
                     if offerState.id == 'offered':
-                        tfe_tool = genwebTfemarketConfig()
+                        request = getattr(self.context, 'REQUEST', None)
+                        tfe_tool = genwebTfemarketConfig(request)
                         review_state = tfe_tool.review_state
                         if review_state:
                             workflowActions = [
@@ -375,7 +376,8 @@ class View(BrowserView):
         return results
 
     def getLanguages(self):
-        tfe_tool = genwebTfemarketConfig()
+        request = getattr(self.context, 'REQUEST', None)
+        tfe_tool = genwebTfemarketConfig(request)
         return tfe_tool.languages
 
     def getModalities(self):
@@ -459,7 +461,8 @@ class View(BrowserView):
         return sorted(results, key=lambda x: x['lit'])
 
     def getKeys(self):
-        tfe_tool = genwebTfemarketConfig()
+        request = getattr(self.context, 'REQUEST', None)
+        tfe_tool = genwebTfemarketConfig(request)
         tags = []
 
         keys = tfe_tool.tags
@@ -470,7 +473,8 @@ class View(BrowserView):
         return tags
 
     def getTopics(self):
-        tfe_tool = genwebTfemarketConfig()
+        request = getattr(self.context, 'REQUEST', None)
+        tfe_tool = genwebTfemarketConfig(request)
         topics = []
 
         keys = tfe_tool.topics
@@ -568,7 +572,8 @@ class View(BrowserView):
         user_roles = api.user.get_current().getRoles()
 
         if 'Manager' in user_roles or 'TFE Manager' in user_roles or 'TFE Teacher' in user_roles:
-            tfe_tool = genwebTfemarketConfig()
+            request = getattr(self.context, 'REQUEST', None)
+            tfe_tool = genwebTfemarketConfig(request)
             titulacions = tfe_tool.titulacions_table
 
             if titulacions:
@@ -577,5 +582,6 @@ class View(BrowserView):
         return False
 
     def showNumEstudiants(self):
-        tfe_tool = genwebTfemarketConfig()
+        request = getattr(self.context, 'REQUEST', None)
+        tfe_tool = genwebTfemarketConfig(request)
         return tfe_tool.view_num_students

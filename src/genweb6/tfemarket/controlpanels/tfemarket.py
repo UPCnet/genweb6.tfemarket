@@ -13,7 +13,6 @@ from z3c.form import button
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.interface import implementer
-from zope.ramcache import ram
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 
@@ -242,7 +241,6 @@ class TfemarketSettingsEditForm(controlpanel.RegistryEditForm):
             self.status = self.formErrorsMessage
             return
 
-        ram.caches.clear()
         self.applyChanges(data)
 
         IStatusMessage(self.request).addStatusMessage(_("Changes saved"), "info")
