@@ -35,7 +35,7 @@ import unicodedata
 class LangsVocabulary(object):
 
     def __call__(self, context):
-        request = getattr(self.context, 'REQUEST', None)
+        request = getattr(context, 'REQUEST', None)
         tfe_tool = genwebTfemarketConfig(request)
         results = tfe_tool.languages
 
@@ -54,7 +54,7 @@ class LangsVocabulary(object):
 class KeysVocabulary(object):
 
     def __call__(self, context):
-        request = getattr(self.context, 'REQUEST', None)
+        request = getattr(context, 'REQUEST', None)
         tfe_tool = genwebTfemarketConfig(request)
         results = []
         tags = []
@@ -74,7 +74,7 @@ class KeysVocabulary(object):
 class TopicsVocabulary(object):
 
     def __call__(self, context):
-        request = getattr(self.context, 'REQUEST', None)
+        request = getattr(context, 'REQUEST', None)
         tfe_tool = genwebTfemarketConfig(request)
         results = []
         topic = []
@@ -127,7 +127,7 @@ class ModalityVocabulary(object):
 class DegreesVocabulary(object):
 
     def __call__(self, context):
-        request = getattr(self.context, 'REQUEST', None)
+        request = getattr(context, 'REQUEST', None)
         tfe_tool = genwebTfemarketConfig(request)
         current_language = api.portal.get_current_language()
 
@@ -449,7 +449,7 @@ class EditForm(edit.DefaultEditForm):
 
 
 def numOfferDefaultValue(offer, event):
-    request = getattr(self.context, 'REQUEST', None)
+    request = getattr(offer, 'REQUEST', None)
     tfe_tool = genwebTfemarketConfig(request)
 
     center = tfe_tool.center_code
