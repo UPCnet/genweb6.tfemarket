@@ -2,11 +2,11 @@ Changelog
 =========
 
 
-1.23 (unreleased)
+1.23 (2026-02-11)
 -----------------
 
-- Nothing changed yet.
-
+* [FIX] npm audit [Iago López]
+* [FIX] Cambio controlpanel, no pillaba correctamente el contexto [«Iago]
 
 1.22 (2025-06-03)
 -----------------
