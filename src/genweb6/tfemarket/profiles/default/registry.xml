@@ -17,4 +17,24 @@
 
   </records>
 
+  <!-- folder_contents (pat-structure): plone.icon.contenttype mas portal type normalizado -->
+  <record name="plone.icon.contenttype/genweb-tfemarket-application">
+    <field type="plone.registry.field.TextLine">
+      <title>TFEmarket application</title>
+    </field>
+    <value key="resource">++plone++bootstrap-icons/envelope-paper.svg</value>
+  </record>
+  <record name="plone.icon.contenttype/genweb-tfemarket-market">
+    <field type="plone.registry.field.TextLine">
+      <title>TFEmarket market</title>
+    </field>
+    <value key="resource">++plone++bootstrap-icons/inboxes.svg</value>
+  </record>
+  <record name="plone.icon.contenttype/genweb-tfemarket-offer">
+    <field type="plone.registry.field.TextLine">
+      <title>TFEmarket offer</title>
+    </field>
+    <value key="resource">++plone++bootstrap-icons/file-earmark-text.svg</value>
+  </record>
+
 </registry>
