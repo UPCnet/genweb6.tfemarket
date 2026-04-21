@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-1.24 (unreleased)
+1.24 (2026-04-21)
 -----------------
 
-- Nothing changed yet.
-
+* [UPD] Registrar iconos que se usan en los tipos de contenido creados [Iago López]
 
 1.23 (2026-02-11)
 -----------------
