@@ -31,6 +31,14 @@ import transaction
 import unicodedata
 
 
+try:
+    from plone.app.dexterity.config import MAX_DESCRIPTION_LENGTH
+    from plone.app.dexterity.config import MAX_TITLE_LENGTH
+except ImportError:  # plone.app.dexterity < 3.2.3
+    MAX_TITLE_LENGTH = 1024
+    MAX_DESCRIPTION_LENGTH = 10000
+
+
 @implementer(IVocabularyFactory)
 class LangsVocabulary(object):
 
@@ -180,11 +188,13 @@ class IOffer(model.Schema, IDexteritySchema):
     )
 
     title = schema.TextLine(
+        max_length=MAX_TITLE_LENGTH,
         title=_(u'Title'),
         required=True,
     )
 
     description = schema.Text(
+        max_length=MAX_DESCRIPTION_LENGTH,
         title=_(u'Description'),
         description=_(u'Breu explicació dels aspectes bàsics del treball'),
         required=True,

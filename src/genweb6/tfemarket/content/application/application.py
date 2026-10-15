@@ -26,6 +26,14 @@ import ast
 import re
 
 
+try:
+    from plone.app.dexterity.config import MAX_DESCRIPTION_LENGTH
+    from plone.app.dexterity.config import MAX_TITLE_LENGTH
+except ImportError:  # plone.app.dexterity < 3.2.3
+    MAX_TITLE_LENGTH = 1024
+    MAX_DESCRIPTION_LENGTH = 10000
+
+
 class InvalidEmail(Invalid):
     __doc__ = "La dirección de correo electrónico no es válida."
 
@@ -106,6 +114,7 @@ class IApplication(model.Schema, IDexteritySchema):
 
     directives.widget('title', StudentInputFieldWidget)
     title = schema.TextLine(
+        max_length=MAX_TITLE_LENGTH,
         title=_(u'Fullname'),
         required=True,
     )
