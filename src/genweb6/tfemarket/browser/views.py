@@ -256,8 +256,13 @@ class requestOfferOtherUser(BrowserView):
 class getInfoCreateApplication(BrowserView):
 
     def __call__(self):
-        data = self.request.cookies.pop('APPLICATION_DATA')
-        return json.dumps(eval(data))
+        # La cookie la controla el cliente: nunca se evalua como codigo Python,
+        # solo se interpreta como JSON (es como la escribe getStudentData).
+        data = self.request.cookies.pop('APPLICATION_DATA', None)
+        try:
+            return json.dumps(json.loads(data))
+        except (TypeError, ValueError):
+            return json.dumps(None)
 
 
 class getInfoRenameOffer(BrowserView):
